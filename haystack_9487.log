@@ -1,0 +1,133 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:haystack_9487
+haystack_9487: Pulling from alfin06/agentissue-bench
+59e22667830b: Already exists
+abd846fa1cdb: Already exists
+b7b61708209a: Already exists
+4085babbc570: Already exists
+dcc2d816d7c5: Pulling fs layer
+53668ab0a827: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+1adae71b116c: Pulling fs layer
+e6be42b4d0d5: Pulling fs layer
+5e73bdeefd32: Pulling fs layer
+8a4cbc16d6dd: Pulling fs layer
+ee42eb854a01: Pulling fs layer
+cf3d8efc6d84: Pulling fs layer
+8af7e2aa6745: Pulling fs layer
+6d6b7d9f7c5a: Pulling fs layer
+86f854217627: Pulling fs layer
+5e73bdeefd32: Waiting
+8a4cbc16d6dd: Waiting
+6d6b7d9f7c5a: Waiting
+86f854217627: Waiting
+1adae71b116c: Waiting
+e6be42b4d0d5: Waiting
+ee42eb854a01: Waiting
+8af7e2aa6745: Waiting
+cf3d8efc6d84: Waiting
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+1adae71b116c: Verifying Checksum
+1adae71b116c: Download complete
+dcc2d816d7c5: Verifying Checksum
+dcc2d816d7c5: Download complete
+53668ab0a827: Verifying Checksum
+53668ab0a827: Download complete
+e6be42b4d0d5: Verifying Checksum
+e6be42b4d0d5: Download complete
+5e73bdeefd32: Verifying Checksum
+5e73bdeefd32: Download complete
+8a4cbc16d6dd: Verifying Checksum
+8a4cbc16d6dd: Download complete
+8af7e2aa6745: Download complete
+6d6b7d9f7c5a: Download complete
+86f854217627: Verifying Checksum
+86f854217627: Download complete
+cf3d8efc6d84: Verifying Checksum
+cf3d8efc6d84: Download complete
+ee42eb854a01: Verifying Checksum
+ee42eb854a01: Download complete
+dcc2d816d7c5: Pull complete
+53668ab0a827: Pull complete
+4f4fb700ef54: Pull complete
+1adae71b116c: Pull complete
+e6be42b4d0d5: Pull complete
+5e73bdeefd32: Pull complete
+8a4cbc16d6dd: Pull complete
+ee42eb854a01: Pull complete
+cf3d8efc6d84: Pull complete
+8af7e2aa6745: Pull complete
+6d6b7d9f7c5a: Pull complete
+86f854217627: Pull complete
+Digest: sha256:ea301efa5e3bbdbb93d8dbb9f90a2408f7a089467784ebf19cd4e112b8097b64
+Status: Downloaded newer image for alfin06/agentissue-bench:haystack_9487
+docker.io/alfin06/agentissue-bench:haystack_9487
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:haystack_9487" test_buggy
+=== Testing BUGGY Version (Commit: cfd52540ac277284eb7b3d3e735fe56eda3c33da) ===
+--- Running Test for buggy version ---
+Executing reproduction script: python /opt/reproduce.py buggy
+--- Setting up MCPToolset with StdioServerInfo containing a secret env var ---
+
+--- Serializing the MCPToolset to a dictionary using to_dict() ---
+Serialized data (what gets logged):
+{
+  "type": "haystack_integrations.tools.mcp.mcp_toolset.MCPToolset",
+  "data": {
+    "server_info": {
+      "type": "haystack_integrations.tools.mcp.mcp_tool.StdioServerInfo",
+      "command": "cat",
+      "args": [],
+      "env": {
+        "DEEPSET_API_KEY": "test-secret-f68b65d6-dc68-434a-9adc-2e6518f7d61e"
+      },
+      "max_retries": 3,
+      "base_delay": 1.0,
+      "max_delay": 30.0
+    },
+    "tool_names": null,
+    "connection_timeout": 30.0,
+    "invocation_timeout": 30.0
+  }
+}
+
+❌ BUG PRESENT: The secret value was found as plain text in the serialized output.
+The secret value 'test-secret-f68b65d6-dc68-434a-9adc-2e6518f7d61e' was leaked.
+
+--- Exit code: 1 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:haystack_9487" test_fixed
+=== Testing FIXED Version (Commit: bef6a26cad1082f5183e913006471ffd967fe696) ===
+--- Running Test for fixed version ---
+Executing reproduction script: python /opt/reproduce.py fixed
+--- Setting up MCPToolset with StdioServerInfo containing a secret env var ---
+
+--- Serializing the MCPToolset to a dictionary using to_dict() ---
+Serialized data (what gets logged):
+{
+  "type": "haystack_integrations.tools.mcp.mcp_toolset.MCPToolset",
+  "data": {
+    "server_info": {
+      "type": "haystack_integrations.tools.mcp.mcp_tool.StdioServerInfo",
+      "command": "cat",
+      "args": [],
+      "env": {
+        "DEEPSET_API_KEY": "test-secret-90c69598-715c-4691-8e7c-c38f7ec6263a"
+      },
+      "max_retries": 3,
+      "base_delay": 1.0,
+      "max_delay": 30.0
+    },
+    "tool_names": null,
+    "connection_timeout": 30.0,
+    "invocation_timeout": 30.0
+  }
+}
+
+❌ BUG PRESENT: The secret value was found as plain text in the serialized output.
+The secret value 'test-secret-90c69598-715c-4691-8e7c-c38f7ec6263a' was leaked.
+
+--- Exit code: 1 ---

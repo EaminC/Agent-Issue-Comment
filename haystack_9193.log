@@ -1,0 +1,87 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:haystack_9193
+haystack_9193: Pulling from alfin06/agentissue-bench
+59e22667830b: Already exists
+abd846fa1cdb: Already exists
+b7b61708209a: Already exists
+4085babbc570: Already exists
+dcc2d816d7c5: Pulling fs layer
+db626d3a9cd2: Pulling fs layer
+d2315355fca0: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+c6f7456cd3b2: Pulling fs layer
+b3e81bc44141: Pulling fs layer
+c31c147a4cc0: Pulling fs layer
+a24f80055307: Pulling fs layer
+4485fc6c454f: Pulling fs layer
+6eacea3045bc: Pulling fs layer
+b3e81bc44141: Waiting
+c31c147a4cc0: Waiting
+a24f80055307: Waiting
+4485fc6c454f: Waiting
+6eacea3045bc: Waiting
+c6f7456cd3b2: Waiting
+4f4fb700ef54: Waiting
+dcc2d816d7c5: Verifying Checksum
+dcc2d816d7c5: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+c6f7456cd3b2: Download complete
+d2315355fca0: Verifying Checksum
+d2315355fca0: Download complete
+db626d3a9cd2: Verifying Checksum
+db626d3a9cd2: Download complete
+c31c147a4cc0: Download complete
+a24f80055307: Download complete
+4485fc6c454f: Verifying Checksum
+4485fc6c454f: Download complete
+6eacea3045bc: Verifying Checksum
+6eacea3045bc: Download complete
+b3e81bc44141: Verifying Checksum
+b3e81bc44141: Download complete
+dcc2d816d7c5: Pull complete
+db626d3a9cd2: Pull complete
+d2315355fca0: Pull complete
+4f4fb700ef54: Pull complete
+c6f7456cd3b2: Pull complete
+b3e81bc44141: Pull complete
+c31c147a4cc0: Pull complete
+a24f80055307: Pull complete
+4485fc6c454f: Pull complete
+6eacea3045bc: Pull complete
+Digest: sha256:5ff5797cdc2aefd27d56e8b6bc3f427ddb6e4ec3525b49ca6492e95ba328c471
+Status: Downloaded newer image for alfin06/agentissue-bench:haystack_9193
+docker.io/alfin06/agentissue-bench:haystack_9193
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:haystack_9193" test_buggy
+=== Testing BUGGY Version (Commit: 65a4b740644ed70f5e670ca631dc6c8356643077) ===
+--- Running Test for buggy version ---
+Executing reproduction script: python /opt/reproduce.py buggy
+--- Running test for 'buggy' version ---
+--- Setting up pipeline with Agent and attempting to connect 'messages' output ---
+   Error: 'agent.messages does not exist. Output connections of agent are: 
+
+✅ BUG REPRODUCED: Caught the expected PipelineConnectError, which confirms the bug.
+✅ BUG SUCCESSFULLY REPRODUCED: The script behaved as expected for the buggy version.
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:haystack_9193" test_fixed
+=== Testing FIXED Version (Commit: 7bb9c6934bdf219830f74422617c3be79f37924f) ===
+--- Running Test for fixed version ---
+Installing fixed version dependencies...
+WARNING: haystack-ai 2.13.0rc0 does not provide the extra 'all'
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 24.0 -> 25.2
+[notice] To update, run: pip install --upgrade pip
+Executing reproduction script: python /opt/reproduce.py fixed
+--- Running test for 'fixed' version ---
+--- Setting up pipeline with Agent and attempting to connect 'messages' output ---
+
+✅ FIX CONFIRMED: The connection was made successfully.
+✅ FIX CONFIRMED / PATCH SUCCEEDED: The script behaved as expected for the fixed version.
+
+--- Exit code: 0 ---

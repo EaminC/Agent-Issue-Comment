@@ -1,0 +1,118 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:ai_2705
+ai_2705: Pulling from alfin06/agentissue-bench
+7128a879011b: Pulling fs layer
+ef8dd4820a78: Pulling fs layer
+25a2c9fb3ef1: Pulling fs layer
+5670e6facdd7: Pulling fs layer
+9e83d7fdf3b4: Pulling fs layer
+d5d4af0b0c12: Pulling fs layer
+56d2d160e4de: Pulling fs layer
+976a6f7bd2b8: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+5670e6facdd7: Waiting
+9e83d7fdf3b4: Waiting
+d5d4af0b0c12: Waiting
+57b6c05d0016: Pulling fs layer
+9ad6f69f8173: Pulling fs layer
+4f4fb700ef54: Waiting
+976a6f7bd2b8: Waiting
+57b6c05d0016: Waiting
+9ad6f69f8173: Waiting
+18c1ebaf46bb: Pulling fs layer
+cf37d5f7180b: Pulling fs layer
+18c1ebaf46bb: Waiting
+c42d8fa72fe6: Pulling fs layer
+cf37d5f7180b: Waiting
+c42d8fa72fe6: Waiting
+7603d650070e: Pulling fs layer
+28c9cde84f77: Pulling fs layer
+7603d650070e: Waiting
+28c9cde84f77: Waiting
+ef8dd4820a78: Verifying Checksum
+ef8dd4820a78: Download complete
+5670e6facdd7: Verifying Checksum
+5670e6facdd7: Download complete
+9e83d7fdf3b4: Download complete
+25a2c9fb3ef1: Verifying Checksum
+25a2c9fb3ef1: Download complete
+7128a879011b: Verifying Checksum
+7128a879011b: Download complete
+d5d4af0b0c12: Verifying Checksum
+d5d4af0b0c12: Download complete
+56d2d160e4de: Verifying Checksum
+56d2d160e4de: Download complete
+4f4fb700ef54: Download complete
+976a6f7bd2b8: Verifying Checksum
+976a6f7bd2b8: Download complete
+18c1ebaf46bb: Verifying Checksum
+18c1ebaf46bb: Download complete
+cf37d5f7180b: Verifying Checksum
+cf37d5f7180b: Download complete
+c42d8fa72fe6: Verifying Checksum
+c42d8fa72fe6: Download complete
+7603d650070e: Verifying Checksum
+7603d650070e: Download complete
+28c9cde84f77: Verifying Checksum
+28c9cde84f77: Download complete
+9ad6f69f8173: Verifying Checksum
+9ad6f69f8173: Download complete
+7128a879011b: Pull complete
+ef8dd4820a78: Pull complete
+25a2c9fb3ef1: Pull complete
+57b6c05d0016: Verifying Checksum
+57b6c05d0016: Download complete
+5670e6facdd7: Pull complete
+9e83d7fdf3b4: Pull complete
+d5d4af0b0c12: Pull complete
+56d2d160e4de: Pull complete
+976a6f7bd2b8: Pull complete
+4f4fb700ef54: Pull complete
+57b6c05d0016: Pull complete
+9ad6f69f8173: Pull complete
+18c1ebaf46bb: Pull complete
+cf37d5f7180b: Pull complete
+c42d8fa72fe6: Pull complete
+7603d650070e: Pull complete
+28c9cde84f77: Pull complete
+Digest: sha256:0362d27a062560a03cdec271fbce7d9fea77d71649237dca7f2ef515b304be84
+Status: Downloaded newer image for alfin06/agentissue-bench:ai_2705
+docker.io/alfin06/agentissue-bench:ai_2705
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:ai_2705" test_buggy
+=== Testing BUGGY Version (Commit: 9d0b378b3d23478766a478238ede5de168ec87ea) ===
+Checking out buggy commit...
+HEAD is now at 9d0b378b3 fix (docs): fix minor typo in the cookbook (#4787)
+--- Running Test ---
+Found repro_script.js. Executing with node...
+--- Simulating useChat with a client-side tool. ---
+--- This is expected to skip the "tool is running" state. ---
+
+FAILURE: The script failed with an unexpected error: Error: Unhandled chunk type: undefined
+    at Object.transform (file:///opt/node_modules/ai/dist/index.mjs:5100:17)
+    at ensureIsPromise (node:internal/webstreams/util:192:19)
+    at transformStreamDefaultControllerPerformTransform (node:internal/webstreams/transformstream:505:18)
+    at node:internal/webstreams/transformstream:550:16
+--- Test script executed successfully (exit code 0) ---
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:ai_2705" test_fixed
+=== Testing FIXED Version (Commit: 318b35129f25bb1d970c771c67563b789b9c3678) ===
+Previous HEAD position was 9d0b378b3 fix (docs): fix minor typo in the cookbook (#4787)
+HEAD is now at 318b35129 fix (ui): update ui before automatic client-side tool call is executed (#4790)
+--- Running Test ---
+Found repro_script.js. Executing with node...
+--- Simulating useChat with a client-side tool. ---
+--- This is expected to skip the "tool is running" state. ---
+
+FAILURE: The script failed with an unexpected error: Error: Unhandled chunk type: undefined
+    at Object.transform (file:///opt/node_modules/ai/dist/index.mjs:5100:17)
+    at ensureIsPromise (node:internal/webstreams/util:192:19)
+    at transformStreamDefaultControllerPerformTransform (node:internal/webstreams/transformstream:505:18)
+    at node:internal/webstreams/transformstream:550:16
+--- Test script executed successfully (exit code 0) ---
+
+--- Exit code: 0 ---

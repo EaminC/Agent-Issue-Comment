@@ -1,0 +1,97 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:ai_4412
+ai_4412: Pulling from alfin06/agentissue-bench
+89320e7119e2: Already exists
+ef8dd4820a78: Already exists
+25a2c9fb3ef1: Already exists
+5670e6facdd7: Already exists
+9e83d7fdf3b4: Already exists
+5d7be9779e36: Pulling fs layer
+56113e31d427: Pulling fs layer
+e865e7d30e8e: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+994581dc982a: Pulling fs layer
+c12cba74c668: Pulling fs layer
+d997e06cf17e: Pulling fs layer
+6e0707c692fd: Pulling fs layer
+8591c5c2b4c3: Pulling fs layer
+51e8229afb4e: Pulling fs layer
+9f145011583e: Pulling fs layer
+92f4688a6fea: Pulling fs layer
+994581dc982a: Waiting
+c12cba74c668: Waiting
+8591c5c2b4c3: Waiting
+d997e06cf17e: Waiting
+6e0707c692fd: Waiting
+51e8229afb4e: Waiting
+9f145011583e: Waiting
+92f4688a6fea: Waiting
+4f4fb700ef54: Waiting
+e865e7d30e8e: Download complete
+56113e31d427: Verifying Checksum
+56113e31d427: Download complete
+4f4fb700ef54: Download complete
+5d7be9779e36: Verifying Checksum
+5d7be9779e36: Download complete
+994581dc982a: Verifying Checksum
+994581dc982a: Download complete
+6e0707c692fd: Verifying Checksum
+6e0707c692fd: Download complete
+8591c5c2b4c3: Download complete
+51e8229afb4e: Download complete
+9f145011583e: Download complete
+92f4688a6fea: Verifying Checksum
+92f4688a6fea: Download complete
+d997e06cf17e: Verifying Checksum
+d997e06cf17e: Download complete
+5d7be9779e36: Pull complete
+56113e31d427: Pull complete
+e865e7d30e8e: Pull complete
+4f4fb700ef54: Pull complete
+994581dc982a: Pull complete
+c12cba74c668: Verifying Checksum
+c12cba74c668: Download complete
+c12cba74c668: Pull complete
+d997e06cf17e: Pull complete
+6e0707c692fd: Pull complete
+8591c5c2b4c3: Pull complete
+51e8229afb4e: Pull complete
+9f145011583e: Pull complete
+92f4688a6fea: Pull complete
+Digest: sha256:f84055d8dfbe259bdc3a39e15406e308a6ca6c5af2d61db628def71657f88ea3
+Status: Downloaded newer image for alfin06/agentissue-bench:ai_4412
+docker.io/alfin06/agentissue-bench:ai_4412
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:ai_4412" test_buggy
+=== Testing BUGGY Version (Commit: fa44a95ae291d6d17caf5ea4880f2089d8509c24) ===
+Checking out buggy commit...
+HEAD is now at fa44a95ae Version Packages (#4417)
+--- Running Test ---
+Found repro_script.js. Executing with node...
+--- Calling streamText with a tool that has an optional array schema. ---
+--- Mock `doStream` called. Analyzing generated tools schema. ---
+Full tools payload: undefined
+
+SUCCESS: The bug is reproduced.
+The 'tools' payload sent to the model was 'undefined', which is incorrect.
+--- Test script failed (exit code 1) ---
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:ai_4412" test_fixed
+=== Testing FIXED Version (Commit: 33592d2614e24eadc96729bffff60b32dd3bd851) ===
+Previous HEAD position was fa44a95ae Version Packages (#4417)
+HEAD is now at 33592d261 fix (ai/core): switch to json schema 7 target for zod to json schema conversion (#4419)
+--- Running Test ---
+Found repro_script.js. Executing with node...
+--- Calling streamText with a tool that has an optional array schema. ---
+--- Mock `doStream` called. Analyzing generated tools schema. ---
+Full tools payload: undefined
+
+SUCCESS: The bug is reproduced.
+The 'tools' payload sent to the model was 'undefined', which is incorrect.
+--- Test script failed (exit code 1) ---
+
+--- Exit code: 0 ---

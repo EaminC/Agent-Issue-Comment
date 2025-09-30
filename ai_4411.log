@@ -1,0 +1,87 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:ai_4411
+ai_4411: Pulling from alfin06/agentissue-bench
+7128a879011b: Already exists
+ef8dd4820a78: Already exists
+25a2c9fb3ef1: Already exists
+5670e6facdd7: Already exists
+9e83d7fdf3b4: Already exists
+840f8c4e3eba: Pulling fs layer
+145b0bf6e22b: Pulling fs layer
+6447f72df96b: Pulling fs layer
+7a028f7acee7: Pulling fs layer
+d34261742936: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+edeea6ae49ec: Pulling fs layer
+9a0fb2368d91: Pulling fs layer
+4f4fb700ef54: Waiting
+9a0fb2368d91: Waiting
+7a028f7acee7: Waiting
+d34261742936: Waiting
+edeea6ae49ec: Waiting
+6447f72df96b: Verifying Checksum
+6447f72df96b: Download complete
+7a028f7acee7: Verifying Checksum
+7a028f7acee7: Download complete
+d34261742936: Download complete
+840f8c4e3eba: Verifying Checksum
+840f8c4e3eba: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+edeea6ae49ec: Verifying Checksum
+edeea6ae49ec: Download complete
+9a0fb2368d91: Verifying Checksum
+9a0fb2368d91: Download complete
+145b0bf6e22b: Verifying Checksum
+145b0bf6e22b: Download complete
+840f8c4e3eba: Pull complete
+145b0bf6e22b: Pull complete
+6447f72df96b: Pull complete
+7a028f7acee7: Pull complete
+d34261742936: Pull complete
+4f4fb700ef54: Pull complete
+edeea6ae49ec: Pull complete
+9a0fb2368d91: Pull complete
+Digest: sha256:0ba10c6c318e925931380727e0d7704e8d86cc4088383cc3fc35488741a7497d
+Status: Downloaded newer image for alfin06/agentissue-bench:ai_4411
+docker.io/alfin06/agentissue-bench:ai_4411
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:ai_4411" test_buggy
+=== Testing BUGGY Version (Commit: fa44a95ae291d6d17caf5ea4880f2089d8509c24) ===
+Checking out buggy commit...
+HEAD is now at fa44a95ae Version Packages (#4417)
+--- Running Test ---
+Found repro_script.js. Executing with node...
+--- Calling generateText with a tool that has an optional parameter. ---
+--- Mock `doGenerate` called. Analyzing generated tools schema. ---
+Full tools payload: undefined
+
+Generated schema for the optional "city" property:
+undefined
+
+SUCCESS: The bug is reproduced.
+The generated schema for the optional parameter was 'undefined'.
+--- Test script failed (exit code 1) ---
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:ai_4411" test_fixed
+=== Testing FIXED Version (Commit: 33592d2614e24eadc96729bffff60b32dd3bd851) ===
+Previous HEAD position was fa44a95ae Version Packages (#4417)
+HEAD is now at 33592d261 fix (ai/core): switch to json schema 7 target for zod to json schema conversion (#4419)
+--- Running Test ---
+Found repro_script.js. Executing with node...
+--- Calling generateText with a tool that has an optional parameter. ---
+--- Mock `doGenerate` called. Analyzing generated tools schema. ---
+Full tools payload: undefined
+
+Generated schema for the optional "city" property:
+undefined
+
+SUCCESS: The bug is reproduced.
+The generated schema for the optional parameter was 'undefined'.
+--- Test script failed (exit code 1) ---
+
+--- Exit code: 0 ---

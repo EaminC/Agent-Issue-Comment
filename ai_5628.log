@@ -1,0 +1,103 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:ai_5628
+ai_5628: Pulling from alfin06/agentissue-bench
+89320e7119e2: Already exists
+ef8dd4820a78: Already exists
+25a2c9fb3ef1: Already exists
+5670e6facdd7: Already exists
+9e83d7fdf3b4: Already exists
+ca9aebbaf7ef: Pulling fs layer
+92cdb717ceda: Pulling fs layer
+82b7be320af9: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+97647b565a09: Pulling fs layer
+6a533103872b: Pulling fs layer
+04ac351c7d10: Pulling fs layer
+97647b565a09: Waiting
+e4a0370a9134: Pulling fs layer
+4f4fb700ef54: Waiting
+02b0f00539bb: Pulling fs layer
+dce2e701c3d2: Pulling fs layer
+6a533103872b: Waiting
+04ac351c7d10: Waiting
+745e07b0564d: Pulling fs layer
+70a1caaaf92f: Pulling fs layer
+745e07b0564d: Waiting
+70a1caaaf92f: Waiting
+e4a0370a9134: Waiting
+02b0f00539bb: Waiting
+dce2e701c3d2: Waiting
+82b7be320af9: Download complete
+92cdb717ceda: Verifying Checksum
+92cdb717ceda: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+ca9aebbaf7ef: Verifying Checksum
+ca9aebbaf7ef: Download complete
+97647b565a09: Verifying Checksum
+97647b565a09: Download complete
+e4a0370a9134: Download complete
+02b0f00539bb: Verifying Checksum
+02b0f00539bb: Download complete
+dce2e701c3d2: Download complete
+745e07b0564d: Verifying Checksum
+745e07b0564d: Download complete
+70a1caaaf92f: Verifying Checksum
+70a1caaaf92f: Download complete
+ca9aebbaf7ef: Pull complete
+04ac351c7d10: Verifying Checksum
+04ac351c7d10: Download complete
+92cdb717ceda: Pull complete
+82b7be320af9: Pull complete
+4f4fb700ef54: Pull complete
+97647b565a09: Pull complete
+6a533103872b: Verifying Checksum
+6a533103872b: Download complete
+6a533103872b: Pull complete
+04ac351c7d10: Pull complete
+e4a0370a9134: Pull complete
+02b0f00539bb: Pull complete
+dce2e701c3d2: Pull complete
+745e07b0564d: Pull complete
+70a1caaaf92f: Pull complete
+Digest: sha256:707c07b8df8de95790c01d051b0297391709f2a106361ac10c3e97aebba98cfd
+Status: Downloaded newer image for alfin06/agentissue-bench:ai_5628
+docker.io/alfin06/agentissue-bench:ai_5628
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:ai_5628" test_buggy
+=== Testing BUGGY Version (Commit: f0e14b2aecbfaa7a172b4d82f53b3e5a19b5f4f4) ===
+Checking out buggy commit...
+HEAD is now at f0e14b2ae Version Packages (beta) (#6914)
+--- Running Test ---
+Found repro_script.js. Executing with node...
+--- Calling generateText with a buggy z.record() schema. ---
+--- Mock `doGenerate` called. Analyzing generated tools schema. ---
+
+Generated schema for the "something" property:
+undefined
+
+SUCCESS: The bug is reproduced.
+The generated schema for the 'something' property was 'undefined'.
+--- Test script failed (exit code 1) ---
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:ai_5628" test_fixed
+=== Testing FIXED Version (Commit: c68931fb58430de2fd87dbbea9753603b27551a1) ===
+Previous HEAD position was f0e14b2ae Version Packages (beta) (#6914)
+HEAD is now at c68931fb5 fix (provider/google): support schemas that allow additional properties (#6919)
+--- Running Test ---
+Found repro_script.js. Executing with node...
+--- Calling generateText with a buggy z.record() schema. ---
+--- Mock `doGenerate` called. Analyzing generated tools schema. ---
+
+Generated schema for the "something" property:
+undefined
+
+SUCCESS: The bug is reproduced.
+The generated schema for the 'something' property was 'undefined'.
+--- Test script failed (exit code 1) ---
+
+--- Exit code: 0 ---

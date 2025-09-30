@@ -1,0 +1,135 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:superagent_953
+superagent_953: Pulling from alfin06/agentissue-bench
+e1f16b66c2e8: Pulling fs layer
+56e571f2ee22: Pulling fs layer
+3e45f7833689: Pulling fs layer
+8a49ca04d9f2: Pulling fs layer
+42f42eafefa5: Pulling fs layer
+6df533bb0690: Pulling fs layer
+e22b8409e3b2: Pulling fs layer
+a18bdef08ed1: Pulling fs layer
+202d761ac93a: Pulling fs layer
+ad525d2cab0c: Pulling fs layer
+b497d5952790: Pulling fs layer
+e174a936176c: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+8a49ca04d9f2: Waiting
+42f42eafefa5: Waiting
+6df533bb0690: Waiting
+e22b8409e3b2: Waiting
+a18bdef08ed1: Waiting
+202d761ac93a: Waiting
+ad525d2cab0c: Waiting
+b497d5952790: Waiting
+e174a936176c: Waiting
+4f4fb700ef54: Waiting
+56e571f2ee22: Verifying Checksum
+56e571f2ee22: Download complete
+8a49ca04d9f2: Verifying Checksum
+8a49ca04d9f2: Download complete
+42f42eafefa5: Download complete
+e1f16b66c2e8: Download complete
+3e45f7833689: Verifying Checksum
+3e45f7833689: Download complete
+e22b8409e3b2: Download complete
+a18bdef08ed1: Verifying Checksum
+a18bdef08ed1: Download complete
+ad525d2cab0c: Download complete
+b497d5952790: Verifying Checksum
+b497d5952790: Download complete
+e174a936176c: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+6df533bb0690: Verifying Checksum
+6df533bb0690: Download complete
+e1f16b66c2e8: Pull complete
+56e571f2ee22: Pull complete
+202d761ac93a: Verifying Checksum
+202d761ac93a: Download complete
+3e45f7833689: Pull complete
+8a49ca04d9f2: Pull complete
+42f42eafefa5: Pull complete
+6df533bb0690: Pull complete
+e22b8409e3b2: Pull complete
+a18bdef08ed1: Pull complete
+202d761ac93a: Pull complete
+ad525d2cab0c: Pull complete
+b497d5952790: Pull complete
+e174a936176c: Pull complete
+4f4fb700ef54: Pull complete
+Digest: sha256:005557d61c66d1696b0eb3d3a8d341b3ca8f8a7cf31c7b0cd43cbe21d2f37dfd
+Status: Downloaded newer image for alfin06/agentissue-bench:superagent_953
+docker.io/alfin06/agentissue-bench:superagent_953
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:superagent_953" test_buggy
+=== Testing BUGGY Version (Commit: 9b35c28d1f61f1087491a31e18a61325322d0319) ===
+HEAD is now at 9b35c28d fix: port 3100 in langfuse NEXTAUTH_URL (#942)
+--- Running Test for buggy version ---
+Found reproduce.py and Python. Executing with python...
+Testing superagent issue #953 - Installation Error - supabase: not found
+Version being tested: buggy
+Source directory: /app/source_code_buggy
+
+Searching for package.json in the UI directory...
+Found package.json at: /app/source_code_buggy/libs/ui/package.json
+
+Checking docker-compose files...
+No docker-compose files found
+
+Checking Dockerfiles for supabase installation...
+Found 2 Dockerfiles to check
+Checking libs/superagent/Dockerfile...
+Checking libs/ui/Dockerfile...
+
+Examining package.json...
+Found script using supabase: supabase:init: supabase init
+Found script using supabase: supabase:local:start: supabase start && supabase status
+Found script using supabase: supabase:local:migrate: supabase migrations up
+Found script using supabase: supabase:cloud:login: supabase login
+Found script using supabase: supabase:cloud:link: supabase link
+Found script using supabase: supabase:cloud:push: supabase db push
+Found script using supabase: supabase:docker:push: supabase db push --db-url ${SUPABASE_DB_URL}
+
+✅ BUG REPRODUCED: supabase script exists but dependency is missing
+This would cause 'supabase: not found' error when running in Docker
+✅ SUCCESS: Bug reproduced in buggy version
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:superagent_953" test_fixed
+=== Testing FIXED Version (Commit: tags/v0.2.40) ===
+HEAD is now at 1a91451a :herb: bump python generator to latest (#998)
+--- Running Test for fixed version ---
+Found reproduce.py and Python. Executing with python...
+Testing superagent issue #953 - Installation Error - supabase: not found
+Version being tested: fixed
+Source directory: /app/source_code_fixed
+
+Searching for package.json in the UI directory...
+Found package.json at: /app/source_code_fixed/libs/ui/package.json
+
+Checking docker-compose files...
+No docker-compose files found
+
+Checking Dockerfiles for supabase installation...
+Found 2 Dockerfiles to check
+Checking libs/superagent/Dockerfile...
+Checking libs/ui/Dockerfile...
+
+Examining package.json...
+Found script using supabase: supabase:init: npx supabase init
+Found script using supabase: supabase:local:start: npx supabase start && supabase status
+Found script using supabase: supabase:local:migrate: npx supabase migrations up
+Found script using supabase: supabase:cloud:login: npx supabase login
+Found script using supabase: supabase:cloud:link: npx supabase link
+Found script using supabase: supabase:cloud:push: npx supabase db push
+Found script using supabase: supabase:docker:push: npx supabase db push --db-url ${SUPABASE_DB_URL}
+Note: Scripts use 'npx supabase' which might not require a local dependency
+
+✅ FIX CONFIRMED: All supabase scripts use npx which doesn't require local installation
+✅ SUCCESS: Fix working in fixed version
+
+--- Exit code: 0 ---

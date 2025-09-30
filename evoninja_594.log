@@ -1,0 +1,226 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:evoninja_594
+evoninja_594: Pulling from alfin06/agentissue-bench
+2ec76a50fe7c: Pulling fs layer
+4027c2cde044: Pulling fs layer
+79d55ccdac16: Pulling fs layer
+265391366140: Pulling fs layer
+37c44c3f606f: Pulling fs layer
+ce80e68eae59: Pulling fs layer
+090b4fa80d4e: Pulling fs layer
+c70d666bff71: Pulling fs layer
+327adbb6f016: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+62b6585f254f: Pulling fs layer
+22e0453d53d1: Pulling fs layer
+81a4e51a111a: Pulling fs layer
+090b4fa80d4e: Waiting
+9d1013a2c6ed: Pulling fs layer
+37c44c3f606f: Waiting
+c70d666bff71: Waiting
+91957efa0e7f: Pulling fs layer
+327adbb6f016: Waiting
+ce80e68eae59: Waiting
+84f3ca86c14f: Pulling fs layer
+ec3b842b7951: Pulling fs layer
+4f4fb700ef54: Waiting
+62b6585f254f: Waiting
+9d1013a2c6ed: Waiting
+22e0453d53d1: Waiting
+91957efa0e7f: Waiting
+81a4e51a111a: Waiting
+265391366140: Waiting
+79d55ccdac16: Verifying Checksum
+79d55ccdac16: Download complete
+2ec76a50fe7c: Verifying Checksum
+2ec76a50fe7c: Download complete
+4027c2cde044: Verifying Checksum
+4027c2cde044: Download complete
+ce80e68eae59: Download complete
+37c44c3f606f: Verifying Checksum
+37c44c3f606f: Download complete
+c70d666bff71: Download complete
+2ec76a50fe7c: Pull complete
+265391366140: Verifying Checksum
+265391366140: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+62b6585f254f: Verifying Checksum
+62b6585f254f: Download complete
+22e0453d53d1: Verifying Checksum
+22e0453d53d1: Download complete
+81a4e51a111a: Verifying Checksum
+81a4e51a111a: Download complete
+090b4fa80d4e: Verifying Checksum
+090b4fa80d4e: Download complete
+91957efa0e7f: Verifying Checksum
+91957efa0e7f: Download complete
+84f3ca86c14f: Download complete
+ec3b842b7951: Verifying Checksum
+ec3b842b7951: Download complete
+4027c2cde044: Pull complete
+79d55ccdac16: Pull complete
+327adbb6f016: Verifying Checksum
+327adbb6f016: Download complete
+9d1013a2c6ed: Verifying Checksum
+9d1013a2c6ed: Download complete
+265391366140: Pull complete
+37c44c3f606f: Pull complete
+ce80e68eae59: Pull complete
+090b4fa80d4e: Pull complete
+c70d666bff71: Pull complete
+327adbb6f016: Pull complete
+4f4fb700ef54: Pull complete
+62b6585f254f: Pull complete
+22e0453d53d1: Pull complete
+81a4e51a111a: Pull complete
+9d1013a2c6ed: Pull complete
+91957efa0e7f: Pull complete
+84f3ca86c14f: Pull complete
+ec3b842b7951: Pull complete
+Digest: sha256:126fa12e89f2ae38788fbe7a8f1900d5cdfba81341e91cfd228f644644f2dcc9
+Status: Downloaded newer image for alfin06/agentissue-bench:evoninja_594
+docker.io/alfin06/agentissue-bench:evoninja_594
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:evoninja_594" test_buggy
+=== Testing BUGGY Version (Commit: 96bd1a54b43e30c89b485a4db966e270cac167f3) ===
+--- Running E2E Test for buggy version ---
+Starting development web server...
+Waiting for server to be ready on http://localhost:3000...
+
+> @evo-ninja/ui@0.1.0 dev /app/source_code_buggy/apps/browser
+> next dev
+
+   ▲ Next.js 14.0.4-canary.41
+   - Local:        http://localhost:3000
+
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+   Downloading swc package @next/swc-linux-x64-gnu...
+   Downloading swc package @next/swc-linux-x64-musl...
+ ✓ Ready in 7.3s
+ ✓ Compiled /middleware in 216ms
+ ✓ Compiled (120 modules)
+ ○ Compiling / ...
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+ ⨯ ./lib/api/ProxyEmbeddingApi.ts:1:0
+Module not found: Can't resolve '@evo-ninja/agents'
+> 1 | import {
+  2 |   EmbeddingApi,
+  3 |   EmbeddingCreationResult,
+  4 |   Tokenizer,
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./lib/api/index.ts
+./lib/services/evo/EvoThread.ts
+./lib/services/evo/EvoService.ts
+./app/page.tsx
+ ⨯ ./lib/api/ProxyEmbeddingApi.ts:1:0
+Module not found: Can't resolve '@evo-ninja/agents'
+> 1 | import {
+  2 |   EmbeddingApi,
+  3 |   EmbeddingCreationResult,
+  4 |   Tokenizer,
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./lib/api/index.ts
+./lib/services/evo/EvoThread.ts
+./lib/services/evo/EvoService.ts
+./app/page.tsx
+Error: Timed out waiting for: http://localhost:3000
+    at /app/source_code_buggy/node_modules/.pnpm/wait-on@9.0.1/node_modules/wait-on/lib/wait-on.js:131:31
+    at doInnerSub (/app/source_code_buggy/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/cjs/internal/operators/mergeInternals.js:22:31)
+    at outerNext (/app/source_code_buggy/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/cjs/internal/operators/mergeInternals.js:17:70)
+    at OperatorSubscriber._this._next (/app/source_code_buggy/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/cjs/internal/operators/OperatorSubscriber.js:33:21)
+    at Subscriber.next (/app/source_code_buggy/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/cjs/internal/Subscriber.js:51:18)
+    at AsyncAction.work (/app/source_code_buggy/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/cjs/internal/observable/timer.js:28:28)
+    at AsyncAction._execute (/app/source_code_buggy/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/cjs/internal/scheduler/AsyncAction.js:79:18)
+    at AsyncAction.execute (/app/source_code_buggy/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/cjs/internal/scheduler/AsyncAction.js:67:26)
+    at AsyncScheduler.flush (/app/source_code_buggy/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/cjs/internal/scheduler/AsyncScheduler.js:38:33)
+    at listOnTimeout (node:internal/timers:573:17)
+❌ BUG NOT REPRODUCED: The E2E test failed, but it was expected to pass.
+Shutting down web server (PID: 79)...
+
+--- Exit code: 1 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:evoninja_594" test_fixed
+=== Testing FIXED Version (Commit: ff946e70d20476d6b971cfc7aa6fe68cb5a5d933) ===
+--- Running E2E Test for fixed version ---
+Preparing fixed version...
+Starting development web server...
+Waiting for server to be ready on http://localhost:3000...
+
+> @evo-ninja/ui@0.1.0 dev /app/source_code_fixed/apps/browser
+> next dev
+
+   ▲ Next.js 14.0.4-canary.41
+   - Local:        http://localhost:3000
+
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+   Downloading swc package @next/swc-linux-x64-gnu...
+   Downloading swc package @next/swc-linux-x64-musl...
+ ✓ Ready in 6.4s
+ ✓ Compiled /middleware in 227ms
+ ✓ Compiled (120 modules)
+ ○ Compiling / ...
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+ ⨯ ./lib/api/ProxyEmbeddingApi.ts:1:0
+Module not found: Can't resolve '@evo-ninja/agents'
+> 1 | import {
+  2 |   EmbeddingApi,
+  3 |   EmbeddingCreationResult,
+  4 |   Tokenizer,
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./lib/api/index.ts
+./lib/services/evo/EvoThread.ts
+./lib/services/evo/EvoService.ts
+./app/page.tsx
+ ⨯ ./lib/api/ProxyEmbeddingApi.ts:1:0
+Module not found: Can't resolve '@evo-ninja/agents'
+> 1 | import {
+  2 |   EmbeddingApi,
+  3 |   EmbeddingCreationResult,
+  4 |   Tokenizer,
+
+https://nextjs.org/docs/messages/module-not-found
+
+Import trace for requested module:
+./lib/api/index.ts
+./lib/services/evo/EvoThread.ts
+./lib/services/evo/EvoService.ts
+./app/page.tsx
+Error: Timed out waiting for: http://localhost:3000
+    at /app/source_code_fixed/node_modules/.pnpm/wait-on@9.0.1/node_modules/wait-on/lib/wait-on.js:131:31
+    at doInnerSub (/app/source_code_fixed/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/cjs/internal/operators/mergeInternals.js:22:31)
+    at outerNext (/app/source_code_fixed/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/cjs/internal/operators/mergeInternals.js:17:70)
+    at OperatorSubscriber._this._next (/app/source_code_fixed/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/cjs/internal/operators/OperatorSubscriber.js:33:21)
+    at Subscriber.next (/app/source_code_fixed/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/cjs/internal/Subscriber.js:51:18)
+    at AsyncAction.work (/app/source_code_fixed/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/cjs/internal/observable/timer.js:28:28)
+    at AsyncAction._execute (/app/source_code_fixed/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/cjs/internal/scheduler/AsyncAction.js:79:18)
+    at AsyncAction.execute (/app/source_code_fixed/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/cjs/internal/scheduler/AsyncAction.js:67:26)
+    at AsyncScheduler.flush (/app/source_code_fixed/node_modules/.pnpm/rxjs@7.8.2/node_modules/rxjs/dist/cjs/internal/scheduler/AsyncScheduler.js:38:33)
+    at listOnTimeout (node:internal/timers:573:17)
+❌ FIX NOT CONFIRMED / PATCH FAILED: The E2E test failed unexpectedly.
+Shutting down web server (PID: 138)...
+
+--- Exit code: 1 ---

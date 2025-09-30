@@ -1,0 +1,122 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:anything_llm_2218
+anything_llm_2218: Pulling from alfin06/agentissue-bench
+d107e437f729: Pulling fs layer
+e405d8e35c3c: Pulling fs layer
+f63d22c0a8e0: Pulling fs layer
+09260a438754: Pulling fs layer
+5c104ab4e9d9: Pulling fs layer
+b1c83983bd67: Pulling fs layer
+763991de4762: Pulling fs layer
+5897b466df3f: Pulling fs layer
+cf827664f178: Pulling fs layer
+5c104ab4e9d9: Waiting
+09260a438754: Waiting
+bd2118209260: Pulling fs layer
+b1c83983bd67: Waiting
+4f4fb700ef54: Pulling fs layer
+763991de4762: Waiting
+5897b466df3f: Waiting
+752f28bc3ec0: Pulling fs layer
+cf827664f178: Waiting
+177fe12b701c: Pulling fs layer
+bd2118209260: Waiting
+4f4fb700ef54: Waiting
+8b473982ef91: Pulling fs layer
+177fe12b701c: Waiting
+a515a1055192: Pulling fs layer
+4f9b684272be: Pulling fs layer
+a515a1055192: Waiting
+4f9b684272be: Waiting
+e405d8e35c3c: Verifying Checksum
+e405d8e35c3c: Download complete
+09260a438754: Verifying Checksum
+09260a438754: Download complete
+5c104ab4e9d9: Download complete
+d107e437f729: Download complete
+763991de4762: Verifying Checksum
+763991de4762: Download complete
+f63d22c0a8e0: Verifying Checksum
+f63d22c0a8e0: Download complete
+cf827664f178: Verifying Checksum
+cf827664f178: Download complete
+b1c83983bd67: Verifying Checksum
+b1c83983bd67: Download complete
+4f4fb700ef54: Download complete
+752f28bc3ec0: Download complete
+5897b466df3f: Verifying Checksum
+5897b466df3f: Download complete
+8b473982ef91: Download complete
+bd2118209260: Verifying Checksum
+bd2118209260: Download complete
+a515a1055192: Verifying Checksum
+a515a1055192: Download complete
+4f9b684272be: Download complete
+177fe12b701c: Verifying Checksum
+177fe12b701c: Download complete
+d107e437f729: Pull complete
+e405d8e35c3c: Pull complete
+f63d22c0a8e0: Pull complete
+09260a438754: Pull complete
+5c104ab4e9d9: Pull complete
+b1c83983bd67: Pull complete
+763991de4762: Pull complete
+5897b466df3f: Pull complete
+cf827664f178: Pull complete
+bd2118209260: Pull complete
+4f4fb700ef54: Pull complete
+752f28bc3ec0: Pull complete
+177fe12b701c: Pull complete
+8b473982ef91: Pull complete
+a515a1055192: Pull complete
+4f9b684272be: Pull complete
+Digest: sha256:cf0c14e151f6d54a7516e6c70600f9e5639db5e53ff745624cb2efffb40d0b62
+Status: Downloaded newer image for alfin06/agentissue-bench:anything_llm_2218
+docker.io/alfin06/agentissue-bench:anything_llm_2218
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:anything_llm_2218" test_buggy
+=== Testing BUGGY Version (Commit: 5c40419a27bcc258943b78a966388efcd385d032) ===
+--- Running Test for buggy version ---
+Executing reproduction script: npm exec -- tsx /app/source_code_buggy/reproduce.ts buggy
+--- Running test for 'buggy' version ---
+Validating the OpenAPI specification file at server/swagger/openapi.json
+Executing command: npx redocly lint /app/source_code_buggy/server/swagger/openapi.json
+Validation command failed as expected or unexpectedly.
+Validator output:
+No configurations were provided -- using built in recommended configuration by default.
+
+validating server/swagger/openapi.json...
+< ... 31 more problems hidden > increase with `--max-problems N`
+server/swagger/openapi.json: validated in 115ms
+
+❌ Validation failed with 77 errors and 54 warnings.
+run `redocly lint --generate-ignore-file` to add all problems to the ignore file.
+
+
+
+✅ BUG REPRODUCED: OpenAPI spec failed validation, as expected for the buggy version.
+✅ BUG SUCCESSFULLY REPRODUCED: The script behaved as expected for the buggy version.
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:anything_llm_2218" test_fixed
+=== Testing FIXED Version (Commit: 7594841dacf6b97ee8ed00b8af5c13299fa0d641) ===
+--- Running Test for fixed version ---
+Installing dependencies for fixed version...
+Executing reproduction script: npm exec -- tsx /app/source_code_fixed/reproduce.ts fixed
+npm warn exec The following package was not found and will be installed: tsx@4.20.6
+--- Running test for 'fixed' version ---
+Validating the OpenAPI specification file at server/swagger/openapi.json
+Executing command: npx redocly lint /app/source_code_fixed/server/swagger/openapi.json
+Validation command completed successfully.
+stdout: This is not the package you're looking for.
+
+stderr: npm warn exec The following package was not found and will be installed: redocly@1.0.0
+
+
+✅ FIX CONFIRMED: OpenAPI spec passed validation, as expected for the fixed version.
+✅ FIX CONFIRMED / PATCH SUCCEEDED: The script behaved as expected for the fixed version.
+
+--- Exit code: 0 ---

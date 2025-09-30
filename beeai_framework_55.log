@@ -1,0 +1,1452 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:beeai_framework_55
+beeai_framework_55: Pulling from alfin06/agentissue-bench
+3da95a905ed5: Pulling fs layer
+f7076ac9304d: Pulling fs layer
+f4693d8a39a8: Pulling fs layer
+2f43093edda2: Pulling fs layer
+65350f0696ba: Pulling fs layer
+ef23cb87961b: Pulling fs layer
+c42dcb5535c0: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+2f43093edda2: Waiting
+cc9419d9f196: Pulling fs layer
+cfa2c3c8ffa2: Pulling fs layer
+4ffa4538c086: Pulling fs layer
+65350f0696ba: Waiting
+cd6b550fcd3b: Pulling fs layer
+ff3b8877af17: Pulling fs layer
+d776f900d920: Pulling fs layer
+4f4fb700ef54: Waiting
+cc9419d9f196: Waiting
+ef23cb87961b: Waiting
+cfa2c3c8ffa2: Waiting
+c42dcb5535c0: Waiting
+cd6b550fcd3b: Waiting
+ff3b8877af17: Waiting
+d776f900d920: Waiting
+f7076ac9304d: Verifying Checksum
+f7076ac9304d: Download complete
+2f43093edda2: Verifying Checksum
+2f43093edda2: Download complete
+65350f0696ba: Download complete
+3da95a905ed5: Verifying Checksum
+3da95a905ed5: Download complete
+f4693d8a39a8: Verifying Checksum
+f4693d8a39a8: Download complete
+4f4fb700ef54: Download complete
+cc9419d9f196: Verifying Checksum
+cc9419d9f196: Download complete
+c42dcb5535c0: Verifying Checksum
+c42dcb5535c0: Download complete
+ef23cb87961b: Verifying Checksum
+ef23cb87961b: Download complete
+cd6b550fcd3b: Verifying Checksum
+cd6b550fcd3b: Download complete
+ff3b8877af17: Verifying Checksum
+ff3b8877af17: Download complete
+4ffa4538c086: Verifying Checksum
+4ffa4538c086: Download complete
+d776f900d920: Verifying Checksum
+d776f900d920: Download complete
+3da95a905ed5: Pull complete
+f7076ac9304d: Pull complete
+cfa2c3c8ffa2: Verifying Checksum
+cfa2c3c8ffa2: Download complete
+f4693d8a39a8: Pull complete
+2f43093edda2: Pull complete
+65350f0696ba: Pull complete
+ef23cb87961b: Pull complete
+c42dcb5535c0: Pull complete
+4f4fb700ef54: Pull complete
+cc9419d9f196: Pull complete
+cfa2c3c8ffa2: Pull complete
+4ffa4538c086: Pull complete
+cd6b550fcd3b: Pull complete
+ff3b8877af17: Pull complete
+d776f900d920: Pull complete
+Digest: sha256:15c763307d3bde14c2fdbbf546193929370393a3794ca8d02c5c597d6682ca9e
+Status: Downloaded newer image for alfin06/agentissue-bench:beeai_framework_55
+docker.io/alfin06/agentissue-bench:beeai_framework_55
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:beeai_framework_55" test_buggy
+=== Testing BUGGY Version (Commit: c68bc4f0067f7e8d7d7a96fd25623f03784e2a71) ===
+Checking out buggy commit...
+HEAD is now at c68bc4f docs(memory): add a standalone page in the documentation
+--- Building project from source with yarn ---
+➤ YN0000: · Yarn 4.1.1
+➤ YN0000: ┌ Resolution step
+➤ YN0000: └ Completed in 0s 212ms
+➤ YN0000: ┌ Post-resolution validation
+➤ YN0002: │ bee-agent-framework@workspace:. doesn't provide @bufbuild/protobuf (p97199), requested by @connectrpc/connect.
+➤ YN0002: │ bee-agent-framework@workspace:. doesn't provide @bufbuild/protobuf (pa4998), requested by @connectrpc/connect-node.
+➤ YN0086: │ Some peer dependencies are incorrectly met; run yarn explain peer-requirements <hash> for details, where <hash> is the six-letter p-prefixed code.
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Fetch step
+➤ YN0000: └ Completed in 0s 542ms
+➤ YN0000: ┌ Link step
+➤ YN0000: └ Completed in 0s 382ms
+➤ YN0000: · Done with warnings in 1s 455ms
+CLI Building entry: src/context.ts, src/errors.ts, src/index.ts, src/template.ts, src/version.ts, src/agents/base.ts, src/agents/manager.ts, src/agents/types.ts, src/cache/base.ts, src/cache/decoratorCache.ts, src/cache/fileCache.ts, src/cache/nullCache.ts, src/cache/slidingCache.ts, src/cache/unconstrainedCache.ts, src/internals/env.ts, src/internals/fetcher.ts, src/internals/serializable.ts, src/internals/types.ts, src/emitter/emitter.ts, src/emitter/errors.ts, src/emitter/types.ts, src/emitter/utils.ts, src/llms/base.ts, src/llms/chat.ts, src/llms/llm.ts, src/logger/logger.ts, src/logger/pretty.js, src/memory/base.ts, src/memory/slidingMemory.ts, src/memory/summarizeMemory.ts, src/memory/tokenMemory.ts, src/memory/unconstrainedMemory.ts, src/serializer/error.ts, src/serializer/serializer.ts, src/serializer/utils.ts, src/tools/arxiv.ts, src/tools/base.ts, src/tools/calculator.ts, src/tools/custom.ts, src/tools/llm.ts, src/tools/similarity.ts, src/agents/parsers/field.ts, src/agents/parsers/linePrefix.ts, src/agents/bee/agent.ts, src/agents/bee/errors.ts, src/agents/bee/parser.ts, src/agents/bee/prompts.ts, src/agents/bee/runner.spec.ts, src/agents/bee/runner.ts, src/agents/bee/types.ts, src/adapters/bam/chat.ts, src/adapters/bam/chatPreset.ts, src/adapters/bam/llm.ts, src/adapters/groq/chat.ts, src/adapters/ibm-vllm/chat.ts, src/adapters/ibm-vllm/chatPreset.ts, src/adapters/ibm-vllm/client.ts, src/adapters/ibm-vllm/llm.ts, src/adapters/ibm-vllm/types.ts, src/adapters/langchain/tools.ts, src/adapters/ollama/chat.ts, src/adapters/ollama/llm.ts, src/adapters/ollama/shared.ts, src/adapters/openai/chat.ts, src/adapters/shared/llmChatTemplates.ts, src/adapters/watsonx/chat.ts, src/adapters/watsonx/chatPreset.ts, src/adapters/watsonx/llm.ts, src/llms/drivers/base.ts, src/llms/drivers/json.ts, src/llms/drivers/typescript.ts, src/llms/drivers/yaml.ts, src/llms/primitives/message.ts, src/internals/helpers/array.ts, src/internals/helpers/cancellation.ts, src/internals/helpers/counter.ts, src/internals/helpers/general.ts, src/internals/helpers/guards.ts, src/internals/helpers/hash.ts, src/internals/helpers/map.ts, src/internals/helpers/number.ts, src/internals/helpers/object.ts, src/internals/helpers/promise.ts, src/internals/helpers/prototype.ts, src/internals/helpers/retry.ts, src/internals/helpers/retryable.ts, src/internals/helpers/schema.ts, src/internals/helpers/stream.ts, src/internals/helpers/string.ts, src/internals/helpers/weakRef.ts, src/tools/database/metadata.ts, src/tools/database/sql.ts, src/tools/python/output.ts, src/tools/python/python.ts, src/tools/python/storage.ts, src/tools/search/base.ts, src/tools/search/duckDuckGoSearch.ts, src/tools/search/googleSearch.ts, src/tools/search/wikipedia.ts, src/tools/weather/openMeteo.ts, src/tools/web/webCrawler.ts, src/adapters/langchain/llms/chat.ts, src/adapters/langchain/llms/llm.ts
+CLI Using tsconfig: tsconfig.json
+CLI tsup v8.3.0
+CLI Using tsup config: /app/source_code_buggy/tsup.config.ts
+CLI Target: es2022
+CLI Cleaning output folder
+ESM Build start
+CJS Build start
+Generated an empty chunk: "types".
+Generated an empty chunk: "types".
+Generated an empty chunk: "parser".
+Generated an empty chunk: "types".
+Generated an empty chunk: "types".
+Generated an empty chunk: "types".
+Generated an empty chunk: "types".
+Generated an empty chunk: "parser".
+Generated an empty chunk: "types".
+Generated an empty chunk: "types".
+DTS Build start
+CJS dist/index.cjs                                1.47 KB
+CJS dist/agents/types.cjs                         84.00 B
+CJS dist/cache/base.cjs                           431.00 B
+CJS dist/internals/env.cjs                        1.21 KB
+CJS dist/llms/chat.cjs                            509.00 B
+CJS dist/emitter/types.cjs                        84.00 B
+CJS dist/logger/pretty.cjs                        2.59 KB
+CJS dist/memory/base.cjs                          1.68 KB
+CJS dist/serializer/error.cjs                     533.00 B
+CJS dist/tools/arxiv.cjs                          7.03 KB
+CJS dist/agents/bee/parser.cjs                    86.00 B
+CJS dist/agents/parsers/field.cjs                 5.21 KB
+CJS dist/llms/drivers/json.cjs                    1.25 KB
+CJS dist/llms/primitives/message.cjs              1.03 KB
+CJS dist/internals/helpers/array.cjs              653.00 B
+CJS dist/tools/database/metadata.cjs              3.82 KB
+CJS dist/tools/search/base.cjs                    2.25 KB
+CJS dist/tools/python/output.cjs                  1.36 KB
+CJS dist/tools/web/webCrawler.cjs                 3.35 KB
+CJS dist/tools/weather/openMeteo.cjs              5.70 KB
+CJS dist/errors.cjs                               3.78 KB
+CJS dist/agents/manager.cjs                       865.00 B
+CJS dist/context.cjs                              4.12 KB
+CJS dist/agents/base.cjs                          1.28 KB
+CJS dist/version.cjs                              163.00 B
+CJS dist/cache/nullCache.cjs                      761.00 B
+CJS dist/cache/fileCache.cjs                      4.01 KB
+CJS dist/template.cjs                             3.79 KB
+CJS dist/cache/unconstrainedCache.cjs             995.00 B
+CJS dist/internals/types.cjs                      379.00 B
+CJS dist/cache/slidingCache.cjs                   1.77 KB
+CJS dist/internals/fetcher.cjs                    3.53 KB
+CJS dist/emitter/errors.cjs                       403.00 B
+CJS dist/internals/serializable.cjs               2.68 KB
+CJS dist/cache/decoratorCache.cjs                 8.85 KB
+CJS dist/emitter/utils.cjs                        1.18 KB
+CJS dist/llms/base.cjs                            5.95 KB
+CJS dist/llms/llm.cjs                             347.00 B
+CJS dist/memory/summarizeMemory.cjs               2.11 KB
+CJS dist/emitter/emitter.cjs                      5.98 KB
+CJS dist/memory/slidingMemory.cjs                 2.01 KB
+CJS dist/logger/logger.cjs                        6.48 KB
+CJS dist/serializer/utils.cjs                     7.92 KB
+CJS dist/memory/unconstrainedMemory.cjs           821.00 B
+CJS dist/tools/calculator.cjs                     2.40 KB
+CJS dist/tools/llm.cjs                            938.00 B
+CJS dist/tools/similarity.cjs                     2.18 KB
+CJS dist/memory/tokenMemory.cjs                   4.46 KB
+CJS dist/tools/custom.cjs                         3.42 KB
+CJS dist/agents/bee/errors.cjs                    397.00 B
+CJS dist/serializer/serializer.cjs                19.58 KB
+CJS dist/agents/bee/agent.cjs                     5.85 KB
+CJS dist/agents/bee/prompts.cjs                   7.46 KB
+CJS dist/tools/base.cjs                           10.57 KB
+CJS dist/agents/bee/types.cjs                     84.00 B
+CJS dist/agents/parsers/linePrefix.cjs            9.66 KB
+CJS dist/agents/bee/runner.spec.cjs               4.01 KB
+CJS dist/agents/bee/runner.cjs                    12.25 KB
+CJS dist/llms/drivers/typescript.cjs              1.76 KB
+CJS dist/internals/helpers/cancellation.cjs       893.00 B
+CJS dist/llms/drivers/base.cjs                    3.27 KB
+CJS dist/internals/helpers/general.cjs            705.00 B
+CJS dist/llms/drivers/yaml.cjs                    1.14 KB
+CJS dist/internals/helpers/guards.cjs             1007.00 B
+CJS dist/internals/helpers/counter.cjs            1.35 KB
+CJS dist/internals/helpers/hash.cjs               680.00 B
+CJS dist/internals/helpers/map.cjs                445.00 B
+CJS dist/internals/helpers/number.cjs             909.00 B
+CJS dist/internals/helpers/prototype.cjs          1.30 KB
+CJS dist/internals/helpers/retry.cjs              1.30 KB
+CJS dist/internals/helpers/promise.cjs            3.39 KB
+CJS dist/internals/helpers/stream.cjs             520.00 B
+CJS dist/internals/helpers/object.cjs             4.23 KB
+CJS dist/internals/helpers/schema.cjs             2.41 KB
+CJS dist/internals/helpers/retryable.cjs          4.87 KB
+CJS dist/internals/helpers/weakRef.cjs            1.27 KB
+CJS dist/tools/database/sql.cjs                   4.63 KB
+CJS dist/internals/helpers/string.cjs             2.77 KB
+CJS dist/tools/python/python.cjs                  5.71 KB
+CJS dist/tools/search/duckDuckGoSearch.cjs        4.34 KB
+CJS dist/tools/python/storage.cjs                 5.21 KB
+CJS dist/tools/search/googleSearch.cjs            4.63 KB
+CJS dist/tools/search/wikipedia.cjs               11.96 KB
+CJS dist/adapters/bam/chatPreset.cjs              2.09 KB
+CJS dist/adapters/langchain/llms/llm.cjs          3.20 KB
+CJS dist/adapters/ibm-vllm/chatPreset.cjs         4.00 KB
+CJS dist/adapters/groq/chat.cjs                   4.42 KB
+CJS dist/adapters/ollama/shared.cjs               1.24 KB
+CJS dist/adapters/watsonx/chatPreset.cjs          1.84 KB
+CJS dist/adapters/openai/chat.cjs                 4.79 KB
+CJS dist/adapters/shared/llmChatTemplates.cjs     3.98 KB
+CJS dist/adapters/bam/llm.cjs                     9.79 KB
+CJS dist/adapters/ibm-vllm/chat.cjs               4.59 KB
+CJS dist/adapters/ibm-vllm/types.cjs              84.00 B
+CJS dist/adapters/bam/chat.cjs                    4.71 KB
+CJS dist/adapters/ibm-vllm/client.cjs             6.82 KB
+CJS dist/adapters/langchain/tools.cjs             3.04 KB
+CJS dist/adapters/ibm-vllm/llm.cjs                5.53 KB
+CJS dist/adapters/ollama/chat.cjs                 6.23 KB
+CJS dist/adapters/ollama/llm.cjs                  5.44 KB
+CJS dist/adapters/watsonx/chat.cjs                4.69 KB
+CJS dist/adapters/watsonx/llm.cjs                 11.33 KB
+CJS dist/adapters/langchain/llms/chat.cjs         5.93 KB
+CJS dist/index.cjs.map                            90.00 B
+CJS dist/agents/types.cjs.map                     70.00 B
+CJS dist/cache/base.cjs.map                       1.25 KB
+CJS dist/internals/env.cjs.map                    3.03 KB
+CJS dist/llms/chat.cjs.map                        1.31 KB
+CJS dist/emitter/types.cjs.map                    70.00 B
+CJS dist/logger/pretty.cjs.map                    4.74 KB
+CJS dist/memory/base.cjs.map                      4.02 KB
+CJS dist/serializer/error.cjs.map                 1.25 KB
+CJS dist/tools/arxiv.cjs.map                      15.70 KB
+CJS dist/agents/bee/parser.cjs.map                71.00 B
+CJS dist/agents/parsers/field.cjs.map             10.85 KB
+CJS dist/llms/drivers/json.cjs.map                3.08 KB
+CJS dist/llms/primitives/message.cjs.map          2.86 KB
+CJS dist/internals/helpers/array.cjs.map          1.74 KB
+CJS dist/tools/database/metadata.cjs.map          7.23 KB
+CJS dist/tools/search/base.cjs.map                2.46 KB
+CJS dist/tools/python/output.cjs.map              3.33 KB
+CJS dist/tools/web/webCrawler.cjs.map             6.67 KB
+CJS dist/tools/weather/openMeteo.cjs.map          11.47 KB
+CJS dist/errors.cjs.map                           7.64 KB
+CJS dist/agents/manager.cjs.map                   2.57 KB
+CJS dist/context.cjs.map                          10.78 KB
+CJS dist/agents/base.cjs.map                      3.47 KB
+CJS dist/cache/nullCache.cjs.map                  2.09 KB
+CJS dist/version.cjs.map                          1012.00 B
+CJS dist/cache/fileCache.cjs.map                  7.48 KB
+CJS dist/template.cjs.map                         8.98 KB
+CJS dist/cache/unconstrainedCache.cjs.map         2.64 KB
+CJS dist/internals/types.cjs.map                  4.52 KB
+CJS dist/emitter/errors.cjs.map                   926.00 B
+CJS dist/cache/slidingCache.cjs.map               4.52 KB
+CJS dist/internals/serializable.cjs.map           5.84 KB
+CJS dist/internals/fetcher.cjs.map                8.71 KB
+CJS dist/cache/decoratorCache.cjs.map             19.40 KB
+CJS dist/emitter/utils.cjs.map                    2.63 KB
+CJS dist/llms/llm.cjs.map                         1.06 KB
+CJS dist/llms/base.cjs.map                        15.64 KB
+CJS dist/memory/summarizeMemory.cjs.map           4.92 KB
+CJS dist/emitter/emitter.cjs.map                  13.83 KB
+CJS dist/memory/slidingMemory.cjs.map             5.04 KB
+CJS dist/logger/logger.cjs.map                    12.83 KB
+CJS dist/serializer/utils.cjs.map                 15.06 KB
+CJS dist/memory/unconstrainedMemory.cjs.map       2.06 KB
+CJS dist/tools/calculator.cjs.map                 5.33 KB
+CJS dist/tools/similarity.cjs.map                 4.72 KB
+CJS dist/tools/custom.cjs.map                     8.09 KB
+CJS dist/tools/llm.cjs.map                        2.79 KB
+CJS dist/agents/bee/errors.cjs.map                927.00 B
+CJS dist/memory/tokenMemory.cjs.map               10.71 KB
+CJS dist/agents/bee/prompts.cjs.map               11.28 KB
+CJS dist/agents/bee/agent.cjs.map                 12.84 KB
+CJS dist/agents/bee/types.cjs.map                 70.00 B
+CJS dist/agents/bee/runner.spec.cjs.map           8.60 KB
+CJS dist/serializer/serializer.cjs.map            41.95 KB
+CJS dist/tools/base.cjs.map                       23.58 KB
+CJS dist/agents/parsers/linePrefix.cjs.map        23.29 KB
+CJS dist/agents/bee/runner.cjs.map                26.77 KB
+CJS dist/llms/drivers/typescript.cjs.map          2.77 KB
+CJS dist/llms/drivers/base.cjs.map                7.87 KB
+CJS dist/internals/helpers/cancellation.cjs.map   2.17 KB
+CJS dist/llms/drivers/yaml.cjs.map                2.32 KB
+CJS dist/internals/helpers/general.cjs.map        1.96 KB
+CJS dist/internals/helpers/guards.cjs.map         1.45 KB
+CJS dist/internals/helpers/counter.cjs.map        3.47 KB
+CJS dist/internals/helpers/hash.cjs.map           1.63 KB
+CJS dist/internals/helpers/map.cjs.map            1.33 KB
+CJS dist/internals/helpers/number.cjs.map         1.18 KB
+CJS dist/internals/helpers/retry.cjs.map          3.66 KB
+CJS dist/internals/helpers/prototype.cjs.map      2.05 KB
+CJS dist/internals/helpers/stream.cjs.map         1.43 KB
+CJS dist/internals/helpers/promise.cjs.map        8.83 KB
+CJS dist/internals/helpers/object.cjs.map         9.52 KB
+CJS dist/internals/helpers/schema.cjs.map         5.40 KB
+CJS dist/internals/helpers/weakRef.cjs.map        3.31 KB
+CJS dist/internals/helpers/retryable.cjs.map      11.94 KB
+CJS dist/tools/database/sql.cjs.map               8.68 KB
+CJS dist/internals/helpers/string.cjs.map         5.93 KB
+CJS dist/tools/python/python.cjs.map              13.99 KB
+CJS dist/tools/python/storage.cjs.map             9.49 KB
+CJS dist/tools/search/duckDuckGoSearch.cjs.map    8.06 KB
+CJS dist/tools/search/googleSearch.cjs.map        8.66 KB
+CJS dist/tools/search/wikipedia.cjs.map           23.95 KB
+CJS dist/adapters/bam/chatPreset.cjs.map          4.30 KB
+CJS dist/adapters/langchain/llms/llm.cjs.map      8.19 KB
+CJS dist/adapters/ibm-vllm/chatPreset.cjs.map     8.39 KB
+CJS dist/adapters/ollama/shared.cjs.map           2.80 KB
+CJS dist/adapters/groq/chat.cjs.map               12.04 KB
+CJS dist/adapters/watsonx/chatPreset.cjs.map      3.92 KB
+CJS dist/adapters/openai/chat.cjs.map             12.84 KB
+CJS dist/adapters/shared/llmChatTemplates.cjs.map 8.38 KB
+CJS dist/adapters/ibm-vllm/types.cjs.map          70.00 B
+CJS dist/adapters/ibm-vllm/chat.cjs.map           9.98 KB
+CJS dist/adapters/bam/chat.cjs.map                10.11 KB
+CJS dist/adapters/bam/llm.cjs.map                 21.49 KB
+CJS dist/adapters/langchain/tools.cjs.map         6.62 KB
+CJS dist/adapters/ibm-vllm/client.cjs.map         14.23 KB
+CJS dist/adapters/ibm-vllm/llm.cjs.map            14.19 KB
+CJS dist/adapters/ollama/chat.cjs.map             12.79 KB
+CJS dist/adapters/ollama/llm.cjs.map              10.92 KB
+CJS dist/adapters/watsonx/chat.cjs.map            10.34 KB
+CJS dist/adapters/langchain/llms/chat.cjs.map     12.68 KB
+CJS dist/adapters/watsonx/llm.cjs.map             25.01 KB
+CJS ⚡️ Build success in 1655ms
+ESM dist/index.js                                237.00 B
+ESM dist/agents/base.js                          1.19 KB
+ESM dist/version.js                              155.00 B
+ESM dist/agents/types.js                         68.00 B
+ESM dist/context.js                              3.97 KB
+ESM dist/agents/manager.js                       832.00 B
+ESM dist/template.js                             3.03 KB
+ESM dist/errors.js                               3.03 KB
+ESM dist/cache/base.js                           384.00 B
+ESM dist/cache/nullCache.js                      727.00 B
+ESM dist/cache/unconstrainedCache.js             952.00 B
+ESM dist/cache/slidingCache.js                   1.68 KB
+ESM dist/internals/env.js                        1.10 KB
+ESM dist/cache/fileCache.js                      3.67 KB
+ESM dist/internals/serializable.js               2.03 KB
+ESM dist/emitter/errors.js                       367.00 B
+ESM dist/internals/types.js                      354.00 B
+ESM dist/emitter/types.js                        68.00 B
+ESM dist/internals/fetcher.js                    3.40 KB
+ESM dist/emitter/utils.js                        1.06 KB
+ESM dist/llms/chat.js                            457.00 B
+ESM dist/llms/llm.js                             317.00 B
+ESM dist/logger/pretty.js                        2.19 KB
+ESM dist/cache/decoratorCache.js                 8.03 KB
+ESM dist/emitter/emitter.js                      5.86 KB
+ESM dist/memory/base.js                          1.56 KB
+ESM dist/llms/base.js                            5.66 KB
+ESM dist/memory/summarizeMemory.js               1.94 KB
+ESM dist/memory/slidingMemory.js                 1.95 KB
+ESM dist/serializer/error.js                     494.00 B
+ESM dist/memory/unconstrainedMemory.js           770.00 B
+ESM dist/logger/logger.js                        5.30 KB
+ESM dist/serializer/utils.js                     6.89 KB
+ESM dist/memory/tokenMemory.js                   3.95 KB
+ESM dist/tools/calculator.js                     2.35 KB
+ESM dist/tools/arxiv.js                          6.70 KB
+ESM dist/tools/llm.js                            901.00 B
+ESM dist/tools/custom.js                         3.22 KB
+ESM dist/agents/bee/errors.js                    360.00 B
+ESM dist/tools/similarity.js                     1.61 KB
+ESM dist/agents/bee/parser.js                    70.00 B
+ESM dist/agents/parsers/field.js                 5.04 KB
+ESM dist/tools/base.js                           9.59 KB
+ESM dist/agents/bee/agent.js                     5.16 KB
+ESM dist/agents/bee/runner.spec.js               3.67 KB
+ESM dist/serializer/serializer.js                18.58 KB
+ESM dist/agents/parsers/linePrefix.js            9.46 KB
+ESM dist/agents/bee/prompts.js                   6.99 KB
+ESM dist/agents/bee/types.js                     68.00 B
+ESM dist/llms/drivers/json.js                    1.19 KB
+ESM dist/llms/drivers/typescript.js              1.17 KB
+ESM dist/agents/bee/runner.js                    11.95 KB
+ESM dist/internals/helpers/array.js              601.00 B
+ESM dist/llms/drivers/base.js                    3.12 KB
+ESM dist/internals/helpers/cancellation.js       829.00 B
+ESM dist/llms/drivers/yaml.js                    936.00 B
+ESM dist/internals/helpers/guards.js             435.00 B
+ESM dist/llms/primitives/message.js              979.00 B
+ESM dist/internals/helpers/counter.js            1.31 KB
+ESM dist/internals/helpers/hash.js               633.00 B
+ESM dist/internals/helpers/general.js            658.00 B
+ESM dist/internals/helpers/prototype.js          760.00 B
+ESM dist/internals/helpers/number.js             374.00 B
+ESM dist/internals/helpers/object.js             3.37 KB
+ESM dist/internals/helpers/map.js                415.00 B
+ESM dist/internals/helpers/promise.js            3.14 KB
+ESM dist/internals/helpers/retry.js              1.25 KB
+ESM dist/internals/helpers/stream.js             481.00 B
+ESM dist/internals/helpers/weakRef.js            1.20 KB
+ESM dist/tools/database/metadata.js              3.77 KB
+ESM dist/internals/helpers/schema.js             2.01 KB
+ESM dist/tools/python/output.js                  1.32 KB
+ESM dist/internals/helpers/retryable.js          4.22 KB
+ESM dist/tools/search/base.js                    1.70 KB
+ESM dist/internals/helpers/string.js             2.14 KB
+ESM dist/tools/search/duckDuckGoSearch.js        3.89 KB
+ESM dist/tools/database/sql.js                   4.48 KB
+ESM dist/tools/python/python.js                  5.66 KB
+ESM dist/tools/python/storage.js                 4.23 KB
+ESM dist/tools/search/googleSearch.js            4.41 KB
+ESM dist/tools/web/webCrawler.js                 3.22 KB
+ESM dist/tools/weather/openMeteo.js              5.53 KB
+ESM dist/tools/search/wikipedia.js               10.84 KB
+ESM dist/adapters/bam/chatPreset.js              1.99 KB
+ESM dist/adapters/groq/chat.js                   4.26 KB
+ESM dist/adapters/bam/chat.js                    4.51 KB
+ESM dist/adapters/ibm-vllm/types.js              68.00 B
+ESM dist/adapters/bam/llm.js                     9.07 KB
+ESM dist/adapters/ibm-vllm/chatPreset.js         3.80 KB
+ESM dist/adapters/langchain/tools.js             2.44 KB
+ESM dist/adapters/ibm-vllm/chat.js               4.41 KB
+ESM dist/adapters/ollama/shared.js               1.13 KB
+ESM dist/adapters/ibm-vllm/llm.js                5.37 KB
+ESM dist/adapters/ibm-vllm/client.js             5.65 KB
+ESM dist/adapters/watsonx/chatPreset.js          1.76 KB
+ESM dist/adapters/ollama/llm.js                  5.24 KB
+ESM dist/adapters/shared/llmChatTemplates.js     3.84 KB
+ESM dist/adapters/ollama/chat.js                 6.01 KB
+ESM dist/adapters/openai/chat.js                 4.62 KB
+ESM dist/adapters/watsonx/chat.js                4.51 KB
+ESM dist/adapters/watsonx/llm.js                 10.51 KB
+ESM dist/adapters/langchain/llms/llm.js          3.06 KB
+ESM dist/adapters/langchain/llms/chat.js         5.65 KB
+ESM dist/index.js.map                            89.00 B
+ESM dist/agents/base.js.map                      3.47 KB
+ESM dist/version.js.map                          1014.00 B
+ESM dist/agents/types.js.map                     69.00 B
+ESM dist/context.js.map                          10.77 KB
+ESM dist/agents/manager.js.map                   2.57 KB
+ESM dist/template.js.map                         8.95 KB
+ESM dist/cache/base.js.map                       1.25 KB
+ESM dist/errors.js.map                           7.61 KB
+ESM dist/cache/unconstrainedCache.js.map         2.64 KB
+ESM dist/cache/nullCache.js.map                  2.09 KB
+ESM dist/internals/env.js.map                    3.03 KB
+ESM dist/cache/slidingCache.js.map               4.51 KB
+ESM dist/cache/fileCache.js.map                  7.46 KB
+ESM dist/internals/serializable.js.map           5.82 KB
+ESM dist/internals/types.js.map                  4.51 KB
+ESM dist/emitter/errors.js.map                   922.00 B
+ESM dist/emitter/types.js.map                    69.00 B
+ESM dist/internals/fetcher.js.map                8.71 KB
+ESM dist/llms/chat.js.map                        1.30 KB
+ESM dist/emitter/utils.js.map                    2.62 KB
+ESM dist/logger/pretty.js.map                    4.72 KB
+ESM dist/llms/llm.js.map                         1.06 KB
+ESM dist/memory/base.js.map                      4.02 KB
+ESM dist/emitter/emitter.js.map                  13.81 KB
+ESM dist/memory/slidingMemory.js.map             5.03 KB
+ESM dist/llms/base.js.map                        15.63 KB
+ESM dist/serializer/error.js.map                 1.25 KB
+ESM dist/memory/summarizeMemory.js.map           4.91 KB
+ESM dist/cache/decoratorCache.js.map             19.37 KB
+ESM dist/memory/unconstrainedMemory.js.map       2.05 KB
+ESM dist/serializer/utils.js.map                 15.03 KB
+ESM dist/logger/logger.js.map                    11.87 KB
+ESM dist/memory/tokenMemory.js.map               10.68 KB
+ESM dist/tools/calculator.js.map                 5.33 KB
+ESM dist/tools/llm.js.map                        2.79 KB
+ESM dist/agents/bee/errors.js.map                923.00 B
+ESM dist/tools/arxiv.js.map                      15.68 KB
+ESM dist/tools/custom.js.map                     8.08 KB
+ESM dist/tools/similarity.js.map                 4.70 KB
+ESM dist/agents/bee/parser.js.map                70.00 B
+ESM dist/agents/parsers/field.js.map             10.84 KB
+ESM dist/agents/bee/runner.spec.js.map           8.57 KB
+ESM dist/agents/bee/agent.js.map                 12.81 KB
+ESM dist/tools/base.js.map                       23.55 KB
+ESM dist/agents/parsers/linePrefix.js.map        23.28 KB
+ESM dist/serializer/serializer.js.map            41.89 KB
+ESM dist/agents/bee/prompts.js.map               11.27 KB
+ESM dist/agents/bee/types.js.map                 69.00 B
+ESM dist/llms/drivers/json.js.map                3.07 KB
+ESM dist/llms/drivers/typescript.js.map          2.75 KB
+ESM dist/llms/drivers/base.js.map                7.85 KB
+ESM dist/internals/helpers/array.js.map          1.73 KB
+ESM dist/agents/bee/runner.js.map                26.75 KB
+ESM dist/internals/helpers/guards.js.map         1.42 KB
+ESM dist/llms/drivers/yaml.js.map                2.31 KB
+ESM dist/internals/helpers/cancellation.js.map   2.17 KB
+ESM dist/llms/primitives/message.js.map          2.85 KB
+ESM dist/internals/helpers/prototype.js.map      2.03 KB
+ESM dist/internals/helpers/counter.js.map        3.47 KB
+ESM dist/internals/helpers/hash.js.map           1.62 KB
+ESM dist/internals/helpers/general.js.map        1.96 KB
+ESM dist/internals/helpers/number.js.map         1.15 KB
+ESM dist/internals/helpers/object.js.map         9.50 KB
+ESM dist/internals/helpers/map.js.map            1.33 KB
+ESM dist/tools/database/metadata.js.map          7.22 KB
+ESM dist/internals/helpers/promise.js.map        8.82 KB
+ESM dist/internals/helpers/retry.js.map          3.66 KB
+ESM dist/internals/helpers/stream.js.map         1.42 KB
+ESM dist/internals/helpers/schema.js.map         5.39 KB
+ESM dist/tools/python/output.js.map              3.32 KB
+ESM dist/internals/helpers/weakRef.js.map        3.30 KB
+ESM dist/tools/search/base.js.map                2.44 KB
+ESM dist/tools/search/duckDuckGoSearch.js.map    8.05 KB
+ESM dist/tools/database/sql.js.map               8.67 KB
+ESM dist/internals/helpers/retryable.js.map      11.91 KB
+ESM dist/tools/python/storage.js.map             9.45 KB
+ESM dist/internals/helpers/string.js.map         5.90 KB
+ESM dist/tools/search/googleSearch.js.map        8.65 KB
+ESM dist/tools/python/python.js.map              13.98 KB
+ESM dist/tools/web/webCrawler.js.map             6.66 KB
+ESM dist/tools/weather/openMeteo.js.map          11.46 KB
+ESM dist/tools/search/wikipedia.js.map           23.92 KB
+ESM dist/adapters/bam/chatPreset.js.map          4.30 KB
+ESM dist/adapters/ibm-vllm/types.js.map          69.00 B
+ESM dist/adapters/bam/chat.js.map                10.10 KB
+ESM dist/adapters/groq/chat.js.map               12.03 KB
+ESM dist/adapters/bam/llm.js.map                 21.45 KB
+ESM dist/adapters/langchain/tools.js.map         6.59 KB
+ESM dist/adapters/ollama/shared.js.map           2.80 KB
+ESM dist/adapters/ibm-vllm/chatPreset.js.map     8.39 KB
+ESM dist/adapters/ibm-vllm/client.js.map         13.27 KB
+ESM dist/adapters/ibm-vllm/chat.js.map           9.97 KB
+ESM dist/adapters/ibm-vllm/llm.js.map            14.18 KB
+ESM dist/adapters/ollama/llm.js.map              10.90 KB
+ESM dist/adapters/watsonx/chatPreset.js.map      3.92 KB
+ESM dist/adapters/shared/llmChatTemplates.js.map 8.37 KB
+ESM dist/adapters/watsonx/chat.js.map            10.33 KB
+ESM dist/adapters/ollama/chat.js.map             12.78 KB
+ESM dist/adapters/openai/chat.js.map             12.83 KB
+ESM dist/adapters/langchain/llms/llm.js.map      8.18 KB
+ESM dist/adapters/langchain/llms/chat.js.map     12.66 KB
+ESM dist/adapters/watsonx/llm.js.map             24.96 KB
+ESM ⚡️ Build success in 1659ms
+DTS ⚡️ Build success in 47209ms
+DTS dist/index.d.ts                             690.00 B
+DTS dist/agents/bee/runner.spec.d.ts            13.00 B
+DTS dist/version.d.ts                           50.00 B
+DTS dist/agents/manager.d.ts                    892.00 B
+DTS dist/cache/decoratorCache.d.ts              1.83 KB
+DTS dist/cache/fileCache.d.ts                   1016.00 B
+DTS dist/cache/nullCache.d.ts                   614.00 B
+DTS dist/cache/slidingCache.d.ts                1.21 KB
+DTS dist/cache/unconstrainedCache.d.ts          692.00 B
+DTS dist/internals/env.d.ts                     336.00 B
+DTS dist/emitter/errors.d.ts                    201.00 B
+DTS dist/emitter/utils.d.ts                     309.00 B
+DTS dist/logger/logger.d.ts                     1.73 KB
+DTS dist/logger/pretty.d.ts                     135.00 B
+DTS dist/memory/slidingMemory.d.ts              988.00 B
+DTS dist/memory/summarizeMemory.d.ts            1.80 KB
+DTS dist/memory/unconstrainedMemory.d.ts        559.00 B
+DTS dist/context.d.ts                           2.32 KB
+DTS dist/internals/serializable.d.ts            894.00 B
+DTS dist/internals/helpers/promise.d.ts         1.75 KB
+DTS dist/internals/types.d.ts                   3.77 KB
+DTS dist/internals/helpers/guards.d.ts          188.00 B
+DTS dist/errors.d.ts                            1.24 KB
+DTS dist/template.d.ts                          2.58 KB
+DTS dist/memory/base.d.ts                       1.39 KB
+DTS dist/tools/base.d.ts                        6.04 KB
+DTS dist/llms/primitives/message.d.ts           1.18 KB
+DTS dist/cache/base.d.ts                        528.00 B
+DTS dist/internals/helpers/schema.d.ts          1.16 KB
+DTS dist/internals/fetcher.d.ts                 1.33 KB
+DTS dist/llms/base.d.ts                         4.66 KB
+DTS dist/llms/chat.d.ts                         751.00 B
+DTS dist/llms/llm.d.ts                          591.00 B
+DTS dist/memory/tokenMemory.d.ts                1.97 KB
+DTS dist/serializer/error.d.ts                  259.00 B
+DTS dist/tools/arxiv.d.ts                       7.62 KB
+DTS dist/tools/calculator.d.ts                  1.18 KB
+DTS dist/tools/custom.d.ts                      3.26 KB
+DTS dist/tools/python/python.d.ts               3.33 KB
+DTS dist/tools/python/storage.d.ts              1.86 KB
+DTS dist/tools/python/output.d.ts               1.10 KB
+DTS dist/tools/llm.d.ts                         1.25 KB
+DTS dist/tools/similarity.d.ts                  2.49 KB
+DTS dist/agents/parsers/field.d.ts              2.08 KB
+DTS dist/agents/parsers/linePrefix.d.ts         4.46 KB
+DTS dist/agents/bee/prompts.d.ts                5.38 KB
+DTS dist/agents/bee/errors.d.ts                 627.00 B
+DTS dist/internals/helpers/counter.d.ts         800.00 B
+DTS dist/adapters/bam/llm.d.ts                  10.77 KB
+DTS dist/adapters/groq/chat.d.ts                2.45 KB
+DTS dist/adapters/ibm-vllm/llm.d.ts             2.75 KB
+DTS dist/adapters/ibm-vllm/client.d.ts          2.53 KB
+DTS dist/adapters/ibm-vllm/types.d.ts           16.33 KB
+DTS dist/adapters/langchain/tools.d.ts          1.91 KB
+DTS dist/adapters/ollama/chat.d.ts              2.25 KB
+DTS dist/adapters/ollama/llm.d.ts               2.12 KB
+DTS dist/adapters/ollama/shared.d.ts            555.00 B
+DTS dist/adapters/openai/chat.d.ts              2.49 KB
+DTS dist/adapters/shared/llmChatTemplates.d.ts  1.30 KB
+DTS dist/adapters/watsonx/llm.d.ts              5.23 KB
+DTS dist/llms/drivers/base.d.ts                 2.44 KB
+DTS dist/llms/drivers/json.d.ts                 1.28 KB
+DTS dist/llms/drivers/typescript.d.ts           1.15 KB
+DTS dist/llms/drivers/yaml.d.ts                 1.04 KB
+DTS dist/internals/helpers/array.d.ts           177.00 B
+DTS dist/internals/helpers/cancellation.d.ts    257.00 B
+DTS dist/internals/helpers/general.d.ts         285.00 B
+DTS dist/internals/helpers/hash.d.ts            171.00 B
+DTS dist/internals/helpers/map.d.ts             111.00 B
+DTS dist/internals/helpers/number.d.ts          98.00 B
+DTS dist/internals/helpers/object.d.ts          1.53 KB
+DTS dist/internals/helpers/prototype.d.ts       344.00 B
+DTS dist/internals/helpers/retry.d.ts           412.00 B
+DTS dist/internals/helpers/retryable.d.ts       1.94 KB
+DTS dist/internals/helpers/stream.d.ts          199.00 B
+DTS dist/internals/helpers/string.d.ts          888.00 B
+DTS dist/internals/helpers/weakRef.d.ts         468.00 B
+DTS dist/tools/database/metadata.d.ts           383.00 B
+DTS dist/tools/database/sql.d.ts                1.26 KB
+DTS dist/tools/search/base.d.ts                 1.05 KB
+DTS dist/tools/search/duckDuckGoSearch.d.ts     2.48 KB
+DTS dist/tools/search/googleSearch.d.ts         2.51 KB
+DTS dist/tools/search/wikipedia.d.ts            3.49 KB
+DTS dist/tools/weather/openMeteo.d.ts           3.43 KB
+DTS dist/tools/web/webCrawler.d.ts              2.22 KB
+DTS dist/adapters/langchain/llms/chat.d.ts      3.00 KB
+DTS dist/adapters/langchain/llms/llm.d.ts       2.21 KB
+DTS dist/emitter/types.d.ts                     293.00 B
+DTS dist/emitter/emitter.d.ts                   243.00 B
+DTS dist/serializer/utils.d.ts                  482.00 B
+DTS dist/serializer/serializer.d.ts             196.00 B
+DTS dist/agents/types.d.ts                      673.00 B
+DTS dist/agents/base.d.ts                       551.00 B
+DTS dist/adapters/bam/chatPreset.d.ts           592.00 B
+DTS dist/adapters/bam/chat.d.ts                 631.00 B
+DTS dist/adapters/ibm-vllm/chatPreset.d.ts      721.00 B
+DTS dist/adapters/ibm-vllm/chat.d.ts            736.00 B
+DTS dist/adapters/watsonx/chatPreset.d.ts       700.00 B
+DTS dist/adapters/watsonx/chat.d.ts             747.00 B
+DTS dist/agents/bee/runner.d.ts                 953.00 B
+DTS dist/agents/bee/parser.d.ts                 987.00 B
+DTS dist/agents/bee/types.d.ts                  1.07 KB
+DTS dist/agents/bee/agent.d.ts                  931.00 B
+DTS dist/emitter-CM-eKlKf.d.ts                  3.18 KB
+DTS dist/serializer-Cjt_z3oL.d.ts               3.73 KB
+DTS dist/base-Dl7Lt_PE.d.ts                     2.05 KB
+DTS dist/chat-C3FD8gio.d.ts                     4.90 KB
+DTS dist/chat-Clt-YXjs.d.ts                     3.32 KB
+DTS dist/chat-D6KdMRu0.d.ts                     3.28 KB
+DTS dist/agent-PTagU8-j.d.ts                    7.70 KB
+DTS dist/index.d.cts                            698.00 B
+DTS dist/agents/bee/runner.spec.d.cts           13.00 B
+DTS dist/version.d.cts                          50.00 B
+DTS dist/agents/manager.d.cts                   905.00 B
+DTS dist/cache/decoratorCache.d.cts             1.84 KB
+DTS dist/cache/fileCache.d.cts                  1020.00 B
+DTS dist/cache/nullCache.d.cts                  618.00 B
+DTS dist/cache/slidingCache.d.cts               1.21 KB
+DTS dist/cache/unconstrainedCache.d.cts         696.00 B
+DTS dist/internals/env.d.cts                    336.00 B
+DTS dist/emitter/errors.d.cts                   204.00 B
+DTS dist/emitter/utils.d.cts                    309.00 B
+DTS dist/logger/logger.d.cts                    1.73 KB
+DTS dist/logger/pretty.d.cts                    135.00 B
+DTS dist/memory/slidingMemory.d.cts             994.00 B
+DTS dist/memory/summarizeMemory.d.cts           1.82 KB
+DTS dist/memory/unconstrainedMemory.d.cts       565.00 B
+DTS dist/context.d.cts                          2.33 KB
+DTS dist/internals/serializable.d.cts           896.00 B
+DTS dist/internals/helpers/promise.d.cts        1.75 KB
+DTS dist/internals/types.d.cts                  3.77 KB
+DTS dist/internals/helpers/guards.d.cts         188.00 B
+DTS dist/errors.d.cts                           1.25 KB
+DTS dist/template.d.cts                         2.58 KB
+DTS dist/memory/base.d.cts                      1.40 KB
+DTS dist/tools/base.d.cts                       6.05 KB
+DTS dist/llms/primitives/message.d.cts          1.18 KB
+DTS dist/cache/base.d.cts                       531.00 B
+DTS dist/internals/helpers/schema.d.cts         1.16 KB
+DTS dist/internals/fetcher.d.cts                1.33 KB
+DTS dist/llms/base.d.cts                        4.66 KB
+DTS dist/llms/chat.d.cts                        761.00 B
+DTS dist/llms/llm.d.cts                         600.00 B
+DTS dist/memory/tokenMemory.d.cts               1.98 KB
+DTS dist/serializer/error.d.cts                 262.00 B
+DTS dist/tools/arxiv.d.cts                      7.63 KB
+DTS dist/tools/calculator.d.cts                 1.19 KB
+DTS dist/tools/custom.d.cts                     3.28 KB
+DTS dist/tools/python/python.d.cts              3.35 KB
+DTS dist/tools/python/storage.d.cts             1.86 KB
+DTS dist/tools/python/output.d.cts              1.11 KB
+DTS dist/tools/llm.d.cts                        1.26 KB
+DTS dist/tools/similarity.d.cts                 2.50 KB
+DTS dist/agents/parsers/field.d.cts             2.09 KB
+DTS dist/agents/parsers/linePrefix.d.cts        4.47 KB
+DTS dist/agents/bee/prompts.d.cts               5.39 KB
+DTS dist/agents/bee/errors.d.cts                640.00 B
+DTS dist/internals/helpers/counter.d.cts        804.00 B
+DTS dist/adapters/bam/llm.d.cts                 10.78 KB
+DTS dist/adapters/groq/chat.d.cts               2.46 KB
+DTS dist/adapters/ibm-vllm/llm.d.cts            2.77 KB
+DTS dist/adapters/ibm-vllm/client.d.cts         2.53 KB
+DTS dist/adapters/ibm-vllm/types.d.cts          16.33 KB
+DTS dist/adapters/langchain/tools.d.cts         1.92 KB
+DTS dist/adapters/ollama/chat.d.cts             2.26 KB
+DTS dist/adapters/ollama/llm.d.cts              2.13 KB
+DTS dist/adapters/ollama/shared.d.cts           564.00 B
+DTS dist/adapters/openai/chat.d.cts             2.50 KB
+DTS dist/adapters/shared/llmChatTemplates.d.cts 1.30 KB
+DTS dist/adapters/watsonx/llm.d.cts             5.24 KB
+DTS dist/llms/drivers/base.d.cts                2.45 KB
+DTS dist/llms/drivers/json.d.cts                1.29 KB
+DTS dist/llms/drivers/typescript.d.cts          1.16 KB
+DTS dist/llms/drivers/yaml.d.cts                1.05 KB
+DTS dist/internals/helpers/array.d.cts          177.00 B
+DTS dist/internals/helpers/cancellation.d.cts   257.00 B
+DTS dist/internals/helpers/general.d.cts        285.00 B
+DTS dist/internals/helpers/hash.d.cts           171.00 B
+DTS dist/internals/helpers/map.d.cts            111.00 B
+DTS dist/internals/helpers/number.d.cts         98.00 B
+DTS dist/internals/helpers/object.d.cts         1.53 KB
+DTS dist/internals/helpers/prototype.d.cts      346.00 B
+DTS dist/internals/helpers/retry.d.cts          412.00 B
+DTS dist/internals/helpers/retryable.d.cts      1.94 KB
+DTS dist/internals/helpers/stream.d.cts         199.00 B
+DTS dist/internals/helpers/string.d.cts         890.00 B
+DTS dist/internals/helpers/weakRef.d.cts        468.00 B
+DTS dist/tools/database/metadata.d.cts          383.00 B
+DTS dist/tools/database/sql.d.cts               1.27 KB
+DTS dist/tools/search/base.d.cts                1.06 KB
+DTS dist/tools/search/duckDuckGoSearch.d.cts    2.49 KB
+DTS dist/tools/search/googleSearch.d.cts        2.52 KB
+DTS dist/tools/search/wikipedia.d.cts           3.50 KB
+DTS dist/tools/weather/openMeteo.d.cts          3.44 KB
+DTS dist/tools/web/webCrawler.d.cts             2.23 KB
+DTS dist/adapters/langchain/llms/chat.d.cts     3.01 KB
+DTS dist/adapters/langchain/llms/llm.d.cts      2.22 KB
+DTS dist/emitter/types.d.cts                    297.00 B
+DTS dist/emitter/emitter.d.cts                  247.00 B
+DTS dist/serializer/utils.d.cts                 486.00 B
+DTS dist/serializer/serializer.d.cts            200.00 B
+DTS dist/agents/types.d.cts                     686.00 B
+DTS dist/agents/base.d.cts                      564.00 B
+DTS dist/adapters/bam/chatPreset.d.cts          606.00 B
+DTS dist/adapters/bam/chat.d.cts                645.00 B
+DTS dist/adapters/ibm-vllm/chatPreset.d.cts     737.00 B
+DTS dist/adapters/ibm-vllm/chat.d.cts           752.00 B
+DTS dist/adapters/watsonx/chatPreset.d.cts      715.00 B
+DTS dist/adapters/watsonx/chat.d.cts            762.00 B
+DTS dist/agents/bee/runner.d.cts                976.00 B
+DTS dist/agents/bee/parser.d.cts                1010.00 B
+DTS dist/agents/bee/types.d.cts                 1.09 KB
+DTS dist/agents/bee/agent.d.cts                 954.00 B
+DTS dist/emitter-Bcxisicg.d.cts                 3.18 KB
+DTS dist/serializer-Cipq_R7K.d.cts              3.73 KB
+DTS dist/base-CLOHgRYP.d.cts                    2.06 KB
+DTS dist/chat-BZd_mv7w.d.cts                    4.91 KB
+DTS dist/chat-8vUFCWCZ.d.cts                    3.32 KB
+DTS dist/chat-D95AtgRT.d.cts                    3.29 KB
+DTS dist/agent-QQ67Rq-n.d.cts                   7.72 KB
+--- Build complete ---
+--- Running Test ---
+Found repro_script.ts. Executing with 'yarn tsx' from within the project...
+--- Initializing OpenMeteoTool directly. ---
+--- Calling the tool with malformed input. ---
+--- This is expected to throw a ToolInputValidationError. ---
+
+SUCCESS: The script failed with an error as expected.
+Error Type: ToolInputValidationError
+Error Message: The received tool input does not match the expected schema.
+Input Schema: "{"type":"object","properties":{"location":{"anyOf":[{"type":"object","properties":{"name":{"type":"string","minLength":1},"country":{"type":"string"},"language":{"type":"string","default":"English"}},"required":["name"],"additionalProperties":false},{"type":"object","properties":{"latitude":{"type":"number"},"longitude":{"type":"number"}},"required":["latitude","longitude"],"additionalProperties":false}]},"start_date":{"anyOf":[{"type":"string","format":"date"},{"type":"string","format":"date-time"}],"description":"Start date for the weather forecast in the format YYYY-MM-DD (UTC)"},"end_date":{"anyOf":[{"type":"string","format":"date"},{"type":"string","format":"date-time"}],"description":"End date for the weather forecast in the format YYYY-MM-DD (UTC)"},"elevation":{"type":["number","null"]},"temperature_unit":{"type":"string","enum":["celsius","fahrenheit"],"default":"celsius"}},"required":["location","start_date"],"additionalProperties":false,"$schema":"http://json-schema.org/draft-07/schema#"}"
+Validation Errors: [{"instancePath":"","schemaPath":"#/required","keyword":"required","params":{"missingProperty":"start_date"},"message":"must have required property 'start_date'"}]
+
+Verification successful: The error message confirms the validation bug.
+--- Test script failed (exit code 1) ---
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:beeai_framework_55" test_fixed
+=== Testing FIXED Version (Commit: c2355227a86bd2ad9017506f8592f3f03d0e952a) ===
+Previous HEAD position was c68bc4f docs(memory): add a standalone page in the documentation
+HEAD is now at c235522 feat(agent): update system prompt and open meteo schema (#72)
+--- Building project from source with yarn ---
+➤ YN0000: · Yarn 4.1.1
+➤ YN0000: ┌ Resolution step
+➤ YN0000: └ Completed in 0s 206ms
+➤ YN0000: ┌ Post-resolution validation
+➤ YN0002: │ bee-agent-framework@workspace:. doesn't provide @bufbuild/protobuf (p97199), requested by @connectrpc/connect.
+➤ YN0002: │ bee-agent-framework@workspace:. doesn't provide @bufbuild/protobuf (pa4998), requested by @connectrpc/connect-node.
+➤ YN0086: │ Some peer dependencies are incorrectly met; run yarn explain peer-requirements <hash> for details, where <hash> is the six-letter p-prefixed code.
+➤ YN0000: └ Completed
+➤ YN0000: ┌ Fetch step
+➤ YN0000: └ Completed in 0s 539ms
+➤ YN0000: ┌ Link step
+➤ YN0000: └ Completed in 0s 428ms
+➤ YN0000: · Done with warnings in 1s 538ms
+CLI Building entry: src/context.ts, src/errors.ts, src/index.ts, src/template.ts, src/version.ts, src/agents/base.ts, src/agents/manager.ts, src/agents/types.ts, src/cache/base.ts, src/cache/decoratorCache.ts, src/cache/fileCache.ts, src/cache/nullCache.ts, src/cache/slidingCache.ts, src/cache/unconstrainedCache.ts, src/emitter/emitter.ts, src/emitter/errors.ts, src/emitter/types.ts, src/emitter/utils.ts, src/internals/env.ts, src/internals/fetcher.ts, src/internals/serializable.ts, src/internals/types.ts, src/llms/base.ts, src/llms/chat.ts, src/llms/llm.ts, src/logger/logger.ts, src/logger/pretty.js, src/memory/base.ts, src/memory/slidingMemory.ts, src/memory/summarizeMemory.ts, src/memory/tokenMemory.ts, src/memory/unconstrainedMemory.ts, src/serializer/error.ts, src/serializer/serializer.ts, src/serializer/utils.ts, src/tools/arxiv.ts, src/tools/base.ts, src/tools/calculator.ts, src/tools/custom.ts, src/tools/llm.ts, src/tools/similarity.ts, src/agents/bee/agent.ts, src/agents/bee/errors.ts, src/agents/bee/parser.ts, src/agents/bee/prompts.ts, src/agents/bee/runner.spec.ts, src/agents/bee/runner.ts, src/agents/bee/types.ts, src/agents/parsers/field.ts, src/agents/parsers/linePrefix.ts, src/adapters/bam/chat.ts, src/adapters/bam/chatPreset.ts, src/adapters/bam/llm.ts, src/adapters/groq/chat.ts, src/adapters/ibm-vllm/chat.ts, src/adapters/ibm-vllm/chatPreset.ts, src/adapters/ibm-vllm/client.ts, src/adapters/ibm-vllm/llm.ts, src/adapters/ibm-vllm/types.ts, src/adapters/langchain/tools.ts, src/adapters/ollama/chat.ts, src/adapters/ollama/llm.ts, src/adapters/ollama/shared.ts, src/adapters/openai/chat.ts, src/adapters/shared/llmChatTemplates.ts, src/adapters/watsonx/chat.ts, src/adapters/watsonx/chatPreset.ts, src/adapters/watsonx/llm.ts, src/llms/drivers/base.ts, src/llms/drivers/json.ts, src/llms/drivers/typescript.ts, src/llms/drivers/yaml.ts, src/llms/primitives/message.ts, src/internals/helpers/array.ts, src/internals/helpers/cancellation.ts, src/internals/helpers/counter.ts, src/internals/helpers/general.ts, src/internals/helpers/guards.ts, src/internals/helpers/hash.ts, src/internals/helpers/map.ts, src/internals/helpers/number.ts, src/internals/helpers/object.ts, src/internals/helpers/promise.ts, src/internals/helpers/prototype.ts, src/internals/helpers/retry.ts, src/internals/helpers/retryable.ts, src/internals/helpers/schema.ts, src/internals/helpers/stream.ts, src/internals/helpers/string.ts, src/internals/helpers/weakRef.ts, src/tools/database/metadata.ts, src/tools/database/sql.ts, src/tools/python/output.ts, src/tools/python/python.ts, src/tools/python/storage.ts, src/tools/search/base.ts, src/tools/search/duckDuckGoSearch.ts, src/tools/search/googleSearch.ts, src/tools/search/wikipedia.ts, src/tools/weather/openMeteo.ts, src/tools/web/webCrawler.ts, src/adapters/langchain/llms/chat.ts, src/adapters/langchain/llms/llm.ts
+CLI Using tsconfig: tsconfig.json
+CLI tsup v8.3.0
+CLI Using tsup config: /app/source_code_buggy/tsup.config.ts
+CLI Target: es2022
+CLI Cleaning output folder
+ESM Build start
+CJS Build start
+Generated an empty chunk: "types".
+Generated an empty chunk: "types".
+Generated an empty chunk: "parser".
+Generated an empty chunk: "types".
+Generated an empty chunk: "types".
+DTS Build start
+Generated an empty chunk: "types".
+Generated an empty chunk: "types".
+Generated an empty chunk: "parser".
+Generated an empty chunk: "types".
+Generated an empty chunk: "types".
+ESM dist/index.js                                237.00 B
+ESM dist/agents/types.js                         68.00 B
+ESM dist/cache/base.js                           384.00 B
+ESM dist/internals/env.js                        1.10 KB
+ESM dist/emitter/types.js                        68.00 B
+ESM dist/llms/chat.js                            457.00 B
+ESM dist/logger/pretty.js                        2.19 KB
+ESM dist/memory/base.js                          1.56 KB
+ESM dist/serializer/error.js                     494.00 B
+ESM dist/tools/arxiv.js                          6.70 KB
+ESM dist/agents/bee/errors.js                    360.00 B
+ESM dist/agents/parsers/field.js                 5.04 KB
+ESM dist/llms/drivers/json.js                    1.19 KB
+ESM dist/llms/primitives/message.js              979.00 B
+ESM dist/internals/helpers/array.js              601.00 B
+ESM dist/tools/database/metadata.js              3.77 KB
+ESM dist/tools/search/base.js                    1.70 KB
+ESM dist/tools/python/output.js                  1.32 KB
+ESM dist/tools/web/webCrawler.js                 3.22 KB
+ESM dist/tools/weather/openMeteo.js              5.36 KB
+ESM dist/version.js                              155.00 B
+ESM dist/errors.js                               3.03 KB
+ESM dist/context.js                              3.97 KB
+ESM dist/agents/manager.js                       832.00 B
+ESM dist/cache/nullCache.js                      727.00 B
+ESM dist/template.js                             3.03 KB
+ESM dist/cache/unconstrainedCache.js             952.00 B
+ESM dist/cache/slidingCache.js                   1.68 KB
+ESM dist/cache/decoratorCache.js                 8.03 KB
+ESM dist/emitter/errors.js                       367.00 B
+ESM dist/cache/fileCache.js                      3.67 KB
+ESM dist/emitter/utils.js                        1.06 KB
+ESM dist/llms/llm.js                             317.00 B
+ESM dist/internals/types.js                      354.00 B
+ESM dist/internals/serializable.js               2.03 KB
+ESM dist/internals/fetcher.js                    3.40 KB
+ESM dist/memory/slidingMemory.js                 1.95 KB
+ESM dist/emitter/emitter.js                      5.86 KB
+ESM dist/memory/summarizeMemory.js               1.94 KB
+ESM dist/llms/base.js                            5.66 KB
+ESM dist/memory/tokenMemory.js                   3.95 KB
+ESM dist/logger/logger.js                        5.30 KB
+ESM dist/serializer/utils.js                     6.89 KB
+ESM dist/memory/unconstrainedMemory.js           770.00 B
+ESM dist/tools/calculator.js                     2.35 KB
+ESM dist/tools/llm.js                            901.00 B
+ESM dist/tools/similarity.js                     1.61 KB
+ESM dist/tools/custom.js                         3.22 KB
+ESM dist/agents/bee/parser.js                    70.00 B
+ESM dist/agents/bee/prompts.js                   6.90 KB
+ESM dist/agents/bee/agent.js                     5.16 KB
+ESM dist/serializer/serializer.js                18.58 KB
+ESM dist/tools/base.js                           9.59 KB
+ESM dist/agents/bee/types.js                     68.00 B
+ESM dist/agents/bee/runner.spec.js               3.67 KB
+ESM dist/agents/parsers/linePrefix.js            9.46 KB
+ESM dist/agents/bee/runner.js                    11.95 KB
+ESM dist/llms/drivers/typescript.js              1.17 KB
+ESM dist/llms/drivers/base.js                    3.12 KB
+ESM dist/internals/helpers/cancellation.js       829.00 B
+ESM dist/llms/drivers/yaml.js                    936.00 B
+ESM dist/internals/helpers/counter.js            1.31 KB
+ESM dist/internals/helpers/general.js            658.00 B
+ESM dist/internals/helpers/guards.js             435.00 B
+ESM dist/internals/helpers/map.js                415.00 B
+ESM dist/internals/helpers/hash.js               633.00 B
+ESM dist/internals/helpers/number.js             374.00 B
+ESM dist/internals/helpers/prototype.js          760.00 B
+ESM dist/internals/helpers/object.js             3.37 KB
+ESM dist/internals/helpers/stream.js             481.00 B
+ESM dist/internals/helpers/retry.js              1.25 KB
+ESM dist/internals/helpers/promise.js            3.14 KB
+ESM dist/internals/helpers/weakRef.js            1.20 KB
+ESM dist/internals/helpers/string.js             2.14 KB
+ESM dist/tools/database/sql.js                   4.48 KB
+ESM dist/internals/helpers/retryable.js          4.22 KB
+ESM dist/tools/search/duckDuckGoSearch.js        3.89 KB
+ESM dist/tools/python/python.js                  5.66 KB
+ESM dist/internals/helpers/schema.js             2.01 KB
+ESM dist/tools/python/storage.js                 4.23 KB
+ESM dist/tools/search/googleSearch.js            4.41 KB
+ESM dist/tools/search/wikipedia.js               10.84 KB
+ESM dist/adapters/bam/chatPreset.js              1.99 KB
+ESM dist/adapters/langchain/llms/chat.js         5.65 KB
+ESM dist/adapters/groq/chat.js                   4.26 KB
+ESM dist/adapters/ibm-vllm/chat.js               4.41 KB
+ESM dist/adapters/ollama/shared.js               1.13 KB
+ESM dist/adapters/openai/chat.js                 4.62 KB
+ESM dist/adapters/watsonx/chatPreset.js          1.76 KB
+ESM dist/adapters/shared/llmChatTemplates.js     3.84 KB
+ESM dist/agents/base.js                          1.19 KB
+ESM dist/adapters/bam/chat.js                    4.51 KB
+ESM dist/adapters/ibm-vllm/types.js              68.00 B
+ESM dist/adapters/ibm-vllm/chatPreset.js         3.80 KB
+ESM dist/adapters/bam/llm.js                     9.07 KB
+ESM dist/adapters/langchain/tools.js             2.44 KB
+ESM dist/adapters/ibm-vllm/client.js             5.65 KB
+ESM dist/adapters/ibm-vllm/llm.js                5.37 KB
+ESM dist/adapters/ollama/llm.js                  5.24 KB
+ESM dist/adapters/ollama/chat.js                 6.01 KB
+ESM dist/adapters/watsonx/chat.js                4.51 KB
+ESM dist/adapters/watsonx/llm.js                 10.51 KB
+ESM dist/adapters/langchain/llms/llm.js          3.06 KB
+ESM dist/index.js.map                            89.00 B
+ESM dist/cache/base.js.map                       1.25 KB
+ESM dist/agents/types.js.map                     69.00 B
+ESM dist/emitter/types.js.map                    69.00 B
+ESM dist/internals/env.js.map                    3.03 KB
+ESM dist/llms/chat.js.map                        1.30 KB
+ESM dist/logger/pretty.js.map                    4.72 KB
+ESM dist/memory/base.js.map                      4.02 KB
+ESM dist/serializer/error.js.map                 1.25 KB
+ESM dist/tools/arxiv.js.map                      15.68 KB
+ESM dist/agents/bee/errors.js.map                923.00 B
+ESM dist/agents/parsers/field.js.map             10.84 KB
+ESM dist/llms/drivers/json.js.map                3.07 KB
+ESM dist/llms/primitives/message.js.map          2.85 KB
+ESM dist/internals/helpers/array.js.map          1.73 KB
+ESM dist/tools/search/base.js.map                2.44 KB
+ESM dist/tools/database/metadata.js.map          7.22 KB
+ESM dist/tools/python/output.js.map              3.32 KB
+ESM dist/tools/web/webCrawler.js.map             6.66 KB
+ESM dist/tools/weather/openMeteo.js.map          11.09 KB
+ESM dist/version.js.map                          1014.00 B
+ESM dist/errors.js.map                           7.61 KB
+ESM dist/agents/manager.js.map                   2.57 KB
+ESM dist/cache/nullCache.js.map                  2.09 KB
+ESM dist/context.js.map                          10.77 KB
+ESM dist/cache/unconstrainedCache.js.map         2.64 KB
+ESM dist/template.js.map                         8.95 KB
+ESM dist/cache/slidingCache.js.map               4.51 KB
+ESM dist/emitter/errors.js.map                   922.00 B
+ESM dist/emitter/utils.js.map                    2.62 KB
+ESM dist/cache/fileCache.js.map                  7.46 KB
+ESM dist/llms/llm.js.map                         1.06 KB
+ESM dist/cache/decoratorCache.js.map             19.37 KB
+ESM dist/internals/types.js.map                  4.51 KB
+ESM dist/internals/serializable.js.map           5.82 KB
+ESM dist/internals/fetcher.js.map                8.71 KB
+ESM dist/memory/slidingMemory.js.map             5.03 KB
+ESM dist/memory/summarizeMemory.js.map           4.91 KB
+ESM dist/emitter/emitter.js.map                  13.81 KB
+ESM dist/llms/base.js.map                        15.63 KB
+ESM dist/memory/tokenMemory.js.map               10.68 KB
+ESM dist/memory/unconstrainedMemory.js.map       2.05 KB
+ESM dist/logger/logger.js.map                    11.87 KB
+ESM dist/tools/calculator.js.map                 5.33 KB
+ESM dist/tools/llm.js.map                        2.79 KB
+ESM dist/serializer/utils.js.map                 15.03 KB
+ESM dist/tools/similarity.js.map                 4.70 KB
+ESM dist/agents/bee/parser.js.map                70.00 B
+ESM dist/tools/custom.js.map                     8.08 KB
+ESM dist/agents/bee/prompts.js.map               11.18 KB
+ESM dist/agents/bee/agent.js.map                 12.81 KB
+ESM dist/agents/bee/types.js.map                 69.00 B
+ESM dist/tools/base.js.map                       23.55 KB
+ESM dist/serializer/serializer.js.map            41.89 KB
+ESM dist/agents/bee/runner.spec.js.map           8.57 KB
+ESM dist/agents/parsers/linePrefix.js.map        23.28 KB
+ESM dist/agents/bee/runner.js.map                26.75 KB
+ESM dist/llms/drivers/typescript.js.map          2.75 KB
+ESM dist/llms/drivers/base.js.map                7.85 KB
+ESM dist/llms/drivers/yaml.js.map                2.31 KB
+ESM dist/internals/helpers/cancellation.js.map   2.17 KB
+ESM dist/internals/helpers/counter.js.map        3.47 KB
+ESM dist/internals/helpers/general.js.map        1.96 KB
+ESM dist/internals/helpers/guards.js.map         1.42 KB
+ESM dist/internals/helpers/map.js.map            1.33 KB
+ESM dist/internals/helpers/number.js.map         1.15 KB
+ESM dist/internals/helpers/hash.js.map           1.62 KB
+ESM dist/internals/helpers/prototype.js.map      2.03 KB
+ESM dist/internals/helpers/stream.js.map         1.42 KB
+ESM dist/internals/helpers/retry.js.map          3.66 KB
+ESM dist/internals/helpers/object.js.map         9.50 KB
+ESM dist/internals/helpers/promise.js.map        8.82 KB
+ESM dist/internals/helpers/weakRef.js.map        3.30 KB
+ESM dist/tools/database/sql.js.map               8.67 KB
+ESM dist/internals/helpers/string.js.map         5.90 KB
+ESM dist/tools/search/duckDuckGoSearch.js.map    8.05 KB
+ESM dist/tools/python/python.js.map              13.98 KB
+ESM dist/internals/helpers/schema.js.map         5.39 KB
+ESM dist/internals/helpers/retryable.js.map      11.91 KB
+ESM dist/tools/python/storage.js.map             9.45 KB
+ESM dist/tools/search/googleSearch.js.map        8.65 KB
+ESM dist/tools/search/wikipedia.js.map           23.92 KB
+ESM dist/adapters/bam/chatPreset.js.map          4.30 KB
+ESM dist/adapters/langchain/llms/chat.js.map     12.66 KB
+ESM dist/adapters/groq/chat.js.map               12.03 KB
+ESM dist/adapters/ibm-vllm/chat.js.map           9.97 KB
+ESM dist/adapters/ollama/shared.js.map           2.80 KB
+ESM dist/adapters/openai/chat.js.map             12.83 KB
+ESM dist/adapters/watsonx/chatPreset.js.map      3.92 KB
+ESM dist/adapters/shared/llmChatTemplates.js.map 8.37 KB
+ESM dist/agents/base.js.map                      3.47 KB
+ESM dist/adapters/bam/chat.js.map                10.10 KB
+ESM dist/adapters/ibm-vllm/types.js.map          69.00 B
+ESM dist/adapters/ibm-vllm/chatPreset.js.map     8.39 KB
+ESM dist/adapters/langchain/tools.js.map         6.59 KB
+ESM dist/adapters/bam/llm.js.map                 21.45 KB
+ESM dist/adapters/ibm-vllm/client.js.map         13.27 KB
+ESM dist/adapters/ibm-vllm/llm.js.map            14.18 KB
+ESM dist/adapters/ollama/llm.js.map              10.90 KB
+ESM dist/adapters/ollama/chat.js.map             12.78 KB
+ESM dist/adapters/watsonx/chat.js.map            10.33 KB
+ESM dist/adapters/langchain/llms/llm.js.map      8.18 KB
+ESM dist/adapters/watsonx/llm.js.map             24.96 KB
+ESM ⚡️ Build success in 1590ms
+CJS dist/index.cjs                                1.47 KB
+CJS dist/agents/base.cjs                          1.28 KB
+CJS dist/agents/manager.cjs                       865.00 B
+CJS dist/version.cjs                              163.00 B
+CJS dist/template.cjs                             3.79 KB
+CJS dist/cache/base.cjs                           431.00 B
+CJS dist/agents/types.cjs                         84.00 B
+CJS dist/errors.cjs                               3.78 KB
+CJS dist/cache/nullCache.cjs                      761.00 B
+CJS dist/context.cjs                              4.12 KB
+CJS dist/emitter/errors.cjs                       403.00 B
+CJS dist/cache/unconstrainedCache.cjs             995.00 B
+CJS dist/cache/slidingCache.cjs                   1.77 KB
+CJS dist/cache/fileCache.cjs                      4.01 KB
+CJS dist/emitter/types.cjs                        84.00 B
+CJS dist/internals/env.cjs                        1.21 KB
+CJS dist/emitter/utils.cjs                        1.18 KB
+CJS dist/internals/types.cjs                      379.00 B
+CJS dist/internals/fetcher.cjs                    3.53 KB
+CJS dist/llms/chat.cjs                            509.00 B
+CJS dist/cache/decoratorCache.cjs                 8.85 KB
+CJS dist/internals/serializable.cjs               2.68 KB
+CJS dist/llms/llm.cjs                             347.00 B
+CJS dist/emitter/emitter.cjs                      5.98 KB
+CJS dist/logger/pretty.cjs                        2.59 KB
+CJS dist/memory/base.cjs                          1.68 KB
+CJS dist/memory/slidingMemory.cjs                 2.01 KB
+CJS dist/llms/base.cjs                            5.95 KB
+CJS dist/serializer/error.cjs                     533.00 B
+CJS dist/memory/summarizeMemory.cjs               2.11 KB
+CJS dist/logger/logger.cjs                        6.48 KB
+CJS dist/memory/unconstrainedMemory.cjs           821.00 B
+CJS dist/memory/tokenMemory.cjs                   4.46 KB
+CJS dist/tools/arxiv.cjs                          7.03 KB
+CJS dist/serializer/utils.cjs                     7.92 KB
+CJS dist/tools/calculator.cjs                     2.40 KB
+CJS dist/tools/llm.cjs                            938.00 B
+CJS dist/tools/custom.cjs                         3.42 KB
+CJS dist/agents/bee/errors.cjs                    397.00 B
+CJS dist/tools/similarity.cjs                     2.18 KB
+CJS dist/agents/bee/parser.cjs                    86.00 B
+CJS dist/agents/bee/agent.cjs                     5.85 KB
+CJS dist/agents/bee/types.cjs                     84.00 B
+CJS dist/agents/bee/prompts.cjs                   7.37 KB
+CJS dist/tools/base.cjs                           10.57 KB
+CJS dist/serializer/serializer.cjs                19.58 KB
+CJS dist/agents/parsers/field.cjs                 5.21 KB
+CJS dist/agents/bee/runner.spec.cjs               4.01 KB
+CJS dist/llms/drivers/json.cjs                    1.25 KB
+CJS dist/agents/parsers/linePrefix.cjs            9.66 KB
+CJS dist/llms/drivers/typescript.cjs              1.76 KB
+CJS dist/agents/bee/runner.cjs                    12.25 KB
+CJS dist/llms/primitives/message.cjs              1.03 KB
+CJS dist/llms/drivers/yaml.cjs                    1.14 KB
+CJS dist/internals/helpers/array.cjs              653.00 B
+CJS dist/internals/helpers/cancellation.cjs       893.00 B
+CJS dist/llms/drivers/base.cjs                    3.27 KB
+CJS dist/internals/helpers/general.cjs            705.00 B
+CJS dist/internals/helpers/guards.cjs             1007.00 B
+CJS dist/internals/helpers/counter.cjs            1.35 KB
+CJS dist/internals/helpers/hash.cjs               680.00 B
+CJS dist/internals/helpers/map.cjs                445.00 B
+CJS dist/internals/helpers/number.cjs             909.00 B
+CJS dist/internals/helpers/retry.cjs              1.30 KB
+CJS dist/internals/helpers/prototype.cjs          1.30 KB
+CJS dist/internals/helpers/promise.cjs            3.39 KB
+CJS dist/internals/helpers/stream.cjs             520.00 B
+CJS dist/internals/helpers/object.cjs             4.23 KB
+CJS dist/internals/helpers/schema.cjs             2.41 KB
+CJS dist/internals/helpers/weakRef.cjs            1.27 KB
+CJS dist/tools/database/metadata.cjs              3.82 KB
+CJS dist/internals/helpers/string.cjs             2.77 KB
+CJS dist/tools/python/output.cjs                  1.36 KB
+CJS dist/tools/database/sql.cjs                   4.63 KB
+CJS dist/internals/helpers/retryable.cjs          4.87 KB
+CJS dist/tools/search/base.cjs                    2.25 KB
+CJS dist/tools/python/python.cjs                  5.71 KB
+CJS dist/tools/web/webCrawler.cjs                 3.35 KB
+CJS dist/tools/search/duckDuckGoSearch.cjs        4.34 KB
+CJS dist/tools/python/storage.cjs                 5.21 KB
+CJS dist/tools/search/googleSearch.cjs            4.63 KB
+CJS dist/tools/weather/openMeteo.cjs              5.51 KB
+CJS dist/tools/search/wikipedia.cjs               11.96 KB
+CJS dist/adapters/bam/chatPreset.cjs              2.09 KB
+CJS dist/adapters/bam/chat.cjs                    4.71 KB
+CJS dist/adapters/groq/chat.cjs                   4.42 KB
+CJS dist/adapters/ibm-vllm/chatPreset.cjs         4.00 KB
+CJS dist/adapters/ibm-vllm/chat.cjs               4.59 KB
+CJS dist/adapters/bam/llm.cjs                     9.79 KB
+CJS dist/adapters/langchain/tools.cjs             3.04 KB
+CJS dist/adapters/ibm-vllm/types.cjs              84.00 B
+CJS dist/adapters/ibm-vllm/llm.cjs                5.53 KB
+CJS dist/adapters/ibm-vllm/client.cjs             6.82 KB
+CJS dist/adapters/shared/llmChatTemplates.cjs     3.98 KB
+CJS dist/adapters/ollama/shared.cjs               1.24 KB
+CJS dist/adapters/ollama/chat.cjs                 6.23 KB
+CJS dist/adapters/openai/chat.cjs                 4.79 KB
+CJS dist/adapters/ollama/llm.cjs                  5.44 KB
+CJS dist/adapters/watsonx/chatPreset.cjs          1.84 KB
+CJS dist/adapters/watsonx/chat.cjs                4.69 KB
+CJS dist/adapters/watsonx/llm.cjs                 11.33 KB
+CJS dist/adapters/langchain/llms/llm.cjs          3.20 KB
+CJS dist/adapters/langchain/llms/chat.cjs         5.93 KB
+CJS dist/index.cjs.map                            90.00 B
+CJS dist/agents/base.cjs.map                      3.47 KB
+CJS dist/agents/manager.cjs.map                   2.57 KB
+CJS dist/version.cjs.map                          1012.00 B
+CJS dist/cache/base.cjs.map                       1.25 KB
+CJS dist/agents/types.cjs.map                     70.00 B
+CJS dist/template.cjs.map                         8.98 KB
+CJS dist/cache/nullCache.cjs.map                  2.09 KB
+CJS dist/errors.cjs.map                           7.64 KB
+CJS dist/context.cjs.map                          10.78 KB
+CJS dist/emitter/errors.cjs.map                   926.00 B
+CJS dist/cache/unconstrainedCache.cjs.map         2.64 KB
+CJS dist/emitter/types.cjs.map                    70.00 B
+CJS dist/cache/slidingCache.cjs.map               4.52 KB
+CJS dist/internals/env.cjs.map                    3.03 KB
+CJS dist/cache/fileCache.cjs.map                  7.48 KB
+CJS dist/emitter/utils.cjs.map                    2.63 KB
+CJS dist/internals/fetcher.cjs.map                8.71 KB
+CJS dist/internals/types.cjs.map                  4.52 KB
+CJS dist/llms/chat.cjs.map                        1.31 KB
+CJS dist/internals/serializable.cjs.map           5.84 KB
+CJS dist/llms/llm.cjs.map                         1.06 KB
+CJS dist/cache/decoratorCache.cjs.map             19.40 KB
+CJS dist/memory/base.cjs.map                      4.02 KB
+CJS dist/emitter/emitter.cjs.map                  13.83 KB
+CJS dist/logger/pretty.cjs.map                    4.74 KB
+CJS dist/llms/base.cjs.map                        15.64 KB
+CJS dist/serializer/error.cjs.map                 1.25 KB
+CJS dist/memory/slidingMemory.cjs.map             5.04 KB
+CJS dist/logger/logger.cjs.map                    12.83 KB
+CJS dist/memory/summarizeMemory.cjs.map           4.92 KB
+CJS dist/memory/unconstrainedMemory.cjs.map       2.06 KB
+CJS dist/serializer/utils.cjs.map                 15.06 KB
+CJS dist/memory/tokenMemory.cjs.map               10.71 KB
+CJS dist/tools/arxiv.cjs.map                      15.70 KB
+CJS dist/tools/calculator.cjs.map                 5.33 KB
+CJS dist/agents/bee/errors.cjs.map                927.00 B
+CJS dist/tools/llm.cjs.map                        2.79 KB
+CJS dist/agents/bee/parser.cjs.map                71.00 B
+CJS dist/tools/custom.cjs.map                     8.09 KB
+CJS dist/tools/similarity.cjs.map                 4.72 KB
+CJS dist/agents/bee/agent.cjs.map                 12.84 KB
+CJS dist/agents/bee/types.cjs.map                 70.00 B
+CJS dist/tools/base.cjs.map                       23.58 KB
+CJS dist/serializer/serializer.cjs.map            41.95 KB
+CJS dist/agents/parsers/field.cjs.map             10.85 KB
+CJS dist/agents/bee/prompts.cjs.map               11.19 KB
+CJS dist/llms/drivers/json.cjs.map                3.08 KB
+CJS dist/agents/bee/runner.spec.cjs.map           8.60 KB
+CJS dist/agents/parsers/linePrefix.cjs.map        23.29 KB
+CJS dist/agents/bee/runner.cjs.map                26.77 KB
+CJS dist/llms/drivers/typescript.cjs.map          2.77 KB
+CJS dist/llms/primitives/message.cjs.map          2.86 KB
+CJS dist/llms/drivers/yaml.cjs.map                2.32 KB
+CJS dist/internals/helpers/cancellation.cjs.map   2.17 KB
+CJS dist/internals/helpers/array.cjs.map          1.74 KB
+CJS dist/llms/drivers/base.cjs.map                7.87 KB
+CJS dist/internals/helpers/guards.cjs.map         1.45 KB
+CJS dist/internals/helpers/general.cjs.map        1.96 KB
+CJS dist/internals/helpers/hash.cjs.map           1.63 KB
+CJS dist/internals/helpers/counter.cjs.map        3.47 KB
+CJS dist/internals/helpers/map.cjs.map            1.33 KB
+CJS dist/internals/helpers/number.cjs.map         1.18 KB
+CJS dist/internals/helpers/retry.cjs.map          3.66 KB
+CJS dist/internals/helpers/prototype.cjs.map      2.05 KB
+CJS dist/internals/helpers/promise.cjs.map        8.83 KB
+CJS dist/internals/helpers/stream.cjs.map         1.43 KB
+CJS dist/tools/python/output.cjs.map              3.33 KB
+CJS dist/tools/database/metadata.cjs.map          7.23 KB
+CJS dist/internals/helpers/schema.cjs.map         5.40 KB
+CJS dist/internals/helpers/object.cjs.map         9.52 KB
+CJS dist/internals/helpers/weakRef.cjs.map        3.31 KB
+CJS dist/internals/helpers/string.cjs.map         5.93 KB
+CJS dist/tools/database/sql.cjs.map               8.68 KB
+CJS dist/tools/search/base.cjs.map                2.46 KB
+CJS dist/tools/python/python.cjs.map              13.99 KB
+CJS dist/internals/helpers/retryable.cjs.map      11.94 KB
+CJS dist/tools/web/webCrawler.cjs.map             6.67 KB
+CJS dist/tools/search/duckDuckGoSearch.cjs.map    8.06 KB
+CJS dist/tools/python/storage.cjs.map             9.49 KB
+CJS dist/tools/weather/openMeteo.cjs.map          11.10 KB
+CJS dist/tools/search/googleSearch.cjs.map        8.66 KB
+CJS dist/tools/search/wikipedia.cjs.map           23.95 KB
+CJS dist/adapters/bam/chatPreset.cjs.map          4.30 KB
+CJS dist/adapters/groq/chat.cjs.map               12.04 KB
+CJS dist/adapters/bam/chat.cjs.map                10.11 KB
+CJS dist/adapters/ibm-vllm/chatPreset.cjs.map     8.39 KB
+CJS dist/adapters/ibm-vllm/chat.cjs.map           9.98 KB
+CJS dist/adapters/langchain/tools.cjs.map         6.62 KB
+CJS dist/adapters/ibm-vllm/types.cjs.map          70.00 B
+CJS dist/adapters/ibm-vllm/client.cjs.map         14.23 KB
+CJS dist/adapters/shared/llmChatTemplates.cjs.map 8.38 KB
+CJS dist/adapters/bam/llm.cjs.map                 21.49 KB
+CJS dist/adapters/ibm-vllm/llm.cjs.map            14.19 KB
+CJS dist/adapters/ollama/shared.cjs.map           2.80 KB
+CJS dist/adapters/watsonx/chatPreset.cjs.map      3.92 KB
+CJS dist/adapters/ollama/chat.cjs.map             12.79 KB
+CJS dist/adapters/ollama/llm.cjs.map              10.92 KB
+CJS dist/adapters/openai/chat.cjs.map             12.84 KB
+CJS dist/adapters/watsonx/chat.cjs.map            10.34 KB
+CJS dist/adapters/langchain/llms/llm.cjs.map      8.19 KB
+CJS dist/adapters/langchain/llms/chat.cjs.map     12.68 KB
+CJS dist/adapters/watsonx/llm.cjs.map             25.01 KB
+CJS ⚡️ Build success in 1597ms
+DTS ⚡️ Build success in 46105ms
+DTS dist/index.d.ts                             690.00 B
+DTS dist/agents/bee/runner.spec.d.ts            13.00 B
+DTS dist/version.d.ts                           50.00 B
+DTS dist/agents/manager.d.ts                    892.00 B
+DTS dist/cache/decoratorCache.d.ts              1.83 KB
+DTS dist/cache/fileCache.d.ts                   1016.00 B
+DTS dist/cache/nullCache.d.ts                   614.00 B
+DTS dist/cache/slidingCache.d.ts                1.21 KB
+DTS dist/cache/unconstrainedCache.d.ts          692.00 B
+DTS dist/emitter/errors.d.ts                    201.00 B
+DTS dist/emitter/utils.d.ts                     309.00 B
+DTS dist/internals/env.d.ts                     336.00 B
+DTS dist/logger/logger.d.ts                     1.73 KB
+DTS dist/logger/pretty.d.ts                     135.00 B
+DTS dist/memory/slidingMemory.d.ts              988.00 B
+DTS dist/memory/summarizeMemory.d.ts            1.80 KB
+DTS dist/memory/unconstrainedMemory.d.ts        559.00 B
+DTS dist/context.d.ts                           2.32 KB
+DTS dist/internals/serializable.d.ts            894.00 B
+DTS dist/internals/helpers/promise.d.ts         1.75 KB
+DTS dist/internals/types.d.ts                   3.77 KB
+DTS dist/internals/helpers/guards.d.ts          188.00 B
+DTS dist/errors.d.ts                            1.24 KB
+DTS dist/template.d.ts                          2.58 KB
+DTS dist/memory/base.d.ts                       1.39 KB
+DTS dist/tools/base.d.ts                        6.04 KB
+DTS dist/llms/primitives/message.d.ts           1.18 KB
+DTS dist/cache/base.d.ts                        528.00 B
+DTS dist/internals/helpers/schema.d.ts          1.16 KB
+DTS dist/internals/fetcher.d.ts                 1.33 KB
+DTS dist/llms/base.d.ts                         4.66 KB
+DTS dist/llms/chat.d.ts                         751.00 B
+DTS dist/llms/llm.d.ts                          591.00 B
+DTS dist/memory/tokenMemory.d.ts                1.97 KB
+DTS dist/serializer/error.d.ts                  259.00 B
+DTS dist/tools/arxiv.d.ts                       7.62 KB
+DTS dist/tools/calculator.d.ts                  1.18 KB
+DTS dist/tools/custom.d.ts                      3.26 KB
+DTS dist/tools/python/python.d.ts               3.33 KB
+DTS dist/tools/python/storage.d.ts              1.86 KB
+DTS dist/tools/python/output.d.ts               1.10 KB
+DTS dist/tools/llm.d.ts                         1.25 KB
+DTS dist/tools/similarity.d.ts                  2.49 KB
+DTS dist/agents/bee/prompts.d.ts                5.38 KB
+DTS dist/agents/parsers/linePrefix.d.ts         4.46 KB
+DTS dist/agents/parsers/field.d.ts              2.08 KB
+DTS dist/agents/bee/errors.d.ts                 627.00 B
+DTS dist/internals/helpers/counter.d.ts         800.00 B
+DTS dist/adapters/bam/llm.d.ts                  10.77 KB
+DTS dist/adapters/groq/chat.d.ts                2.45 KB
+DTS dist/adapters/ibm-vllm/llm.d.ts             2.75 KB
+DTS dist/adapters/ibm-vllm/client.d.ts          2.53 KB
+DTS dist/adapters/ibm-vllm/types.d.ts           16.33 KB
+DTS dist/adapters/langchain/tools.d.ts          1.91 KB
+DTS dist/adapters/ollama/chat.d.ts              2.25 KB
+DTS dist/adapters/ollama/llm.d.ts               2.12 KB
+DTS dist/adapters/ollama/shared.d.ts            555.00 B
+DTS dist/adapters/openai/chat.d.ts              2.49 KB
+DTS dist/adapters/shared/llmChatTemplates.d.ts  1.30 KB
+DTS dist/adapters/watsonx/llm.d.ts              5.23 KB
+DTS dist/llms/drivers/base.d.ts                 2.44 KB
+DTS dist/llms/drivers/json.d.ts                 1.28 KB
+DTS dist/llms/drivers/typescript.d.ts           1.15 KB
+DTS dist/llms/drivers/yaml.d.ts                 1.04 KB
+DTS dist/internals/helpers/array.d.ts           177.00 B
+DTS dist/internals/helpers/cancellation.d.ts    257.00 B
+DTS dist/internals/helpers/general.d.ts         285.00 B
+DTS dist/internals/helpers/hash.d.ts            171.00 B
+DTS dist/internals/helpers/map.d.ts             111.00 B
+DTS dist/internals/helpers/number.d.ts          98.00 B
+DTS dist/internals/helpers/object.d.ts          1.53 KB
+DTS dist/internals/helpers/prototype.d.ts       344.00 B
+DTS dist/internals/helpers/retry.d.ts           412.00 B
+DTS dist/internals/helpers/retryable.d.ts       1.94 KB
+DTS dist/internals/helpers/stream.d.ts          199.00 B
+DTS dist/internals/helpers/string.d.ts          888.00 B
+DTS dist/internals/helpers/weakRef.d.ts         468.00 B
+DTS dist/tools/database/metadata.d.ts           383.00 B
+DTS dist/tools/database/sql.d.ts                1.26 KB
+DTS dist/tools/search/base.d.ts                 1.05 KB
+DTS dist/tools/search/duckDuckGoSearch.d.ts     2.48 KB
+DTS dist/tools/search/googleSearch.d.ts         2.51 KB
+DTS dist/tools/search/wikipedia.d.ts            3.49 KB
+DTS dist/tools/weather/openMeteo.d.ts           3.23 KB
+DTS dist/tools/web/webCrawler.d.ts              2.22 KB
+DTS dist/adapters/langchain/llms/chat.d.ts      3.00 KB
+DTS dist/adapters/langchain/llms/llm.d.ts       2.21 KB
+DTS dist/emitter/types.d.ts                     293.00 B
+DTS dist/emitter/emitter.d.ts                   243.00 B
+DTS dist/serializer/utils.d.ts                  482.00 B
+DTS dist/serializer/serializer.d.ts             196.00 B
+DTS dist/agents/types.d.ts                      673.00 B
+DTS dist/agents/base.d.ts                       551.00 B
+DTS dist/adapters/bam/chatPreset.d.ts           592.00 B
+DTS dist/adapters/bam/chat.d.ts                 631.00 B
+DTS dist/adapters/ibm-vllm/chatPreset.d.ts      721.00 B
+DTS dist/adapters/ibm-vllm/chat.d.ts            736.00 B
+DTS dist/adapters/watsonx/chatPreset.d.ts       700.00 B
+DTS dist/adapters/watsonx/chat.d.ts             747.00 B
+DTS dist/agents/bee/runner.d.ts                 953.00 B
+DTS dist/agents/bee/parser.d.ts                 987.00 B
+DTS dist/agents/bee/types.d.ts                  1.07 KB
+DTS dist/agents/bee/agent.d.ts                  931.00 B
+DTS dist/emitter-CM-eKlKf.d.ts                  3.18 KB
+DTS dist/serializer-Cjt_z3oL.d.ts               3.73 KB
+DTS dist/base-Dl7Lt_PE.d.ts                     2.05 KB
+DTS dist/chat-C3FD8gio.d.ts                     4.90 KB
+DTS dist/chat-Clt-YXjs.d.ts                     3.32 KB
+DTS dist/chat-D6KdMRu0.d.ts                     3.28 KB
+DTS dist/agent-PTagU8-j.d.ts                    7.70 KB
+DTS dist/index.d.cts                            698.00 B
+DTS dist/agents/bee/runner.spec.d.cts           13.00 B
+DTS dist/version.d.cts                          50.00 B
+DTS dist/agents/manager.d.cts                   905.00 B
+DTS dist/cache/decoratorCache.d.cts             1.84 KB
+DTS dist/cache/fileCache.d.cts                  1020.00 B
+DTS dist/cache/nullCache.d.cts                  618.00 B
+DTS dist/cache/slidingCache.d.cts               1.21 KB
+DTS dist/cache/unconstrainedCache.d.cts         696.00 B
+DTS dist/emitter/errors.d.cts                   204.00 B
+DTS dist/emitter/utils.d.cts                    309.00 B
+DTS dist/internals/env.d.cts                    336.00 B
+DTS dist/logger/logger.d.cts                    1.73 KB
+DTS dist/logger/pretty.d.cts                    135.00 B
+DTS dist/memory/slidingMemory.d.cts             994.00 B
+DTS dist/memory/summarizeMemory.d.cts           1.82 KB
+DTS dist/memory/unconstrainedMemory.d.cts       565.00 B
+DTS dist/context.d.cts                          2.33 KB
+DTS dist/internals/serializable.d.cts           896.00 B
+DTS dist/internals/helpers/promise.d.cts        1.75 KB
+DTS dist/internals/types.d.cts                  3.77 KB
+DTS dist/internals/helpers/guards.d.cts         188.00 B
+DTS dist/errors.d.cts                           1.25 KB
+DTS dist/template.d.cts                         2.58 KB
+DTS dist/memory/base.d.cts                      1.40 KB
+DTS dist/tools/base.d.cts                       6.05 KB
+DTS dist/llms/primitives/message.d.cts          1.18 KB
+DTS dist/cache/base.d.cts                       531.00 B
+DTS dist/internals/helpers/schema.d.cts         1.16 KB
+DTS dist/internals/fetcher.d.cts                1.33 KB
+DTS dist/llms/base.d.cts                        4.66 KB
+DTS dist/llms/chat.d.cts                        761.00 B
+DTS dist/llms/llm.d.cts                         600.00 B
+DTS dist/memory/tokenMemory.d.cts               1.98 KB
+DTS dist/serializer/error.d.cts                 262.00 B
+DTS dist/tools/arxiv.d.cts                      7.63 KB
+DTS dist/tools/calculator.d.cts                 1.19 KB
+DTS dist/tools/custom.d.cts                     3.28 KB
+DTS dist/tools/python/python.d.cts              3.35 KB
+DTS dist/tools/python/storage.d.cts             1.86 KB
+DTS dist/tools/python/output.d.cts              1.11 KB
+DTS dist/tools/llm.d.cts                        1.26 KB
+DTS dist/tools/similarity.d.cts                 2.50 KB
+DTS dist/agents/bee/prompts.d.cts               5.39 KB
+DTS dist/agents/parsers/linePrefix.d.cts        4.47 KB
+DTS dist/agents/parsers/field.d.cts             2.09 KB
+DTS dist/agents/bee/errors.d.cts                640.00 B
+DTS dist/internals/helpers/counter.d.cts        804.00 B
+DTS dist/adapters/bam/llm.d.cts                 10.78 KB
+DTS dist/adapters/groq/chat.d.cts               2.46 KB
+DTS dist/adapters/ibm-vllm/llm.d.cts            2.77 KB
+DTS dist/adapters/ibm-vllm/client.d.cts         2.53 KB
+DTS dist/adapters/ibm-vllm/types.d.cts          16.33 KB
+DTS dist/adapters/langchain/tools.d.cts         1.92 KB
+DTS dist/adapters/ollama/chat.d.cts             2.26 KB
+DTS dist/adapters/ollama/llm.d.cts              2.13 KB
+DTS dist/adapters/ollama/shared.d.cts           564.00 B
+DTS dist/adapters/openai/chat.d.cts             2.50 KB
+DTS dist/adapters/shared/llmChatTemplates.d.cts 1.30 KB
+DTS dist/adapters/watsonx/llm.d.cts             5.24 KB
+DTS dist/llms/drivers/base.d.cts                2.45 KB
+DTS dist/llms/drivers/json.d.cts                1.29 KB
+DTS dist/llms/drivers/typescript.d.cts          1.16 KB
+DTS dist/llms/drivers/yaml.d.cts                1.05 KB
+DTS dist/internals/helpers/array.d.cts          177.00 B
+DTS dist/internals/helpers/cancellation.d.cts   257.00 B
+DTS dist/internals/helpers/general.d.cts        285.00 B
+DTS dist/internals/helpers/hash.d.cts           171.00 B
+DTS dist/internals/helpers/map.d.cts            111.00 B
+DTS dist/internals/helpers/number.d.cts         98.00 B
+DTS dist/internals/helpers/object.d.cts         1.53 KB
+DTS dist/internals/helpers/prototype.d.cts      346.00 B
+DTS dist/internals/helpers/retry.d.cts          412.00 B
+DTS dist/internals/helpers/retryable.d.cts      1.94 KB
+DTS dist/internals/helpers/stream.d.cts         199.00 B
+DTS dist/internals/helpers/string.d.cts         890.00 B
+DTS dist/internals/helpers/weakRef.d.cts        468.00 B
+DTS dist/tools/database/metadata.d.cts          383.00 B
+DTS dist/tools/database/sql.d.cts               1.27 KB
+DTS dist/tools/search/base.d.cts                1.06 KB
+DTS dist/tools/search/duckDuckGoSearch.d.cts    2.49 KB
+DTS dist/tools/search/googleSearch.d.cts        2.52 KB
+DTS dist/tools/search/wikipedia.d.cts           3.50 KB
+DTS dist/tools/weather/openMeteo.d.cts          3.24 KB
+DTS dist/tools/web/webCrawler.d.cts             2.23 KB
+DTS dist/adapters/langchain/llms/chat.d.cts     3.01 KB
+DTS dist/adapters/langchain/llms/llm.d.cts      2.22 KB
+DTS dist/emitter/types.d.cts                    297.00 B
+DTS dist/emitter/emitter.d.cts                  247.00 B
+DTS dist/serializer/utils.d.cts                 486.00 B
+DTS dist/serializer/serializer.d.cts            200.00 B
+DTS dist/agents/types.d.cts                     686.00 B
+DTS dist/agents/base.d.cts                      564.00 B
+DTS dist/adapters/bam/chatPreset.d.cts          606.00 B
+DTS dist/adapters/bam/chat.d.cts                645.00 B
+DTS dist/adapters/ibm-vllm/chatPreset.d.cts     737.00 B
+DTS dist/adapters/ibm-vllm/chat.d.cts           752.00 B
+DTS dist/adapters/watsonx/chatPreset.d.cts      715.00 B
+DTS dist/adapters/watsonx/chat.d.cts            762.00 B
+DTS dist/agents/bee/runner.d.cts                976.00 B
+DTS dist/agents/bee/parser.d.cts                1010.00 B
+DTS dist/agents/bee/types.d.cts                 1.09 KB
+DTS dist/agents/bee/agent.d.cts                 954.00 B
+DTS dist/emitter-Bcxisicg.d.cts                 3.18 KB
+DTS dist/serializer-Cipq_R7K.d.cts              3.73 KB
+DTS dist/base-CLOHgRYP.d.cts                    2.06 KB
+DTS dist/chat-BZd_mv7w.d.cts                    4.91 KB
+DTS dist/chat-8vUFCWCZ.d.cts                    3.32 KB
+DTS dist/chat-D95AtgRT.d.cts                    3.29 KB
+DTS dist/agent-QQ67Rq-n.d.cts                   7.72 KB
+--- Build complete ---
+--- Running Test ---
+Found repro_script.ts. Executing with 'yarn tsx' from within the project...
+--- Initializing OpenMeteoTool directly. ---
+--- Calling the tool with malformed input. ---
+--- This is expected to throw a ToolInputValidationError. ---
+
+SUCCESS: The script failed with an error as expected.
+Error Type: ToolInputValidationError
+Error Message: The received tool input does not match the expected schema.
+Input Schema: "{"type":"object","properties":{"location":{"anyOf":[{"type":"object","properties":{"name":{"type":"string","minLength":1},"country":{"type":"string"},"language":{"type":"string","default":"English"}},"required":["name"],"additionalProperties":false},{"type":"object","properties":{"latitude":{"type":"number"},"longitude":{"type":"number"}},"required":["latitude","longitude"],"additionalProperties":false}]},"start_date":{"type":"string","format":"date","description":"Start date for the weather forecast in the format YYYY-MM-DD (UTC)"},"end_date":{"type":"string","format":"date","description":"End date for the weather forecast in the format YYYY-MM-DD (UTC)"},"temperature_unit":{"type":"string","enum":["celsius","fahrenheit"],"default":"celsius"}},"required":["location","start_date"],"additionalProperties":false,"$schema":"http://json-schema.org/draft-07/schema#"}"
+Validation Errors: [{"instancePath":"","schemaPath":"#/required","keyword":"required","params":{"missingProperty":"start_date"},"message":"must have required property 'start_date'"}]
+
+Verification successful: The error message confirms the validation bug.
+--- Test script failed (exit code 1) ---
+
+--- Exit code: 0 ---

@@ -1,0 +1,89 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:haystack_8912
+haystack_8912: Pulling from alfin06/agentissue-bench
+59e22667830b: Already exists
+abd846fa1cdb: Already exists
+b7b61708209a: Already exists
+4085babbc570: Already exists
+997acd565dd3: Pulling fs layer
+0a729c5fb84b: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+978dec457830: Pulling fs layer
+7afa173e9791: Pulling fs layer
+2627cc5f965f: Pulling fs layer
+3b8fdd916ad9: Pulling fs layer
+b4a0b04c3233: Pulling fs layer
+41438e02dd0d: Pulling fs layer
+978dec457830: Waiting
+7afa173e9791: Waiting
+2627cc5f965f: Waiting
+b4a0b04c3233: Waiting
+3b8fdd916ad9: Waiting
+41438e02dd0d: Waiting
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+997acd565dd3: Verifying Checksum
+997acd565dd3: Download complete
+0a729c5fb84b: Verifying Checksum
+0a729c5fb84b: Download complete
+2627cc5f965f: Download complete
+3b8fdd916ad9: Verifying Checksum
+3b8fdd916ad9: Download complete
+b4a0b04c3233: Download complete
+978dec457830: Verifying Checksum
+978dec457830: Download complete
+41438e02dd0d: Download complete
+7afa173e9791: Verifying Checksum
+7afa173e9791: Download complete
+997acd565dd3: Pull complete
+0a729c5fb84b: Pull complete
+4f4fb700ef54: Pull complete
+978dec457830: Pull complete
+7afa173e9791: Pull complete
+2627cc5f965f: Pull complete
+3b8fdd916ad9: Pull complete
+b4a0b04c3233: Pull complete
+41438e02dd0d: Pull complete
+Digest: sha256:56161689fc46d31b02794dd64a052d767d6769d70aaf0de54f6c153a932c6f39
+Status: Downloaded newer image for alfin06/agentissue-bench:haystack_8912
+docker.io/alfin06/agentissue-bench:haystack_8912
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:haystack_8912" test_buggy
+=== Testing BUGGY Version (Commit: 296e31c182ac12a22e4ea243e89d2af7873de06c) ===
+--- Running Test for buggy version ---
+Executing reproduction script: python /opt/reproduce.py buggy
+--- Running test for 'buggy' version ---
+--- Initializing OpenAIChatGenerator with tools_strict=True ---
+--- Calling generator.run() to trigger internal schema creation. ---
+
+--- Analyzing the generated tool schema ---
+Generated Schema: {}
+
+✅ BUG REPRODUCED: 'additionalProperties': False is missing in the buggy version as expected.
+✅ BUG SUCCESSFULLY REPRODUCED: The script behaved as expected for the buggy version.
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:haystack_8912" test_fixed
+=== Testing FIXED Version (Commit: 13968cc15ba02c5b3b1c8458f830ccd3df5754de) ===
+--- Running Test for fixed version ---
+Installing fixed version dependencies...
+WARNING: haystack-ai 2.11.0rc0 does not provide the extra 'all'
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 24.0 -> 25.2
+[notice] To update, run: pip install --upgrade pip
+Executing reproduction script: python /opt/reproduce.py fixed
+--- Running test for 'fixed' version ---
+--- Initializing OpenAIChatGenerator with tools_strict=True ---
+--- Calling generator.run() to trigger internal schema creation. ---
+
+--- Analyzing the generated tool schema ---
+Generated Schema: {}
+
+✅ FIX CONFIRMED: 'additionalProperties': False is present in the fixed version as expected.
+✅ FIX CONFIRMED / PATCH SUCCEEDED: The script behaved as expected for the fixed version.
+
+--- Exit code: 0 ---

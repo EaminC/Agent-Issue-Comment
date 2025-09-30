@@ -1,0 +1,66 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:evoninja_504
+evoninja_504: Pulling from alfin06/agentissue-bench
+cd81d20ef38b: Already exists
+f0388f0d5bf1: Already exists
+5d473f760e53: Already exists
+66d32181a1ed: Already exists
+8bbe44aaef83: Already exists
+acf19b5b4431: Already exists
+8a509f11a73e: Already exists
+c225ad70ad07: Already exists
+8a85ab205414: Already exists
+400c155949bc: Already exists
+87007dfe6653: Pulling fs layer
+ecab5c28126c: Pulling fs layer
+265f7ad86126: Pulling fs layer
+265f7ad86126: Verifying Checksum
+265f7ad86126: Download complete
+87007dfe6653: Verifying Checksum
+87007dfe6653: Download complete
+87007dfe6653: Pull complete
+ecab5c28126c: Verifying Checksum
+ecab5c28126c: Download complete
+ecab5c28126c: Pull complete
+265f7ad86126: Pull complete
+Digest: sha256:fecbce2a84049cd377f38104e6e1882b76574f368df9f42da4b3f5a64e892160
+Status: Downloaded newer image for alfin06/agentissue-bench:evoninja_504
+docker.io/alfin06/agentissue-bench:evoninja_504
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:evoninja_504" test_buggy
+node:internal/modules/cjs/loader:1143
+  throw err;
+  ^
+
+Error: Cannot find module '/app/test_buggy'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1140:15)
+    at Module._load (node:internal/modules/cjs/loader:981:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12)
+    at node:internal/main/run_main_module:28:49 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v18.20.7
+
+--- Exit code: 1 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:evoninja_504" test_fixed
+node:internal/modules/cjs/loader:1143
+  throw err;
+  ^
+
+Error: Cannot find module '/app/test_fixed'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1140:15)
+    at Module._load (node:internal/modules/cjs/loader:981:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12)
+    at node:internal/main/run_main_module:28:49 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v18.20.7
+
+--- Exit code: 1 ---

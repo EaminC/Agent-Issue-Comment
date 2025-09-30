@@ -1,0 +1,255 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:agixt_1256
+agixt_1256: Pulling from alfin06/agentissue-bench
+ce1261c6d567: Already exists
+d02c566428bb: Already exists
+6dc114d5e12c: Already exists
+fceec8b8a90e: Already exists
+b64d6277bfa0: Pulling fs layer
+8a9dfb91c304: Pulling fs layer
+eb48f8659db8: Pulling fs layer
+c5c253a97e74: Pulling fs layer
+b62e46b120f0: Pulling fs layer
+4a424f5dd0cd: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+c5c253a97e74: Waiting
+b62e46b120f0: Waiting
+4a424f5dd0cd: Waiting
+4f4fb700ef54: Waiting
+b64d6277bfa0: Verifying Checksum
+b64d6277bfa0: Download complete
+b64d6277bfa0: Pull complete
+c5c253a97e74: Download complete
+b62e46b120f0: Verifying Checksum
+4a424f5dd0cd: Verifying Checksum
+4a424f5dd0cd: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+8a9dfb91c304: Verifying Checksum
+8a9dfb91c304: Download complete
+eb48f8659db8: Verifying Checksum
+eb48f8659db8: Download complete
+8a9dfb91c304: Pull complete
+eb48f8659db8: Pull complete
+c5c253a97e74: Pull complete
+b62e46b120f0: Pull complete
+4a424f5dd0cd: Pull complete
+4f4fb700ef54: Pull complete
+Digest: sha256:03f90fec29007bf52cd7150d3b87a28f518ee5d0b3b8f9c0a4d9881cd8a782c4
+Status: Downloaded newer image for alfin06/agentissue-bench:agixt_1256
+docker.io/alfin06/agentissue-bench:agixt_1256
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:agixt_1256" test_buggy
+=== Testing BUGGY Version (Commit: 40c6642f41e9794309d924b8b0d4cc7e4950345a) ===
+--- Running Test for buggy version ---
+PYTHONPATH set to: /app/source_code_buggy:
+--- Available Python modules in workspace: ---
+./agixt/Chain.py
+./agixt/Agent.py
+./agixt/DB.py
+./agixt/endpoints/Chain.py
+./agixt/endpoints/Agent.py
+Found reproduce.py. Executing with python...
+--- Starting test script for AGiXT Issue #1256 ---
+Python version: 3.10.18 (main, Sep  8 2025, 21:42:39) [GCC 14.2.0]
+Working directory: /app/source_code_buggy
+Python path: ['/opt', '/app/source_code_buggy', '/usr/local/lib/python310.zip', '/usr/local/lib/python3.10', '/usr/local/lib/python3.10/lib-dynload', '/usr/local/lib/python3.10/site-packages']
+Attempting direct import of Agent and Chain...
+Error importing modules: cannot import name 'Agent' from '<unknown module name>' (unknown location)
+Falling back to simulated test...
+--- Setting up a test agent with both a standard command and a chain. ---
+Adding chain: Test Chain
+--- Dummy chain 'my_test_chain' created. ---
+--- Agent 'TestAgent' initialized. ---
+--- Agent configuration saved. It should include 'Standard Command' and 'my_test_chain'. ---
+Reloaded config: {'commands': {'Standard Command': True}}
+
+--- Reloaded agent's enabled commands from the database: ---
+['Standard Command']
+
+--- Verifying Bug ---
+SUCCESS: The bug is reproduced.
+The 'my_test_chain' command was NOT found in the reloaded configuration.
+✅ BUG SUCCESSFULLY REPRODUCED: Chain commands not properly saving
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:agixt_1256" test_fixed
+=== Testing FIXED Version (Commit: e04a69deb986cb41827b57c23d8cc4a9867b8cbc) ===
+--- Running Test for fixed version ---
+--- Installing fixed version of AGiXT ---
+Found existing installation: agixt 1.6.16
+Uninstalling agixt-1.6.16:
+  Successfully uninstalled agixt-1.6.16
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+Obtaining file:///app/source_code_fixed
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: stripe==10.10.0 in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (10.10.0)
+Requirement already satisfied: PyExecJS in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (1.5.1)
+Requirement already satisfied: google-auth==2.34.0 in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (2.34.0)
+Requirement already satisfied: arxiv==1.4.8 in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (1.4.8)
+Requirement already satisfied: safeexecute==0.0.9 in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (0.0.9)
+Requirement already satisfied: google-api-python-client==2.144.0 in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (2.144.0)
+Requirement already satisfied: openpyxl==3.1.5 in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (3.1.5)
+Requirement already satisfied: undetected_chromedriver in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (3.5.5)
+Requirement already satisfied: faster-whisper==1.0.3 in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (1.0.3)
+Requirement already satisfied: discord==2.3.2 in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (2.3.2)
+Requirement already satisfied: pyotp in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (2.9.0)
+Requirement already satisfied: python-multipart==0.0.9 in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (0.0.9)
+Requirement already satisfied: agixtsdk==0.0.71 in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (0.0.71)
+Requirement already satisfied: PyGithub==2.4.0 in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (2.4.0)
+Requirement already satisfied: anthropic==0.34.2 in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (0.34.2)
+Requirement already satisfied: google-generativeai==0.7.2 in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (0.7.2)
+Requirement already satisfied: openai==1.44.0 in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (1.44.0)
+Requirement already satisfied: uvicorn in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (0.37.0)
+Requirement already satisfied: platformdirs in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (4.4.0)
+Requirement already satisfied: youtube-transcript-api==0.6.2 in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (0.6.2)
+Requirement already satisfied: g4f==0.2.6.2 in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (0.2.6.2)
+Requirement already satisfied: google-auth-oauthlib in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (1.2.2)
+Requirement already satisfied: curl_cffi in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (0.13.0)
+Requirement already satisfied: fastapi in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (0.117.1)
+Requirement already satisfied: ngrok==1.4.0 in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (1.4.0)
+Requirement already satisfied: nest_asyncio in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (1.6.0)
+Requirement already satisfied: pytz in /usr/local/lib/python3.10/site-packages (from agixt==1.6.16) (2025.2)
+Requirement already satisfied: pydantic in /usr/local/lib/python3.10/site-packages (from agixtsdk==0.0.71->agixt==1.6.16) (2.11.9)
+Requirement already satisfied: tiktoken in /usr/local/lib/python3.10/site-packages (from agixtsdk==0.0.71->agixt==1.6.16) (0.11.0)
+Requirement already satisfied: requests in /usr/local/lib/python3.10/site-packages (from agixtsdk==0.0.71->agixt==1.6.16) (2.32.5)
+Requirement already satisfied: pydub in /usr/local/lib/python3.10/site-packages (from agixtsdk==0.0.71->agixt==1.6.16) (0.25.1)
+Requirement already satisfied: jiter<1,>=0.4.0 in /usr/local/lib/python3.10/site-packages (from anthropic==0.34.2->agixt==1.6.16) (0.11.0)
+Requirement already satisfied: sniffio in /usr/local/lib/python3.10/site-packages (from anthropic==0.34.2->agixt==1.6.16) (1.3.1)
+Requirement already satisfied: httpx<1,>=0.23.0 in /usr/local/lib/python3.10/site-packages (from anthropic==0.34.2->agixt==1.6.16) (0.28.1)
+Requirement already satisfied: anyio<5,>=3.5.0 in /usr/local/lib/python3.10/site-packages (from anthropic==0.34.2->agixt==1.6.16) (4.11.0)
+Requirement already satisfied: distro<2,>=1.7.0 in /usr/local/lib/python3.10/site-packages (from anthropic==0.34.2->agixt==1.6.16) (1.9.0)
+Requirement already satisfied: tokenizers>=0.13.0 in /usr/local/lib/python3.10/site-packages (from anthropic==0.34.2->agixt==1.6.16) (0.22.1)
+Requirement already satisfied: typing-extensions<5,>=4.7 in /usr/local/lib/python3.10/site-packages (from anthropic==0.34.2->agixt==1.6.16) (4.14.1)
+Requirement already satisfied: feedparser in /usr/local/lib/python3.10/site-packages (from arxiv==1.4.8->agixt==1.6.16) (6.0.12)
+Requirement already satisfied: discord.py>=2.3.2 in /usr/local/lib/python3.10/site-packages (from discord==2.3.2->agixt==1.6.16) (2.6.3)
+Requirement already satisfied: huggingface-hub>=0.13 in /usr/local/lib/python3.10/site-packages (from faster-whisper==1.0.3->agixt==1.6.16) (0.35.1)
+Requirement already satisfied: onnxruntime<2,>=1.14 in /usr/local/lib/python3.10/site-packages (from faster-whisper==1.0.3->agixt==1.6.16) (1.22.1)
+Requirement already satisfied: ctranslate2<5,>=4.0 in /usr/local/lib/python3.10/site-packages (from faster-whisper==1.0.3->agixt==1.6.16) (4.6.0)
+Requirement already satisfied: av<13,>=11.0 in /usr/local/lib/python3.10/site-packages (from faster-whisper==1.0.3->agixt==1.6.16) (12.3.0)
+Requirement already satisfied: aiohttp in /usr/local/lib/python3.10/site-packages (from g4f==0.2.6.2->agixt==1.6.16) (3.12.15)
+Requirement already satisfied: brotli in /usr/local/lib/python3.10/site-packages (from g4f==0.2.6.2->agixt==1.6.16) (1.1.0)
+Requirement already satisfied: httplib2<1.dev0,>=0.19.0 in /usr/local/lib/python3.10/site-packages (from google-api-python-client==2.144.0->agixt==1.6.16) (0.31.0)
+Requirement already satisfied: google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0.dev0,>=1.31.5 in /usr/local/lib/python3.10/site-packages (from google-api-python-client==2.144.0->agixt==1.6.16) (2.25.1)
+Requirement already satisfied: google-auth-httplib2<1.0.0,>=0.2.0 in /usr/local/lib/python3.10/site-packages (from google-api-python-client==2.144.0->agixt==1.6.16) (0.2.0)
+Requirement already satisfied: uritemplate<5,>=3.0.1 in /usr/local/lib/python3.10/site-packages (from google-api-python-client==2.144.0->agixt==1.6.16) (4.2.0)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /usr/local/lib/python3.10/site-packages (from google-auth==2.34.0->agixt==1.6.16) (0.4.2)
+Requirement already satisfied: cachetools<6.0,>=2.0.0 in /usr/local/lib/python3.10/site-packages (from google-auth==2.34.0->agixt==1.6.16) (5.5.2)
+Requirement already satisfied: rsa<5,>=3.1.4 in /usr/local/lib/python3.10/site-packages (from google-auth==2.34.0->agixt==1.6.16) (4.9.1)
+Requirement already satisfied: protobuf in /usr/local/lib/python3.10/site-packages (from google-generativeai==0.7.2->agixt==1.6.16) (4.25.8)
+Requirement already satisfied: google-ai-generativelanguage==0.6.6 in /usr/local/lib/python3.10/site-packages (from google-generativeai==0.7.2->agixt==1.6.16) (0.6.6)
+Requirement already satisfied: tqdm in /usr/local/lib/python3.10/site-packages (from google-generativeai==0.7.2->agixt==1.6.16) (4.67.1)
+Requirement already satisfied: et-xmlfile in /usr/local/lib/python3.10/site-packages (from openpyxl==3.1.5->agixt==1.6.16) (2.0.0)
+Requirement already satisfied: pyjwt[crypto]>=2.4.0 in /usr/local/lib/python3.10/site-packages (from PyGithub==2.4.0->agixt==1.6.16) (2.10.1)
+Requirement already satisfied: urllib3>=1.26.0 in /usr/local/lib/python3.10/site-packages (from PyGithub==2.4.0->agixt==1.6.16) (2.5.0)
+Requirement already satisfied: Deprecated in /usr/local/lib/python3.10/site-packages (from PyGithub==2.4.0->agixt==1.6.16) (1.2.18)
+Requirement already satisfied: pynacl>=1.4.0 in /usr/local/lib/python3.10/site-packages (from PyGithub==2.4.0->agixt==1.6.16) (1.6.0)
+Requirement already satisfied: docker in /usr/local/lib/python3.10/site-packages (from safeexecute==0.0.9->agixt==1.6.16) (7.1.0)
+Requirement already satisfied: proto-plus<2.0.0dev,>=1.22.3 in /usr/local/lib/python3.10/site-packages (from google-ai-generativelanguage==0.6.6->google-generativeai==0.7.2->agixt==1.6.16) (1.26.1)
+Requirement already satisfied: cffi>=1.12.0 in /usr/local/lib/python3.10/site-packages (from curl_cffi->agixt==1.6.16) (2.0.0)
+Requirement already satisfied: certifi>=2024.2.2 in /usr/local/lib/python3.10/site-packages (from curl_cffi->agixt==1.6.16) (2025.8.3)
+Requirement already satisfied: starlette<0.49.0,>=0.40.0 in /usr/local/lib/python3.10/site-packages (from fastapi->agixt==1.6.16) (0.48.0)
+Requirement already satisfied: requests-oauthlib>=0.7.0 in /usr/local/lib/python3.10/site-packages (from google-auth-oauthlib->agixt==1.6.16) (2.0.0)
+Requirement already satisfied: six>=1.10.0 in /usr/local/lib/python3.10/site-packages (from PyExecJS->agixt==1.6.16) (1.17.0)
+Requirement already satisfied: selenium>=4.9.0 in /usr/local/lib/python3.10/site-packages (from undetected_chromedriver->agixt==1.6.16) (4.35.0)
+Requirement already satisfied: websockets in /usr/local/lib/python3.10/site-packages (from undetected_chromedriver->agixt==1.6.16) (15.0.1)
+Requirement already satisfied: click>=7.0 in /usr/local/lib/python3.10/site-packages (from uvicorn->agixt==1.6.16) (8.3.0)
+Requirement already satisfied: h11>=0.8 in /usr/local/lib/python3.10/site-packages (from uvicorn->agixt==1.6.16) (0.16.0)
+Requirement already satisfied: exceptiongroup>=1.0.2 in /usr/local/lib/python3.10/site-packages (from anyio<5,>=3.5.0->anthropic==0.34.2->agixt==1.6.16) (1.3.0)
+Requirement already satisfied: idna>=2.8 in /usr/local/lib/python3.10/site-packages (from anyio<5,>=3.5.0->anthropic==0.34.2->agixt==1.6.16) (3.10)
+Requirement already satisfied: pycparser in /usr/local/lib/python3.10/site-packages (from cffi>=1.12.0->curl_cffi->agixt==1.6.16) (2.23)
+Requirement already satisfied: pyyaml<7,>=5.3 in /usr/local/lib/python3.10/site-packages (from ctranslate2<5,>=4.0->faster-whisper==1.0.3->agixt==1.6.16) (6.0.2)
+Requirement already satisfied: setuptools in /usr/local/lib/python3.10/site-packages (from ctranslate2<5,>=4.0->faster-whisper==1.0.3->agixt==1.6.16) (65.5.1)
+Requirement already satisfied: numpy in /usr/local/lib/python3.10/site-packages (from ctranslate2<5,>=4.0->faster-whisper==1.0.3->agixt==1.6.16) (2.2.6)
+Requirement already satisfied: aiosignal>=1.4.0 in /usr/local/lib/python3.10/site-packages (from aiohttp->g4f==0.2.6.2->agixt==1.6.16) (1.4.0)
+Requirement already satisfied: async-timeout<6.0,>=4.0 in /usr/local/lib/python3.10/site-packages (from aiohttp->g4f==0.2.6.2->agixt==1.6.16) (5.0.1)
+Requirement already satisfied: attrs>=17.3.0 in /usr/local/lib/python3.10/site-packages (from aiohttp->g4f==0.2.6.2->agixt==1.6.16) (25.3.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in /usr/local/lib/python3.10/site-packages (from aiohttp->g4f==0.2.6.2->agixt==1.6.16) (6.6.4)
+Requirement already satisfied: yarl<2.0,>=1.17.0 in /usr/local/lib/python3.10/site-packages (from aiohttp->g4f==0.2.6.2->agixt==1.6.16) (1.20.1)
+Requirement already satisfied: propcache>=0.2.0 in /usr/local/lib/python3.10/site-packages (from aiohttp->g4f==0.2.6.2->agixt==1.6.16) (0.3.2)
+Requirement already satisfied: aiohappyeyeballs>=2.5.0 in /usr/local/lib/python3.10/site-packages (from aiohttp->g4f==0.2.6.2->agixt==1.6.16) (2.6.1)
+Requirement already satisfied: frozenlist>=1.1.1 in /usr/local/lib/python3.10/site-packages (from aiohttp->g4f==0.2.6.2->agixt==1.6.16) (1.7.0)
+Requirement already satisfied: googleapis-common-protos<2.0.0,>=1.56.2 in /usr/local/lib/python3.10/site-packages (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0.dev0,>=1.31.5->google-api-python-client==2.144.0->agixt==1.6.16) (1.70.0)
+Requirement already satisfied: pyparsing<4,>=3.0.4 in /usr/local/lib/python3.10/site-packages (from httplib2<1.dev0,>=0.19.0->google-api-python-client==2.144.0->agixt==1.6.16) (3.2.5)
+Requirement already satisfied: httpcore==1.* in /usr/local/lib/python3.10/site-packages (from httpx<1,>=0.23.0->anthropic==0.34.2->agixt==1.6.16) (1.0.9)
+Requirement already satisfied: filelock in /usr/local/lib/python3.10/site-packages (from huggingface-hub>=0.13->faster-whisper==1.0.3->agixt==1.6.16) (3.19.1)
+Requirement already satisfied: hf-xet<2.0.0,>=1.1.3 in /usr/local/lib/python3.10/site-packages (from huggingface-hub>=0.13->faster-whisper==1.0.3->agixt==1.6.16) (1.1.10)
+Requirement already satisfied: packaging>=20.9 in /usr/local/lib/python3.10/site-packages (from huggingface-hub>=0.13->faster-whisper==1.0.3->agixt==1.6.16) (25.0)
+Requirement already satisfied: fsspec>=2023.5.0 in /usr/local/lib/python3.10/site-packages (from huggingface-hub>=0.13->faster-whisper==1.0.3->agixt==1.6.16) (2025.9.0)
+Requirement already satisfied: sympy in /usr/local/lib/python3.10/site-packages (from onnxruntime<2,>=1.14->faster-whisper==1.0.3->agixt==1.6.16) (1.14.0)
+Requirement already satisfied: flatbuffers in /usr/local/lib/python3.10/site-packages (from onnxruntime<2,>=1.14->faster-whisper==1.0.3->agixt==1.6.16) (25.9.23)
+Requirement already satisfied: coloredlogs in /usr/local/lib/python3.10/site-packages (from onnxruntime<2,>=1.14->faster-whisper==1.0.3->agixt==1.6.16) (15.0.1)
+Requirement already satisfied: pyasn1<0.7.0,>=0.6.1 in /usr/local/lib/python3.10/site-packages (from pyasn1-modules>=0.2.1->google-auth==2.34.0->agixt==1.6.16) (0.6.1)
+Requirement already satisfied: typing-inspection>=0.4.0 in /usr/local/lib/python3.10/site-packages (from pydantic->agixtsdk==0.0.71->agixt==1.6.16) (0.4.1)
+Requirement already satisfied: annotated-types>=0.6.0 in /usr/local/lib/python3.10/site-packages (from pydantic->agixtsdk==0.0.71->agixt==1.6.16) (0.7.0)
+Requirement already satisfied: pydantic-core==2.33.2 in /usr/local/lib/python3.10/site-packages (from pydantic->agixtsdk==0.0.71->agixt==1.6.16) (2.33.2)
+Requirement already satisfied: cryptography>=3.4.0 in /usr/local/lib/python3.10/site-packages (from pyjwt[crypto]>=2.4.0->PyGithub==2.4.0->agixt==1.6.16) (46.0.1)
+Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/lib/python3.10/site-packages (from requests->agixtsdk==0.0.71->agixt==1.6.16) (3.4.3)
+Requirement already satisfied: oauthlib>=3.0.0 in /usr/local/lib/python3.10/site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib->agixt==1.6.16) (3.3.1)
+Requirement already satisfied: trio~=0.30.0 in /usr/local/lib/python3.10/site-packages (from selenium>=4.9.0->undetected_chromedriver->agixt==1.6.16) (0.30.0)
+Requirement already satisfied: trio-websocket~=0.12.2 in /usr/local/lib/python3.10/site-packages (from selenium>=4.9.0->undetected_chromedriver->agixt==1.6.16) (0.12.2)
+Requirement already satisfied: websocket-client~=1.8.0 in /usr/local/lib/python3.10/site-packages (from selenium>=4.9.0->undetected_chromedriver->agixt==1.6.16) (1.8.0)
+Requirement already satisfied: wrapt<2,>=1.10 in /usr/local/lib/python3.10/site-packages (from Deprecated->PyGithub==2.4.0->agixt==1.6.16) (1.17.3)
+Requirement already satisfied: sgmllib3k in /usr/local/lib/python3.10/site-packages (from feedparser->arxiv==1.4.8->agixt==1.6.16) (1.0.0)
+Requirement already satisfied: regex>=2022.1.18 in /usr/local/lib/python3.10/site-packages (from tiktoken->agixtsdk==0.0.71->agixt==1.6.16) (2025.9.18)
+Requirement already satisfied: grpcio-status<2.0.0,>=1.33.2 in /usr/local/lib/python3.10/site-packages (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0.dev0,>=1.31.5->google-api-python-client==2.144.0->agixt==1.6.16) (1.62.3)
+Requirement already satisfied: grpcio<2.0.0,>=1.33.2 in /usr/local/lib/python3.10/site-packages (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0.dev0,>=1.31.5->google-api-python-client==2.144.0->agixt==1.6.16) (1.75.0)
+Requirement already satisfied: sortedcontainers in /usr/local/lib/python3.10/site-packages (from trio~=0.30.0->selenium>=4.9.0->undetected_chromedriver->agixt==1.6.16) (2.4.0)
+Requirement already satisfied: outcome in /usr/local/lib/python3.10/site-packages (from trio~=0.30.0->selenium>=4.9.0->undetected_chromedriver->agixt==1.6.16) (1.3.0.post0)
+Requirement already satisfied: wsproto>=0.14 in /usr/local/lib/python3.10/site-packages (from trio-websocket~=0.12.2->selenium>=4.9.0->undetected_chromedriver->agixt==1.6.16) (1.2.0)
+Requirement already satisfied: pysocks!=1.5.7,<2.0,>=1.5.6 in /usr/local/lib/python3.10/site-packages (from urllib3>=1.26.0->PyGithub==2.4.0->agixt==1.6.16) (1.7.1)
+Requirement already satisfied: humanfriendly>=9.1 in /usr/local/lib/python3.10/site-packages (from coloredlogs->onnxruntime<2,>=1.14->faster-whisper==1.0.3->agixt==1.6.16) (10.0)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /usr/local/lib/python3.10/site-packages (from sympy->onnxruntime<2,>=1.14->faster-whisper==1.0.3->agixt==1.6.16) (1.3.0)
+Building wheels for collected packages: agixt
+  Building editable for agixt (pyproject.toml): started
+  Building editable for agixt (pyproject.toml): finished with status 'done'
+  Created wheel for agixt: filename=agixt-1.6.16-0.editable-py3-none-any.whl size=10973 sha256=bf2990de4d179e3c5ca1d9bb28a69b1967e3393a12b02d9f830a78567e983d33
+  Stored in directory: /tmp/pip-ephem-wheel-cache-nkc7hpev/wheels/2f/b2/f8/d257362fdf23425fea2c93b7eeac070626228e0cdeee3b2b8e
+Successfully built agixt
+Installing collected packages: agixt
+Successfully installed agixt-1.6.16
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 23.0.1 -> 25.2
+[notice] To update, run: pip install --upgrade pip
+PYTHONPATH set to: /app/source_code_fixed:
+--- Available Python modules in workspace: ---
+./agixt/Chain.py
+./agixt/Agent.py
+./agixt/DB.py
+./agixt/endpoints/Chain.py
+./agixt/endpoints/Agent.py
+Found reproduce.py. Executing with python...
+--- Starting test script for AGiXT Issue #1256 ---
+Python version: 3.10.18 (main, Sep  8 2025, 21:42:39) [GCC 14.2.0]
+Working directory: /app/source_code_fixed
+Python path: ['/opt', '/app/source_code_fixed', '/usr/local/lib/python310.zip', '/usr/local/lib/python3.10', '/usr/local/lib/python3.10/lib-dynload', '/usr/local/lib/python3.10/site-packages']
+Attempting direct import of Agent and Chain...
+Error importing modules: cannot import name 'Agent' from '<unknown module name>' (unknown location)
+Falling back to simulated test...
+--- Setting up a test agent with both a standard command and a chain. ---
+Adding chain: Test Chain
+--- Dummy chain 'my_test_chain' created. ---
+--- Agent 'TestAgent' initialized. ---
+--- Agent configuration saved. It should include 'Standard Command' and 'my_test_chain'. ---
+Reloaded config: {'commands': {'Standard Command': True}}
+
+--- Reloaded agent's enabled commands from the database: ---
+['Standard Command']
+
+--- Verifying Bug ---
+SUCCESS: The bug is reproduced.
+The 'my_test_chain' command was NOT found in the reloaded configuration.
+✅ FIX CONFIRMED: Chain commands now properly save
+
+--- Exit code: 0 ---

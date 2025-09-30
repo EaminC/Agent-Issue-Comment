@@ -1,0 +1,29 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:camel_1273
+camel_1273: Pulling from alfin06/agentissue-bench
+d2eb42b4a5eb: Already exists
+c2ba682189ed: Already exists
+1fc11db7aa34: Already exists
+baa1d1694ec8: Pulling fs layer
+baa1d1694ec8: Verifying Checksum
+baa1d1694ec8: Download complete
+baa1d1694ec8: Pull complete
+Digest: sha256:46e6b3b284d8c2e55ec79c97d4ed328f1bb3618eae66a540ee06fae3649104c0
+Status: Downloaded newer image for alfin06/agentissue-bench:camel_1273
+docker.io/alfin06/agentissue-bench:camel_1273
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:camel_1273" test_buggy
+docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: exec: "test_buggy": executable file not found in $PATH: unknown
+
+Run 'docker run --help' for more information
+
+--- Exit code: 127 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:camel_1273" test_fixed
+docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: exec: "test_fixed": executable file not found in $PATH: unknown
+
+Run 'docker run --help' for more information
+
+--- Exit code: 127 ---

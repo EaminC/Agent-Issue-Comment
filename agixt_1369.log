@@ -1,0 +1,127 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:agixt_1369
+agixt_1369: Pulling from alfin06/agentissue-bench
+ce1261c6d567: Already exists
+d02c566428bb: Already exists
+6dc114d5e12c: Already exists
+fceec8b8a90e: Already exists
+44c86378db9e: Pulling fs layer
+2111eca54cb2: Pulling fs layer
+325ebc4c333c: Pulling fs layer
+faeb6365330a: Pulling fs layer
+15613f544063: Pulling fs layer
+c4f0222205b7: Pulling fs layer
+b8c7f029a8f2: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+faeb6365330a: Waiting
+15613f544063: Waiting
+c4f0222205b7: Waiting
+b8c7f029a8f2: Waiting
+4f4fb700ef54: Waiting
+44c86378db9e: Verifying Checksum
+44c86378db9e: Download complete
+44c86378db9e: Pull complete
+2111eca54cb2: Verifying Checksum
+2111eca54cb2: Download complete
+15613f544063: Verifying Checksum
+15613f544063: Download complete
+c4f0222205b7: Download complete
+b8c7f029a8f2: Download complete
+4f4fb700ef54: Download complete
+faeb6365330a: Verifying Checksum
+faeb6365330a: Download complete
+2111eca54cb2: Pull complete
+325ebc4c333c: Verifying Checksum
+325ebc4c333c: Download complete
+325ebc4c333c: Pull complete
+faeb6365330a: Pull complete
+15613f544063: Pull complete
+c4f0222205b7: Pull complete
+b8c7f029a8f2: Pull complete
+4f4fb700ef54: Pull complete
+Digest: sha256:6deb2cc5ab46b6a18d0e37e781e4e109fdf23792ef9884a1e9c798cd422cd314
+Status: Downloaded newer image for alfin06/agentissue-bench:agixt_1369
+docker.io/alfin06/agentissue-bench:agixt_1369
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:agixt_1369" test_buggy
+=== Testing BUGGY Version (Commit: ) ===
+--- Running Test for buggy version ---
+Testing buggy version from commit: 89c1edcd8ca26fe644b1b09c6df03d7496f1e7b5
+Checking for chain name validation in Chain.py...
+Running direct test script for buggy version...
+
+=== Testing AGiXT Issue #1369 - Empty Chain Name Validation ===
+Version: BUGGY
+============================================================
+Searching for chain-related files in buggy version...
+Found 2 chain-related files: ['Chain.py', 'Chain.py']
+
+Examining file: Chain.py
+
+Found potential chain creation method in Chain.py:
+--------------------------------
+            # chain_list.append(chain.name)
+            session.close()
+            return chain_list
+    
+        
+
+    Lines with chain_name references:
+    >>>         chain = ChainDB(name=chain_name, user_id=self.user_id)
+
+Examining file: Chain.py
+
+BUG CONFIRMED: No validation for empty chain name in buggy version
+This allows empty chain names to be created, causing validation errors later.
+
+=== Test Summary ===
+✓ Bug successfully reproduced: Empty chain names are accepted
+
+--- Exit code: 1 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:agixt_1369" test_fixed
+=== Testing FIXED Version (Commit: ) ===
+--- Running Test for fixed version ---
+Testing fixed version from commit: 6aa959b7f8cf3b7349958b57bc616fd734e393c0
+Checking for chain name validation in Chain.py...
+Running direct test script for fixed version...
+
+=== Testing AGiXT Issue #1369 - Empty Chain Name Validation ===
+Version: FIXED
+============================================================
+Searching for chain-related files in fixed version...
+Found 2 chain-related files: ['Chain.py', 'Chain.py']
+
+Examining file: Chain.py
+
+Found potential chain creation method in Chain.py:
+--------------------------------
+            # chain_list.append(chain.name)
+            session.close()
+            return chain_list
+    
+        
+
+    Lines with chain_name references:
+    >>>         chain = ChainDB(name=chain_name, user_id=self.user_id)
+
+Examining file: Chain.py
+
+Looking for validation in API endpoints...
+Found 11 endpoint files
+
+Examining chain endpoint file: Chain.py
+
+Found endpoint function for chains
+Found validation in endpoint function: if\s+chain_name\s*==\s*[\'"][\'"]\s*:
+
+FIX CONFIRMED: Found validation for empty chain name in fixed version
+The code now properly validates that chain names are not empty.
+
+=== Test Summary ===
+✓ Fix successfully verified: Empty chain names are now rejected
+✅ FIX CONFIRMED: Empty chain names are rejected in fixed version
+
+--- Exit code: 0 ---

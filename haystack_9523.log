@@ -1,0 +1,113 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:haystack_9523
+haystack_9523: Pulling from alfin06/agentissue-bench
+59e22667830b: Already exists
+abd846fa1cdb: Already exists
+b7b61708209a: Already exists
+4085babbc570: Already exists
+8dbd9a481430: Pulling fs layer
+836c494c140f: Pulling fs layer
+30d7b06174b9: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+caeac4e5641e: Pulling fs layer
+e46e1dc150da: Pulling fs layer
+4c474057373d: Pulling fs layer
+3164c9b4def7: Pulling fs layer
+9f4c836ee19c: Pulling fs layer
+ac0156eb94dc: Pulling fs layer
+4f4fb700ef54: Waiting
+caeac4e5641e: Waiting
+4c474057373d: Waiting
+3164c9b4def7: Waiting
+ac0156eb94dc: Waiting
+e46e1dc150da: Waiting
+9f4c836ee19c: Waiting
+8dbd9a481430: Verifying Checksum
+8dbd9a481430: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+caeac4e5641e: Verifying Checksum
+caeac4e5641e: Download complete
+836c494c140f: Verifying Checksum
+836c494c140f: Download complete
+30d7b06174b9: Verifying Checksum
+30d7b06174b9: Download complete
+4c474057373d: Verifying Checksum
+4c474057373d: Download complete
+3164c9b4def7: Verifying Checksum
+3164c9b4def7: Download complete
+9f4c836ee19c: Download complete
+ac0156eb94dc: Download complete
+e46e1dc150da: Verifying Checksum
+e46e1dc150da: Download complete
+8dbd9a481430: Pull complete
+836c494c140f: Pull complete
+30d7b06174b9: Pull complete
+4f4fb700ef54: Pull complete
+caeac4e5641e: Pull complete
+e46e1dc150da: Pull complete
+4c474057373d: Pull complete
+3164c9b4def7: Pull complete
+9f4c836ee19c: Pull complete
+ac0156eb94dc: Pull complete
+Digest: sha256:d7617a1ce0d8987157c3814097b04ace61db5de4bd61211ac531925a91f5e49d
+Status: Downloaded newer image for alfin06/agentissue-bench:haystack_9523
+docker.io/alfin06/agentissue-bench:haystack_9523
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:haystack_9523" test_buggy
+=== Testing BUGGY Version (Commit: 67a8f1249be45422662d9e661bb558a9adde5e8c) ===
+--- Running Test for buggy version ---
+Executing reproduction script: python /opt/reproduce.py buggy
+--- Running test for 'buggy' version ---
+--- Setting up pipeline with the agent and tools ---
+Traceback (most recent call last):
+  File "/opt/reproduce.py", line 87, in <module>
+    exit_code = test_deserialization_bug(version_arg)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/reproduce.py", line 27, in test_deserialization_bug
+    component=SerperDevWebSearch(),
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/app/source_code_buggy/haystack/core/component/component.py", line 299, in __call__
+    instance = super().__call__(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/source_code_buggy/haystack/components/websearch/serper_dev.py", line 65, in __init__
+    _ = self.api_key.resolve_value()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/source_code_buggy/haystack/utils/auth.py", line 205, in resolve_value
+    raise ValueError(f"None of the following authentication environment variables are set: {self._env_vars}")
+ValueError: None of the following authentication environment variables are set: ('SERPERDEV_API_KEY',)
+
+--- Exit code: 1 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:haystack_9523" test_fixed
+=== Testing FIXED Version (Commit: 3784889e5d62513fe4088b2269ad6dc87fc43933) ===
+--- Running Test for fixed version ---
+Installing fixed version dependencies...
+WARNING: haystack-ai 2.15.0rc0 does not provide the extra 'all'
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 24.0 -> 25.2
+[notice] To update, run: pip install --upgrade pip
+Executing reproduction script: python /opt/reproduce.py fixed
+Traceback (most recent call last):
+  File "/opt/reproduce.py", line 87, in <module>
+    exit_code = test_deserialization_bug(version_arg)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/reproduce.py", line 27, in test_deserialization_bug
+    component=SerperDevWebSearch(),
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/app/source_code_fixed/haystack/core/component/component.py", line 299, in __call__
+--- Running test for 'fixed' version ---
+--- Setting up pipeline with the agent and tools ---
+    instance = super().__call__(*args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/source_code_fixed/haystack/components/websearch/serper_dev.py", line 65, in __init__
+    _ = self.api_key.resolve_value()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/app/source_code_fixed/haystack/utils/auth.py", line 205, in resolve_value
+    raise ValueError(f"None of the following authentication environment variables are set: {self._env_vars}")
+ValueError: None of the following authentication environment variables are set: ('SERPERDEV_API_KEY',)
+
+--- Exit code: 1 ---

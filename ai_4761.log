@@ -1,0 +1,83 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:ai_4761
+ai_4761: Pulling from alfin06/agentissue-bench
+7128a879011b: Already exists
+ef8dd4820a78: Already exists
+25a2c9fb3ef1: Already exists
+5670e6facdd7: Already exists
+9e83d7fdf3b4: Already exists
+97fa6e498c93: Pulling fs layer
+a00b7abd1f26: Pulling fs layer
+d25774aae608: Pulling fs layer
+df86c002431e: Pulling fs layer
+d755066c90dd: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+61c4188a8fd8: Pulling fs layer
+4d09623af770: Pulling fs layer
+4f4fb700ef54: Waiting
+61c4188a8fd8: Waiting
+4d09623af770: Waiting
+df86c002431e: Waiting
+d755066c90dd: Waiting
+df86c002431e: Download complete
+d755066c90dd: Verifying Checksum
+d755066c90dd: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+61c4188a8fd8: Verifying Checksum
+61c4188a8fd8: Download complete
+97fa6e498c93: Verifying Checksum
+97fa6e498c93: Download complete
+a00b7abd1f26: Verifying Checksum
+a00b7abd1f26: Download complete
+4d09623af770: Verifying Checksum
+4d09623af770: Download complete
+97fa6e498c93: Pull complete
+a00b7abd1f26: Pull complete
+d25774aae608: Pull complete
+df86c002431e: Pull complete
+d755066c90dd: Pull complete
+4f4fb700ef54: Pull complete
+61c4188a8fd8: Pull complete
+4d09623af770: Pull complete
+Digest: sha256:45dae2f559c8b8afc9401f802654989d92f26a822009371e37089b11b2deaabc
+Status: Downloaded newer image for alfin06/agentissue-bench:ai_4761
+docker.io/alfin06/agentissue-bench:ai_4761
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:ai_4761" test_buggy
+=== Testing BUGGY Version (Commit: a4a9bc80c20fbe434c479567cf234eaa822032dc) ===
+Checking out buggy commit...
+HEAD is now at a4a9bc80c feat (docs): add agent tools to list of toolkits (#4707)
+--- Running Test ---
+Found repro_script.js. Executing with node...
+--- This test will now directly trigger the DataCloneError. ---
+--- Attempting to clone a reactive Vue Proxy object... ---
+
+SUCCESS: The script failed with an error as expected.
+Error Type: DataCloneError
+Error Message: [object Array] could not be cloned.
+
+Verification successful: The error is a DataCloneError, which confirms the bug.
+--- Test script failed (exit code 1) ---
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:ai_4761" test_fixed
+=== Testing FIXED Version (Commit: bcc61d49f40b4a91a68b9c8dae96b623480e171d) ===
+Previous HEAD position was a4a9bc80c feat (docs): add agent tools to list of toolkits (#4707)
+HEAD is now at bcc61d49f feat (ui): introduce message parts for useChat (#4670)
+--- Running Test ---
+Found repro_script.js. Executing with node...
+--- This test will now directly trigger the DataCloneError. ---
+--- Attempting to clone a reactive Vue Proxy object... ---
+
+SUCCESS: The script failed with an error as expected.
+Error Type: DataCloneError
+Error Message: [object Array] could not be cloned.
+
+Verification successful: The error is a DataCloneError, which confirms the bug.
+--- Test script failed (exit code 1) ---
+
+--- Exit code: 0 ---

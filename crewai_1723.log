@@ -1,0 +1,75 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:crewai_1723
+crewai_1723: Pulling from alfin06/agentissue-bench
+59e22667830b: Already exists
+abd846fa1cdb: Already exists
+b7b61708209a: Already exists
+4085babbc570: Already exists
+7bc068af8831: Pulling fs layer
+64f5634676e9: Pulling fs layer
+ebf2e5fc925e: Pulling fs layer
+f1ad6458775f: Pulling fs layer
+a44fccd12767: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+c6141b725a2f: Pulling fs layer
+510fc9f2d01d: Pulling fs layer
+53cb375961e5: Pulling fs layer
+f14567668d74: Pulling fs layer
+3593b321cc92: Pulling fs layer
+4f4fb700ef54: Waiting
+f14567668d74: Waiting
+c6141b725a2f: Waiting
+3593b321cc92: Waiting
+510fc9f2d01d: Waiting
+53cb375961e5: Waiting
+f1ad6458775f: Waiting
+f1ad6458775f: Verifying Checksum
+f1ad6458775f: Download complete
+7bc068af8831: Verifying Checksum
+7bc068af8831: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+ebf2e5fc925e: Verifying Checksum
+ebf2e5fc925e: Download complete
+510fc9f2d01d: Verifying Checksum
+510fc9f2d01d: Download complete
+a44fccd12767: Verifying Checksum
+a44fccd12767: Download complete
+53cb375961e5: Verifying Checksum
+53cb375961e5: Download complete
+f14567668d74: Download complete
+3593b321cc92: Download complete
+c6141b725a2f: Verifying Checksum
+c6141b725a2f: Download complete
+7bc068af8831: Pull complete
+64f5634676e9: Pull complete
+ebf2e5fc925e: Pull complete
+f1ad6458775f: Pull complete
+a44fccd12767: Pull complete
+4f4fb700ef54: Pull complete
+c6141b725a2f: Pull complete
+510fc9f2d01d: Pull complete
+53cb375961e5: Pull complete
+f14567668d74: Pull complete
+3593b321cc92: Pull complete
+Digest: sha256:2037a0f0e8e7624696dc9a2d853351da469adad61462d6243cec67361e9505b8
+Status: Downloaded newer image for alfin06/agentissue-bench:crewai_1723
+docker.io/alfin06/agentissue-bench:crewai_1723
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:crewai_1723" test_buggy
+=== Testing BUGGY Version (Commit: c4f7eaf2599c5709260d660d48e810aae7a8c124) ===
+--- Running Test for buggy version ---
+ERROR: OPENAI_API_KEY environment variable must be set
+Usage: docker run --rm -it -e OPENAI_API_KEY="sk-your-key" <image_name> test_buggy|test_fixed|test_patched
+
+--- Exit code: 1 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:crewai_1723" test_fixed
+=== Testing FIXED Version (Commit: 6b87d22a7084897d243f47da5a9218786994d72f) ===
+--- Running Test for fixed version ---
+ERROR: OPENAI_API_KEY environment variable must be set
+Usage: docker run --rm -it -e OPENAI_API_KEY="sk-your-key" <image_name> test_buggy|test_fixed|test_patched
+
+--- Exit code: 1 ---

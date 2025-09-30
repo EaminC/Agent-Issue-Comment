@@ -1,0 +1,176 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:agixt_1371
+agixt_1371: Pulling from alfin06/agentissue-bench
+ce1261c6d567: Already exists
+d02c566428bb: Already exists
+6dc114d5e12c: Already exists
+fceec8b8a90e: Already exists
+7249a54b3619: Pulling fs layer
+65fc4c532899: Pulling fs layer
+ca18033f6028: Pulling fs layer
+1dec2175f53e: Pulling fs layer
+3e26728b3177: Pulling fs layer
+efd6d6297f3b: Pulling fs layer
+606851618131: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+1dec2175f53e: Waiting
+3e26728b3177: Waiting
+4f4fb700ef54: Waiting
+efd6d6297f3b: Waiting
+606851618131: Waiting
+7249a54b3619: Verifying Checksum
+7249a54b3619: Download complete
+7249a54b3619: Pull complete
+65fc4c532899: Verifying Checksum
+65fc4c532899: Download complete
+3e26728b3177: Verifying Checksum
+3e26728b3177: Download complete
+efd6d6297f3b: Verifying Checksum
+efd6d6297f3b: Download complete
+606851618131: Verifying Checksum
+606851618131: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+1dec2175f53e: Verifying Checksum
+1dec2175f53e: Download complete
+65fc4c532899: Pull complete
+ca18033f6028: Verifying Checksum
+ca18033f6028: Download complete
+ca18033f6028: Pull complete
+1dec2175f53e: Pull complete
+3e26728b3177: Pull complete
+efd6d6297f3b: Pull complete
+606851618131: Pull complete
+4f4fb700ef54: Pull complete
+Digest: sha256:3d9ffefbc55903d10767573a48db1a22595ea5fca8b4dd0b6900b2a6018a901e
+Status: Downloaded newer image for alfin06/agentissue-bench:agixt_1371
+docker.io/alfin06/agentissue-bench:agixt_1371
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:agixt_1371" test_buggy
+=== Testing BUGGY Version (Commit: 1773f014c6a3a85bd323dfe8036f7c0a8dd17420) ===
+--- Running Test for buggy version ---
+Found reproduce.py. Executing with python...
+
+--- Testing AGiXT Issue #1371 - Chain Query 'too many values' bug ---
+--- Version: BUGGY ---
+
+Examining the 'chain' GraphQL resolver in /app/source_code_buggy/agixt/endpoints/GQL.py
+
+Chain method code found:
+  1: 
+  2:         """Get details of a specific chain"""
+  3:         user, _ = await get_user_from_context(info)
+  4: 
+  5:         chain_manager = Chain(user=user)
+  6:         chain_data = chain_manager.get_chain(chain_name=chain_name)
+  7: 
+  8:         if not chain_data:
+  9:             raise Exception(f"Chain {chain_name} not found")
+ 10: 
+ 11:         return ChainConfig(
+ 12:             id=str(chain_data["id"]),
+ 13:             chain_name=chain_data["chain_name"],
+ 14:             steps=[
+ 15:                 ChainStep(
+ 16:                     step=step["step"],
+ 17:                     agent_name=step["agent_name"],
+ 18:                     prompt_type=step["prompt_type"],
+ 19:                     prompt=ChainPrompt(**step["prompt"]),
+ 20:                 )
+
+Found get_user_from_context usage: user, _ = await get_user_from_context(info)
+This line uses tuple unpacking which could cause 'too many values to unpack' error
+
+✅ BUG CONFIRMED: Found tuple unpacking pattern but only user_id is used
+This would cause 'too many values to unpack' error when get_user_from_context returns more values
+✅ BUG SUCCESSFULLY REPRODUCED: Test script confirmed the bug exists.
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:agixt_1371" test_fixed
+=== Testing FIXED Version (Commit: 3b3edf3fccfb92f20c411f5751274444fa3fe956) ===
+--- Running Test for fixed version ---
+Found reproduce.py. Executing with python...
+
+--- Testing AGiXT Issue #1371 - Chain Query 'too many values' bug ---
+--- Version: FIXED ---
+
+Examining the 'chain' GraphQL resolver in /app/source_code_fixed/agixt/endpoints/GQL.py
+
+Chain method code found:
+  1: 
+  2:         """Get details of a specific chain"""
+  3:         user, auth, magical = await get_user_from_context(info)
+  4: 
+  5:         chain_manager = Chain(user=user)
+  6:         chain_data = chain_manager.get_chain(chain_name=chain_name)
+  7: 
+  8:         if not chain_data:
+  9:             raise Exception(f"Chain {chain_name} not found")
+ 10: 
+ 11:         return ChainConfig(
+ 12:             id=str(chain_data["id"]),
+ 13:             chain_name=chain_data["chain_name"],
+ 14:             steps=[
+ 15:                 ChainStep(
+ 16:                     step=step["step"],
+ 17:                     agent_name=step["agent_name"],
+ 18:                     prompt_type=step["prompt_type"],
+ 19:                     prompt=ChainPrompt(**step["prompt"]),
+ 20:                 )
+
+Found get_user_from_context usage: user, auth, magical = await get_user_from_context(info)
+This line uses tuple unpacking which could cause 'too many values to unpack' error
+
+Examining actual PR changes to identify the fix...
+
+Diff output from PR:
+  diff --git a/agixt/endpoints/GQL.py b/agixt/endpoints/GQL.py
+  index d16a61f5..3216bbf4 100644
+  --- a/agixt/endpoints/GQL.py
+  +++ b/agixt/endpoints/GQL.py
+  @@ -1851,7 +1851,7 @@ class Query:
+       @strawberry.field
+       async def providers(self, info) -> Providers:
+           """Get comprehensive provider details"""
+  -        user = await get_user_from_context(info)
+  +        user, auth, magical = await get_user_from_context(info)
+           provider_details = get_providers_with_details()
+           providers = [
+               convert_provider_details({"name": name, **details})
+  @@ -2143,7 +2143,7 @@ class Query:
+       @strawberry.field
+       async def command_args(self, info, command_name: str) -> CommandArgs:
+           """Get arguments for a specific command"""
+  -        user, _ = await get_user_from_context(info)
+  +        user, auth, magical = await get_user_from_context(info)
+   
+           extensions = Extensions()
+           raw_args = extensions.get_command_args(command_name=command_name)
+  @@ -2280,7 +2280,7 @@ class Query:
+       @strawberry.field
+       async def chain(self, info, chain_name: str) -> ChainConfig:
+           """Get details of a specific chain"""
+  -        user, _ = await get_user_from_context(info)
+  +        user, auth, magical = await get_user_from_context(info)
+   
+           chain_manager = Chain(user=user)
+
+Removed lines with get_user_from_context:
+          user = await get_user_from_context(info)
+          user, _ = await get_user_from_context(info)
+          user, _ = await get_user_from_context(info)
+          user, _ = await get_user_from_context(info)
+
+Added lines with get_user_from_context:
+          user, auth, magical = await get_user_from_context(info)
+          user, auth, magical = await get_user_from_context(info)
+          user, auth, magical = await get_user_from_context(info)
+          user, auth, magical = await get_user_from_context(info)
+
+✅ FIX CONFIRMED: Code now accesses get_user_from_context result with index [0]
+✅ FIX CONFIRMED: Test script verified the fix is working.
+
+--- Exit code: 0 ---

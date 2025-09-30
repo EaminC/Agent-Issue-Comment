@@ -1,0 +1,123 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:mastra_4331
+mastra_4331: Pulling from alfin06/agentissue-bench
+7128a879011b: Pulling fs layer
+ef8dd4820a78: Pulling fs layer
+25a2c9fb3ef1: Pulling fs layer
+5670e6facdd7: Pulling fs layer
+9e83d7fdf3b4: Pulling fs layer
+a4d4aca0caa9: Pulling fs layer
+4dfc9c88e07d: Pulling fs layer
+467369e9fcdf: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+b7c8e89f7874: Pulling fs layer
+5670e6facdd7: Waiting
+7066afd4f024: Pulling fs layer
+9e83d7fdf3b4: Waiting
+a4d4aca0caa9: Waiting
+f995136fd86e: Pulling fs layer
+467369e9fcdf: Waiting
+4dfc9c88e07d: Waiting
+4f4fb700ef54: Waiting
+7066afd4f024: Waiting
+51ee01e4b61f: Pulling fs layer
+b7c8e89f7874: Waiting
+f995136fd86e: Waiting
+5575965b56ce: Pulling fs layer
+51ee01e4b61f: Waiting
+5575965b56ce: Waiting
+730740612ad2: Pulling fs layer
+8e7f8acd5c10: Pulling fs layer
+730740612ad2: Waiting
+8e7f8acd5c10: Waiting
+ef8dd4820a78: Verifying Checksum
+ef8dd4820a78: Download complete
+5670e6facdd7: Verifying Checksum
+5670e6facdd7: Download complete
+9e83d7fdf3b4: Verifying Checksum
+9e83d7fdf3b4: Download complete
+7128a879011b: Verifying Checksum
+7128a879011b: Download complete
+25a2c9fb3ef1: Verifying Checksum
+25a2c9fb3ef1: Download complete
+4dfc9c88e07d: Verifying Checksum
+4dfc9c88e07d: Download complete
+4f4fb700ef54: Download complete
+a4d4aca0caa9: Verifying Checksum
+a4d4aca0caa9: Download complete
+7066afd4f024: Verifying Checksum
+7066afd4f024: Download complete
+f995136fd86e: Verifying Checksum
+f995136fd86e: Download complete
+51ee01e4b61f: Verifying Checksum
+51ee01e4b61f: Download complete
+5575965b56ce: Download complete
+730740612ad2: Verifying Checksum
+730740612ad2: Download complete
+8e7f8acd5c10: Verifying Checksum
+8e7f8acd5c10: Download complete
+7128a879011b: Pull complete
+ef8dd4820a78: Pull complete
+467369e9fcdf: Verifying Checksum
+467369e9fcdf: Download complete
+25a2c9fb3ef1: Pull complete
+5670e6facdd7: Pull complete
+9e83d7fdf3b4: Pull complete
+a4d4aca0caa9: Pull complete
+4dfc9c88e07d: Pull complete
+467369e9fcdf: Pull complete
+4f4fb700ef54: Pull complete
+b7c8e89f7874: Verifying Checksum
+b7c8e89f7874: Download complete
+b7c8e89f7874: Pull complete
+7066afd4f024: Pull complete
+f995136fd86e: Pull complete
+51ee01e4b61f: Pull complete
+5575965b56ce: Pull complete
+730740612ad2: Pull complete
+8e7f8acd5c10: Pull complete
+Digest: sha256:fdf0724b7a31037d4304262402e556f2ad1b0356e20bf58cbecbb3ef23ac800d
+Status: Downloaded newer image for alfin06/agentissue-bench:mastra_4331
+docker.io/alfin06/agentissue-bench:mastra_4331
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:mastra_4331" test_buggy
+=== Testing BUGGY Version (Commit: a0ebc3ff9844f035c4fb2eca6bfd2480ba7e9039) ===
+Checking out buggy commit...
+HEAD is now at a0ebc3ff9 Do not throw on lack of storage (#4537)
+--- Running Test ---
+Found repro_script.js. Executing with node...
+--- Directly testing the logic that fails to pass runtimeContext. ---
+--- This is expected to throw an error. ---
+--- Simulating internal title generation... ---
+--- Mock title agent model function called. ---
+
+SUCCESS: The script failed with an error as expected.
+Error Type: Error
+Error Message: RuntimeContext was not provided to the model function.
+
+Verification successful: The error message confirms the bug.
+--- Test script failed (exit code 1) ---
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:mastra_4331" test_fixed
+=== Testing FIXED Version (Commit: ab5adbeec9306fd12f41af58125c2c78cfdb7f6b) ===
+Previous HEAD position was a0ebc3ff9 Do not throw on lack of storage (#4537)
+HEAD is now at ab5adbeec Add runtimeContext to generateTitle (#4543)
+--- Running Test ---
+Found repro_script.js. Executing with node...
+--- Directly testing the logic that fails to pass runtimeContext. ---
+--- This is expected to throw an error. ---
+--- Simulating internal title generation... ---
+--- Mock title agent model function called. ---
+
+SUCCESS: The script failed with an error as expected.
+Error Type: Error
+Error Message: RuntimeContext was not provided to the model function.
+
+Verification successful: The error message confirms the bug.
+--- Test script failed (exit code 1) ---
+
+--- Exit code: 0 ---

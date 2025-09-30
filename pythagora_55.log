@@ -1,0 +1,126 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:pythagora_55
+pythagora_55: Pulling from alfin06/agentissue-bench
+61320b01ae5e: Pulling fs layer
+b98d3ae1ab80: Pulling fs layer
+b1831021e35a: Pulling fs layer
+c768ab8cba73: Pulling fs layer
+8c994cf49dd1: Pulling fs layer
+e3a0129212a9: Pulling fs layer
+39682c0a8460: Pulling fs layer
+c768ab8cba73: Waiting
+f788d1cee067: Pulling fs layer
+8c994cf49dd1: Waiting
+769c79c1b51b: Pulling fs layer
+e3a0129212a9: Waiting
+1511f06bf723: Pulling fs layer
+39682c0a8460: Waiting
+fc84cf7a3b71: Pulling fs layer
+f788d1cee067: Waiting
+769c79c1b51b: Waiting
+2a225c6c122c: Pulling fs layer
+cff784fff393: Pulling fs layer
+fc84cf7a3b71: Waiting
+abce63e93927: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+cff784fff393: Waiting
+abce63e93927: Waiting
+4f4fb700ef54: Waiting
+b98d3ae1ab80: Verifying Checksum
+b98d3ae1ab80: Download complete
+c768ab8cba73: Download complete
+8c994cf49dd1: Verifying Checksum
+8c994cf49dd1: Download complete
+61320b01ae5e: Verifying Checksum
+61320b01ae5e: Download complete
+b1831021e35a: Verifying Checksum
+b1831021e35a: Download complete
+39682c0a8460: Download complete
+f788d1cee067: Download complete
+e3a0129212a9: Verifying Checksum
+e3a0129212a9: Download complete
+fc84cf7a3b71: Download complete
+2a225c6c122c: Verifying Checksum
+2a225c6c122c: Download complete
+cff784fff393: Verifying Checksum
+cff784fff393: Download complete
+1511f06bf723: Verifying Checksum
+1511f06bf723: Download complete
+abce63e93927: Verifying Checksum
+abce63e93927: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+61320b01ae5e: Pull complete
+b98d3ae1ab80: Pull complete
+b1831021e35a: Pull complete
+c768ab8cba73: Pull complete
+8c994cf49dd1: Pull complete
+769c79c1b51b: Verifying Checksum
+769c79c1b51b: Download complete
+e3a0129212a9: Pull complete
+39682c0a8460: Pull complete
+f788d1cee067: Pull complete
+769c79c1b51b: Pull complete
+1511f06bf723: Pull complete
+fc84cf7a3b71: Pull complete
+2a225c6c122c: Pull complete
+cff784fff393: Pull complete
+abce63e93927: Pull complete
+4f4fb700ef54: Pull complete
+Digest: sha256:3dd04ff9db70eafb6305c2c1b7bd9ffd44c00771b45799e7b82dbfa7fdd2f717
+Status: Downloaded newer image for alfin06/agentissue-bench:pythagora_55
+docker.io/alfin06/agentissue-bench:pythagora_55
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:pythagora_55" test_buggy
+=== Testing BUGGY Version (Commit: 7334780f7ee9812e4207dde8397ef14850ac4c3f) ===
+HEAD is now at 7334780f fix path when saving generated unit test
+--- Running Test for buggy version ---
+Found reproduce.js. Executing with node...
+Testing Pythagora issue #55 - Log dumping error due to missing directory
+Version being tested: buggy
+
+--- Attempting direct reproduction ---
+
+Setting up test environment...
+Test project created at /app/test_project
+
+Setting up the exact scenario that triggered the bug...
+Running direct reproduction test...
+✅ BUG REPRODUCED: Got ENOENT when writing to non-existent directory
+Error details: ENOENT: no such file or directory, open '/app/test_project/pythagora_tests/unit/errorLogs.log'
+
+✅ BUG REPRODUCED: Error occurs when writing to non-existent directory
+✅ SUCCESS: Bug reproduced in buggy version
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:pythagora_55" test_fixed
+=== Testing FIXED Version (Commit: 5a6c6a28ebfdb1f781370c26e616e82edef66501) ===
+HEAD is now at 5a6c6a28 fix non existing directory /pythagora_tests/unit
+--- Running Test for fixed version ---
+Found reproduce.js. Executing with node...
+Testing Pythagora issue #55 - Log dumping error due to missing directory
+Version being tested: fixed
+
+--- Attempting direct reproduction ---
+
+Setting up test environment...
+Test project created at /app/test_project
+
+Setting up the exact scenario that triggered the bug...
+Running direct reproduction test...
+✅ BUG REPRODUCED: Got ENOENT when writing to non-existent directory
+Error details: ENOENT: no such file or directory, open '/app/test_project/pythagora_tests/unit/errorLogs.log'
+
+--- Inspecting code for the fix ---
+
+Inspecting code for directory creation before writing logs...
+Found unitTests.js at: /app/source_code_fixed/src/helpers/unitTests.js
+✅ FIX CONFIRMED: Code has directory creation check
+
+✅ FIX CONFIRMED: Directory is created before writing logs
+✅ SUCCESS: Fix working in fixed version
+
+--- Exit code: 0 ---

@@ -1,0 +1,228 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:crewai_2237
+crewai_2237: Pulling from alfin06/agentissue-bench
+1d7643c81d03: Pulling fs layer
+3b1eb73e9939: Pulling fs layer
+b1b8a0660a31: Pulling fs layer
+48b8862a18fa: Pulling fs layer
+05b4f72d6599: Pulling fs layer
+a9ebf62fca91: Pulling fs layer
+1adad7254e67: Pulling fs layer
+c7767dd41fba: Pulling fs layer
+35c4d18b60a0: Pulling fs layer
+b73c55df1206: Pulling fs layer
+48b8862a18fa: Waiting
+7f7e9792742f: Pulling fs layer
+05b4f72d6599: Waiting
+6a8bd01dc98d: Pulling fs layer
+a9ebf62fca91: Waiting
+1adad7254e67: Waiting
+4f4fb700ef54: Pulling fs layer
+782976da5dc8: Pulling fs layer
+c7767dd41fba: Waiting
+b73c55df1206: Waiting
+7f7e9792742f: Waiting
+35c4d18b60a0: Waiting
+71afbb7fbedf: Pulling fs layer
+6a8bd01dc98d: Waiting
+71afbb7fbedf: Waiting
+4f4fb700ef54: Waiting
+782976da5dc8: Waiting
+3b1eb73e9939: Verifying Checksum
+3b1eb73e9939: Download complete
+1d7643c81d03: Download complete
+b1b8a0660a31: Verifying Checksum
+b1b8a0660a31: Download complete
+05b4f72d6599: Verifying Checksum
+05b4f72d6599: Download complete
+1adad7254e67: Verifying Checksum
+1adad7254e67: Download complete
+c7767dd41fba: Download complete
+a9ebf62fca91: Verifying Checksum
+a9ebf62fca91: Download complete
+35c4d18b60a0: Download complete
+b73c55df1206: Verifying Checksum
+b73c55df1206: Download complete
+7f7e9792742f: Verifying Checksum
+7f7e9792742f: Download complete
+4f4fb700ef54: Download complete
+48b8862a18fa: Verifying Checksum
+48b8862a18fa: Download complete
+6a8bd01dc98d: Verifying Checksum
+6a8bd01dc98d: Download complete
+71afbb7fbedf: Verifying Checksum
+71afbb7fbedf: Download complete
+1d7643c81d03: Pull complete
+782976da5dc8: Verifying Checksum
+782976da5dc8: Download complete
+3b1eb73e9939: Pull complete
+b1b8a0660a31: Pull complete
+48b8862a18fa: Pull complete
+05b4f72d6599: Pull complete
+a9ebf62fca91: Pull complete
+1adad7254e67: Pull complete
+c7767dd41fba: Pull complete
+35c4d18b60a0: Pull complete
+b73c55df1206: Pull complete
+7f7e9792742f: Pull complete
+6a8bd01dc98d: Pull complete
+4f4fb700ef54: Pull complete
+782976da5dc8: Pull complete
+71afbb7fbedf: Pull complete
+Digest: sha256:f7d199fe16a5717d2144a8f548bf7081b7ba17edd7e24be6cd7ce7992256d0e4
+Status: Downloaded newer image for alfin06/agentissue-bench:crewai_2237
+docker.io/alfin06/agentissue-bench:crewai_2237
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:crewai_2237" test_buggy
+=== Testing BUGGY Version (Commit: 34d299345677c7ce26b1368f240c559596526fa7) ===
+Checking out buggy commit...
+HEAD is now at 34d29934 Update the constants.py file adding the list of foundation models available in Amazon Bedrock (#2170)
+--- Running Test ---
+Found repro_script.py. Executing with python...
+
+
+
+
+
+
+
+--- Kicking off crew. This is expected to trigger the parsing error. ---
+╭─────────────────────────── Crew Execution Started ───────────────────────────╮
+│                                                                              │
+│  Crew Execution Started                                                      │
+│  Name: crew                                                                  │
+│  ID: 30f1ef2f-200e-49f3-8f9f-9930c60bd189                                    │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+
+
+
+
+
+
+# Agent: Tool User
+## Task: Use your tool.
+
+
+
+🚀 Crew: crew
+└── 📋 Task: b27574c4-8a31-4b29-bea3-54ca32a24e8b
+    Status: Executing Task...
+    └── ❌ LLM Failed
+
+ An unknown error occurred. Please check the details below.
+
+🚀 Crew: crew
+└── 📋 Task: b27574c4-8a31-4b29-bea3-54ca32a24e8b
+    Assigned to: Tool User
+    Status: ❌ Failed
+    └── ❌ LLM Failed╭──────────────────────────────── Task Failure ────────────────────────────────╮
+│                                                                              │
+│  Task Failed                                                                 │
+│  Name: b27574c4-8a31-4b29-bea3-54ca32a24e8b                                  │
+│  Agent: Tool User                                                            │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭──────────────────────────────── Crew Failure ────────────────────────────────╮
+│                                                                              │
+│  Crew Execution Failed                                                       │
+│  Name: crew                                                                  │
+│  ID: 30f1ef2f-200e-49f3-8f9f-9930c60bd189                                    │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+
+
+----------------- SCRIPT CAUGHT AN ERROR -----------------
+Inspecting the exception object piece by piece...
+Error Type: BadRequestError
+Error Repr: 
+Error Args: 
+
+Verification failed: The error details did not contain the expected bug text ('Tried to both perform Action and give a Final Answer').
+--- Test script executed successfully (exit code 0) ---
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:crewai_2237" test_fixed
+=== Testing FIXED Version (Commit: 06d922f4529eb53654df4d0b36e9d17b997e2bef) ===
+Previous HEAD position was 34d29934 Update the constants.py file adding the list of foundation models available in Amazon Bedrock (#2170)
+HEAD is now at 06d922f4 Fix import sorting in test file using ruff
+--- Running Test ---
+Found repro_script.py. Executing with python...
+
+
+
+
+
+
+
+--- Kicking off crew. This is expected to trigger the parsing error. ---
+╭─────────────────────────── Crew Execution Started ───────────────────────────╮
+│                                                                              │
+│  Crew Execution Started                                                      │
+│  Name: crew                                                                  │
+│  ID: d72e6172-1216-4f16-9a65-6735f0b0f915                                    │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+
+
+
+
+
+
+# Agent: Tool User
+## Task: Use your tool.
+
+
+
+🚀 Crew: crew
+└── 📋 Task: e80d8e00-7715-4b42-8796-acf884fd45d5
+    Status: Executing Task...
+    └── ❌ LLM Failed
+
+ An unknown error occurred. Please check the details below.
+
+🚀 Crew: crew
+└── 📋 Task: e80d8e00-7715-4b42-8796-acf884fd45d5
+    Assigned to: Tool User
+    Status: ❌ Failed
+    └── ❌ LLM Failed╭──────────────────────────────── Task Failure ────────────────────────────────╮
+│                                                                              │
+│  Task Failed                                                                 │
+│  Name: e80d8e00-7715-4b42-8796-acf884fd45d5                                  │
+│  Agent: Tool User                                                            │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+╭──────────────────────────────── Crew Failure ────────────────────────────────╮
+│                                                                              │
+│  Crew Execution Failed                                                       │
+│  Name: crew                                                                  │
+│  ID: d72e6172-1216-4f16-9a65-6735f0b0f915                                    │
+│                                                                              │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+
+
+----------------- SCRIPT CAUGHT AN ERROR -----------------
+Inspecting the exception object piece by piece...
+Error Type: BadRequestError
+Error Repr: 
+Error Args: 
+
+Verification failed: The error details did not contain the expected bug text ('Tried to both perform Action and give a Final Answer').
+--- Test script executed successfully (exit code 0) ---
+
+--- Exit code: 0 ---

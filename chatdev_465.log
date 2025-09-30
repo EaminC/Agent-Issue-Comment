@@ -1,0 +1,29 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:chatdev_465
+chatdev_465: Pulling from alfin06/agentissue-bench
+d2eb42b4a5eb: Already exists
+c2ba682189ed: Already exists
+1fc11db7aa34: Already exists
+33c45f789443: Pulling fs layer
+33c45f789443: Verifying Checksum
+33c45f789443: Download complete
+33c45f789443: Pull complete
+Digest: sha256:9b2763b698b04850042ed798223012a70999545976cea24586e4a0091c181f6c
+Status: Downloaded newer image for alfin06/agentissue-bench:chatdev_465
+docker.io/alfin06/agentissue-bench:chatdev_465
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:chatdev_465" test_buggy
+docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: exec: "test_buggy": executable file not found in $PATH: unknown
+
+Run 'docker run --help' for more information
+
+--- Exit code: 127 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:chatdev_465" test_fixed
+docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: exec: "test_fixed": executable file not found in $PATH: unknown
+
+Run 'docker run --help' for more information
+
+--- Exit code: 127 ---

@@ -1,0 +1,89 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:haystack_9480
+haystack_9480: Pulling from alfin06/agentissue-bench
+59e22667830b: Already exists
+abd846fa1cdb: Already exists
+b7b61708209a: Already exists
+4085babbc570: Already exists
+e9e3cb4f0a2d: Pulling fs layer
+093ef03125c0: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+86df52fee800: Pulling fs layer
+a61659a99d8a: Pulling fs layer
+4cd523b59bdd: Pulling fs layer
+9c5948f909a0: Pulling fs layer
+0682aafc909a: Pulling fs layer
+4e169e839cc0: Pulling fs layer
+6d5e5706f8b9: Pulling fs layer
+d86fabc39c20: Pulling fs layer
+0bcd73f029e0: Pulling fs layer
+b3021727c9bd: Pulling fs layer
+86df52fee800: Waiting
+a61659a99d8a: Waiting
+4cd523b59bdd: Waiting
+9c5948f909a0: Waiting
+0682aafc909a: Waiting
+b3021727c9bd: Waiting
+0bcd73f029e0: Waiting
+4e169e839cc0: Waiting
+6d5e5706f8b9: Waiting
+d86fabc39c20: Waiting
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+86df52fee800: Verifying Checksum
+86df52fee800: Download complete
+093ef03125c0: Verifying Checksum
+093ef03125c0: Download complete
+a61659a99d8a: Download complete
+9c5948f909a0: Verifying Checksum
+9c5948f909a0: Download complete
+e9e3cb4f0a2d: Verifying Checksum
+e9e3cb4f0a2d: Download complete
+4e169e839cc0: Verifying Checksum
+4e169e839cc0: Download complete
+6d5e5706f8b9: Verifying Checksum
+6d5e5706f8b9: Download complete
+d86fabc39c20: Verifying Checksum
+d86fabc39c20: Download complete
+4cd523b59bdd: Download complete
+0bcd73f029e0: Verifying Checksum
+0bcd73f029e0: Download complete
+b3021727c9bd: Download complete
+e9e3cb4f0a2d: Pull complete
+0682aafc909a: Verifying Checksum
+0682aafc909a: Download complete
+093ef03125c0: Pull complete
+4f4fb700ef54: Pull complete
+86df52fee800: Pull complete
+a61659a99d8a: Pull complete
+4cd523b59bdd: Pull complete
+9c5948f909a0: Pull complete
+0682aafc909a: Pull complete
+4e169e839cc0: Pull complete
+6d5e5706f8b9: Pull complete
+d86fabc39c20: Pull complete
+0bcd73f029e0: Pull complete
+b3021727c9bd: Pull complete
+Digest: sha256:bda4f4f5707144b977521580566c088a22516e1450a19ba9c0e468d2eb1dd9ba
+Status: Downloaded newer image for alfin06/agentissue-bench:haystack_9480
+docker.io/alfin06/agentissue-bench:haystack_9480
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:haystack_9480" test_buggy
+=== Testing BUGGY Version (Commit: bef6a26cad1082f5183e913006471ffd967fe696) ===
+--- Running Test for buggy version ---
+Executing reproduction script: python /opt/reproduce.py buggy
+INFO:     Started server process [57]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:35156 - "GET /sse HTTP/1.1" 200 OK
+INFO:     127.0.0.1:35166 - "POST /messages/?session_id=312137bbf490425eb5624cd124971b82 HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:35166 - "POST /messages/?session_id=312137bbf490425eb5624cd124971b82 HTTP/1.1" 202 Accepted
+INFO:     127.0.0.1:35166 - "POST /messages/?session_id=312137bbf490425eb5624cd124971b82 HTTP/1.1" 202 Accepted
+Processing request of type ListToolsRequest
+INFO:     127.0.0.1:35166 - "POST /messages/?session_id=312137bbf490425eb5624cd124971b82 HTTP/1.1" 202 Accepted
+Processing request of type CallToolRequest
+INFO:     Shutting down
+INFO:     Waiting for connections to close. (CTRL+C to force quit)

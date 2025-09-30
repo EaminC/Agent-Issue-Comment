@@ -1,0 +1,249 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:langgraphjs_1217
+langgraphjs_1217: Pulling from alfin06/agentissue-bench
+d107e437f729: Pulling fs layer
+e405d8e35c3c: Pulling fs layer
+f63d22c0a8e0: Pulling fs layer
+09260a438754: Pulling fs layer
+5c104ab4e9d9: Pulling fs layer
+882d28431347: Pulling fs layer
+c4d4f92d4f6a: Pulling fs layer
+3adaafaf57e3: Pulling fs layer
+79312da6e8d6: Pulling fs layer
+5f31a8753423: Pulling fs layer
+4650154e8a2d: Pulling fs layer
+8e7513eb6b25: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+30b13bd3ea19: Pulling fs layer
+5c104ab4e9d9: Waiting
+882d28431347: Waiting
+a05bd40245d1: Pulling fs layer
+c4d4f92d4f6a: Waiting
+20af2c9f3440: Pulling fs layer
+4650154e8a2d: Waiting
+5f31a8753423: Waiting
+851d2db262e3: Pulling fs layer
+3adaafaf57e3: Waiting
+79312da6e8d6: Waiting
+8e7513eb6b25: Waiting
+a05bd40245d1: Waiting
+4f4fb700ef54: Waiting
+20af2c9f3440: Waiting
+09260a438754: Waiting
+851d2db262e3: Waiting
+30b13bd3ea19: Waiting
+e405d8e35c3c: Verifying Checksum
+e405d8e35c3c: Download complete
+09260a438754: Verifying Checksum
+09260a438754: Download complete
+5c104ab4e9d9: Download complete
+f63d22c0a8e0: Verifying Checksum
+f63d22c0a8e0: Download complete
+d107e437f729: Verifying Checksum
+d107e437f729: Download complete
+3adaafaf57e3: Verifying Checksum
+3adaafaf57e3: Download complete
+c4d4f92d4f6a: Download complete
+79312da6e8d6: Verifying Checksum
+79312da6e8d6: Download complete
+5f31a8753423: Download complete
+882d28431347: Verifying Checksum
+882d28431347: Download complete
+4650154e8a2d: Verifying Checksum
+4650154e8a2d: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+8e7513eb6b25: Verifying Checksum
+8e7513eb6b25: Download complete
+a05bd40245d1: Verifying Checksum
+a05bd40245d1: Download complete
+851d2db262e3: Verifying Checksum
+851d2db262e3: Download complete
+30b13bd3ea19: Verifying Checksum
+30b13bd3ea19: Download complete
+d107e437f729: Pull complete
+e405d8e35c3c: Pull complete
+f63d22c0a8e0: Pull complete
+09260a438754: Pull complete
+5c104ab4e9d9: Pull complete
+882d28431347: Pull complete
+c4d4f92d4f6a: Pull complete
+3adaafaf57e3: Pull complete
+79312da6e8d6: Pull complete
+5f31a8753423: Pull complete
+4650154e8a2d: Pull complete
+8e7513eb6b25: Pull complete
+4f4fb700ef54: Pull complete
+30b13bd3ea19: Pull complete
+a05bd40245d1: Pull complete
+20af2c9f3440: Verifying Checksum
+20af2c9f3440: Download complete
+20af2c9f3440: Pull complete
+851d2db262e3: Pull complete
+Digest: sha256:e6f5ff8dde27b49af73c2f966c98becd8505b0a82acf8684a3b8f41462d52e7b
+Status: Downloaded newer image for alfin06/agentissue-bench:langgraphjs_1217
+docker.io/alfin06/agentissue-bench:langgraphjs_1217
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:langgraphjs_1217" test_buggy
++ CODE_DIR=/app/source_code_buggy
++ TEST_DIR=/opt/test-env
++ case "$1" in
++ echo '=== Testing BUGGY Version (Commit: 4acdd4757c8e975d9a84c7f614e2ff2ef17850ad) ==='
+=== Testing BUGGY Version (Commit: 4acdd4757c8e975d9a84c7f614e2ff2ef17850ad) ===
++ cd /app/source_code_buggy
++ git -c advice.detachedHead=false checkout 4acdd4757c8e975d9a84c7f614e2ff2ef17850ad --force
+HEAD is now at 4acdd475 chore: populate .yarnrc.yml (#1363)
++ run_test
++ echo '--- Running Test ---'
++ cd /opt/test-env
++ npx jest
+--- Running Test ---
+ts-jest[config] (WARN) message TS151001: If you have issues related to imports, you should consider setting `esModuleInterop` to `true` in your TypeScript configuration file (usually `tsconfig.json`). See https://blogs.msdn.microsoft.com/typescript/2018/01/31/announcing-typescript-2-7/#easier-ecmascript-module-interoperability for more information.
+  console.log
+    
+    --- Attempting to reproduce the bug from langgraphjs/issues/1217 ---
+
+      at reproduce.ts:33:13
+
+  console.log
+    This test will check for an error when the supervisor's LLM is missing the 'bindTools' method.
+
+      at reproduce.ts:34:13
+
+  console.log
+    [SETUP] Mocked ChatOpenAI model created.
+
+      at reproduce.ts:39:15
+
+  console.log
+    [SETUP] Math and research agents created.
+
+      at reproduce.ts:55:15
+
+  console.log
+    
+    [EXECUTION] Calling createSupervisor()... This is expected to fail.
+
+      at reproduce.ts:60:15
+
+  console.log
+    
+    The script failed with an error as expected.
+
+      at reproduce.ts:74:15
+          at Generator.throw (<anonymous>)
+
+  console.log
+    Caught Exception: llm [object Object] must define bindTools method.
+
+      at reproduce.ts:75:15
+          at Generator.throw (<anonymous>)
+
+  console.log
+    
+    Verification successful: The error message matches the bug report.
+
+      at reproduce.ts:79:17
+          at Generator.throw (<anonymous>)
+
+PASS ./reproduce.ts
+  LangGraphJS Issue #1217 Reproduction Test
+    ✓ should throw an error if the LLM does not have a bindTools method (71 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        2.552 s
+Ran all test suites.
++ echo
++ echo '✅ REPRODUCTION SUCCESSFUL'
++ echo 'The test suite PASSED, which correctly indicates that the expected '\''bindTools'\'' error was successfully caught and verified.'
+
+✅ REPRODUCTION SUCCESSFUL
+The test suite PASSED, which correctly indicates that the expected 'bindTools' error was successfully caught and verified.
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:langgraphjs_1217" test_fixed
++ CODE_DIR=/app/source_code_buggy
++ TEST_DIR=/opt/test-env
++ case "$1" in
++ '[' -z 2ad988f993f134f21aaf1c8a3cdde042fa1010a9 ']'
++ echo '=== Testing FIXED Version (Commit: 2ad988f993f134f21aaf1c8a3cdde042fa1010a9) ==='
+=== Testing FIXED Version (Commit: 2ad988f993f134f21aaf1c8a3cdde042fa1010a9) ===
++ cd /app/source_code_buggy
++ git -c advice.detachedHead=false checkout 2ad988f993f134f21aaf1c8a3cdde042fa1010a9 --force
+Previous HEAD position was 4acdd475 chore: populate .yarnrc.yml (#1363)
+HEAD is now at 2ad988f9 fix(supervisor): masquerade `bind` call when `withConfig` was called (#1364)
++ run_test
++ echo '--- Running Test ---'
++ cd /opt/test-env
++ npx jest
+--- Running Test ---
+ts-jest[config] (WARN) message TS151001: If you have issues related to imports, you should consider setting `esModuleInterop` to `true` in your TypeScript configuration file (usually `tsconfig.json`). See https://blogs.msdn.microsoft.com/typescript/2018/01/31/announcing-typescript-2-7/#easier-ecmascript-module-interoperability for more information.
+  console.log
+    
+    --- Attempting to reproduce the bug from langgraphjs/issues/1217 ---
+
+      at reproduce.ts:33:13
+
+  console.log
+    This test will check for an error when the supervisor's LLM is missing the 'bindTools' method.
+
+      at reproduce.ts:34:13
+
+  console.log
+    [SETUP] Mocked ChatOpenAI model created.
+
+      at reproduce.ts:39:15
+
+  console.log
+    [SETUP] Math and research agents created.
+
+      at reproduce.ts:55:15
+
+  console.log
+    
+    [EXECUTION] Calling createSupervisor()... This is expected to fail.
+
+      at reproduce.ts:60:15
+
+  console.log
+    
+    The script failed with an error as expected.
+
+      at reproduce.ts:74:15
+          at Generator.throw (<anonymous>)
+
+  console.log
+    Caught Exception: llm [object Object] must define bindTools method.
+
+      at reproduce.ts:75:15
+          at Generator.throw (<anonymous>)
+
+  console.log
+    
+    Verification successful: The error message matches the bug report.
+
+      at reproduce.ts:79:17
+          at Generator.throw (<anonymous>)
+
+PASS ./reproduce.ts
+  LangGraphJS Issue #1217 Reproduction Test
+    ✓ should throw an error if the LLM does not have a bindTools method (70 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        2.548 s
+Ran all test suites.
++ echo
++ echo '❌ VERIFICATION FAILED'
++ echo 'The test suite PASSED. This is unexpected for the fixed version and may indicate the bug is still present.'
+
+❌ VERIFICATION FAILED
+The test suite PASSED. This is unexpected for the fixed version and may indicate the bug is still present.
+
+--- Exit code: 0 ---

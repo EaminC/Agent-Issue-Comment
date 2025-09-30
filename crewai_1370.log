@@ -1,0 +1,343 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:crewai_1370
+crewai_1370: Pulling from alfin06/agentissue-bench
+59e22667830b: Pulling fs layer
+abd846fa1cdb: Pulling fs layer
+b7b61708209a: Pulling fs layer
+4085babbc570: Pulling fs layer
+e60d4349fcd8: Pulling fs layer
+b65b133e4704: Pulling fs layer
+47d54edd942b: Pulling fs layer
+0e178b84c47b: Pulling fs layer
+4615a92e091c: Pulling fs layer
+d45ff8f463ee: Pulling fs layer
+a769b25f18aa: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+0e178b84c47b: Waiting
+4615a92e091c: Waiting
+4085babbc570: Waiting
+e60d4349fcd8: Waiting
+b65b133e4704: Waiting
+4f4fb700ef54: Waiting
+d45ff8f463ee: Waiting
+47d54edd942b: Waiting
+a769b25f18aa: Waiting
+abd846fa1cdb: Verifying Checksum
+abd846fa1cdb: Download complete
+b7b61708209a: Verifying Checksum
+b7b61708209a: Download complete
+4085babbc570: Download complete
+e60d4349fcd8: Verifying Checksum
+e60d4349fcd8: Download complete
+47d54edd942b: Verifying Checksum
+47d54edd942b: Download complete
+59e22667830b: Verifying Checksum
+59e22667830b: Download complete
+4615a92e091c: Verifying Checksum
+4615a92e091c: Download complete
+d45ff8f463ee: Verifying Checksum
+d45ff8f463ee: Download complete
+a769b25f18aa: Verifying Checksum
+a769b25f18aa: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+b65b133e4704: Verifying Checksum
+b65b133e4704: Download complete
+59e22667830b: Pull complete
+abd846fa1cdb: Pull complete
+b7b61708209a: Pull complete
+4085babbc570: Pull complete
+e60d4349fcd8: Pull complete
+0e178b84c47b: Verifying Checksum
+0e178b84c47b: Download complete
+b65b133e4704: Pull complete
+47d54edd942b: Pull complete
+0e178b84c47b: Pull complete
+4615a92e091c: Pull complete
+d45ff8f463ee: Pull complete
+a769b25f18aa: Pull complete
+4f4fb700ef54: Pull complete
+Digest: sha256:bd85987c41089e02138e4782430c88b6f9b270cf5e1ed845f5579d4f6d73ebe0
+Status: Downloaded newer image for alfin06/agentissue-bench:crewai_1370
+docker.io/alfin06/agentissue-bench:crewai_1370
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:crewai_1370" test_buggy
+=== Testing BUGGY Version (Commit: 0dfe3bcb0aa605bee4192a3d3f9ea5f289cf40c4) ===
+--- Running Test for buggy version ---
+Found reproduce.py. Executing with python...
+
+--- Testing CrewAI Issue #1370 - Slow import time ---
+--- Version: BUGGY ---
+
+Running import time test...
+Starting crewai import...
+Import completed in 6.60 seconds
+✗ BUG NOT REPRODUCED: Import only took 6.60 seconds (<10 seconds)
+
+STDERR: /usr/local/lib/python3.11/site-packages/pydantic/_internal/_config.py:323: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.11/migration/
+  warnings.warn(DEPRECATION_MESSAGE, DeprecationWarning)
+
+Total process runtime: 7.99 seconds
+
+--- Exit code: 1 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:crewai_1370" test_fixed
+=== Testing FIXED Version (Commit: 5fe43b9ad22477fc3fb9fbe578763597b7923903) ===
+--- Running Test for fixed version ---
+Obtaining file:///app/source_code_fixed
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: appdirs<2.0.0,>=1.4.4 in /usr/local/lib/python3.11/site-packages (from crewai==0.67.1) (1.4.4)
+Requirement already satisfied: auth0-python<5.0.0,>=4.7.1 in /usr/local/lib/python3.11/site-packages (from crewai==0.67.1) (4.13.0)
+Requirement already satisfied: click<9.0.0,>=8.1.7 in /usr/local/lib/python3.11/site-packages (from crewai==0.67.1) (8.3.0)
+Requirement already satisfied: embedchain<0.2.0,>=0.1.114 in /usr/local/lib/python3.11/site-packages (from crewai==0.67.1) (0.1.122)
+Requirement already satisfied: instructor==1.3.3 in /usr/local/lib/python3.11/site-packages (from crewai==0.67.1) (1.3.3)
+Requirement already satisfied: json-repair<0.26.0,>=0.25.2 in /usr/local/lib/python3.11/site-packages (from crewai==0.67.1) (0.25.3)
+Requirement already satisfied: jsonref<2.0.0,>=1.1.0 in /usr/local/lib/python3.11/site-packages (from crewai==0.67.1) (1.1.0)
+Requirement already satisfied: langchain<0.3.0,>=0.2.16 in /usr/local/lib/python3.11/site-packages (from crewai==0.67.1) (0.2.17)
+Requirement already satisfied: litellm<2.0.0,>=1.44.22 in /usr/local/lib/python3.11/site-packages (from crewai==0.67.1) (1.77.4)
+Requirement already satisfied: openai<2.0.0,>=1.13.3 in /usr/local/lib/python3.11/site-packages (from crewai==0.67.1) (1.109.1)
+Requirement already satisfied: opentelemetry-api<2.0.0,>=1.22.0 in /usr/local/lib/python3.11/site-packages (from crewai==0.67.1) (1.37.0)
+Requirement already satisfied: opentelemetry-exporter-otlp-proto-http<2.0.0,>=1.22.0 in /usr/local/lib/python3.11/site-packages (from crewai==0.67.1) (1.37.0)
+Requirement already satisfied: opentelemetry-sdk<2.0.0,>=1.22.0 in /usr/local/lib/python3.11/site-packages (from crewai==0.67.1) (1.37.0)
+Requirement already satisfied: poetry<2.0.0,>=1.8.3 in /usr/local/lib/python3.11/site-packages (from crewai==0.67.1) (1.8.5)
+Requirement already satisfied: pydantic<3.0.0,>=2.4.2 in /usr/local/lib/python3.11/site-packages (from crewai==0.67.1) (2.11.9)
+Requirement already satisfied: python-dotenv<2.0.0,>=1.0.0 in /usr/local/lib/python3.11/site-packages (from crewai==0.67.1) (1.1.1)
+Requirement already satisfied: pyvis<0.4.0,>=0.3.2 in /usr/local/lib/python3.11/site-packages (from crewai==0.67.1) (0.3.2)
+Requirement already satisfied: regex<2025.0.0,>=2024.9.11 in /usr/local/lib/python3.11/site-packages (from crewai==0.67.1) (2024.11.6)
+Requirement already satisfied: aiohttp<4.0.0,>=3.9.1 in /usr/local/lib/python3.11/site-packages (from instructor==1.3.3->crewai==0.67.1) (3.12.15)
+Requirement already satisfied: docstring-parser<0.17,>=0.16 in /usr/local/lib/python3.11/site-packages (from instructor==1.3.3->crewai==0.67.1) (0.16)
+Requirement already satisfied: jiter<0.5.0,>=0.4.1 in /usr/local/lib/python3.11/site-packages (from instructor==1.3.3->crewai==0.67.1) (0.4.2)
+Requirement already satisfied: pydantic-core<3.0.0,>=2.18.0 in /usr/local/lib/python3.11/site-packages (from instructor==1.3.3->crewai==0.67.1) (2.33.2)
+Requirement already satisfied: rich<14.0.0,>=13.7.0 in /usr/local/lib/python3.11/site-packages (from instructor==1.3.3->crewai==0.67.1) (13.9.4)
+Requirement already satisfied: tenacity<9.0.0,>=8.2.3 in /usr/local/lib/python3.11/site-packages (from instructor==1.3.3->crewai==0.67.1) (8.5.0)
+Requirement already satisfied: typer<1.0.0,>=0.9.0 in /usr/local/lib/python3.11/site-packages (from instructor==1.3.3->crewai==0.67.1) (0.19.2)
+Requirement already satisfied: cryptography>=43.0.1 in /usr/local/lib/python3.11/site-packages (from auth0-python<5.0.0,>=4.7.1->crewai==0.67.1) (46.0.1)
+Requirement already satisfied: pyjwt>=2.8.0 in /usr/local/lib/python3.11/site-packages (from auth0-python<5.0.0,>=4.7.1->crewai==0.67.1) (2.10.1)
+Requirement already satisfied: requests>=2.32.3 in /usr/local/lib/python3.11/site-packages (from auth0-python<5.0.0,>=4.7.1->crewai==0.67.1) (2.32.5)
+Requirement already satisfied: urllib3>=2.2.3 in /usr/local/lib/python3.11/site-packages (from auth0-python<5.0.0,>=4.7.1->crewai==0.67.1) (2.5.0)
+Requirement already satisfied: alembic<2.0.0,>=1.13.1 in /usr/local/lib/python3.11/site-packages (from embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (1.16.5)
+Requirement already satisfied: beautifulsoup4<5.0.0,>=4.12.2 in /usr/local/lib/python3.11/site-packages (from embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (4.13.5)
+Requirement already satisfied: chromadb<0.5.0,>=0.4.24 in /usr/local/lib/python3.11/site-packages (from embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.4.24)
+Requirement already satisfied: cohere<6.0,>=5.3 in /usr/local/lib/python3.11/site-packages (from embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (5.18.0)
+Requirement already satisfied: google-cloud-aiplatform<2.0.0,>=1.26.1 in /usr/local/lib/python3.11/site-packages (from embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (1.116.0)
+Requirement already satisfied: gptcache<0.2.0,>=0.1.43 in /usr/local/lib/python3.11/site-packages (from embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.1.44)
+Requirement already satisfied: langchain-cohere<0.2.0,>=0.1.4 in /usr/local/lib/python3.11/site-packages (from embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.1.9)
+Requirement already satisfied: langchain-community<0.3.0,>=0.2.6 in /usr/local/lib/python3.11/site-packages (from embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.2.19)
+Requirement already satisfied: langchain-openai<0.2.0,>=0.1.7 in /usr/local/lib/python3.11/site-packages (from embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.1.25)
+Requirement already satisfied: mem0ai<0.2.0,>=0.1.15 in /usr/local/lib/python3.11/site-packages (from embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.1.118)
+Requirement already satisfied: posthog<4.0.0,>=3.0.2 in /usr/local/lib/python3.11/site-packages (from embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (3.25.0)
+Requirement already satisfied: pypdf<5.0.0,>=4.0.1 in /usr/local/lib/python3.11/site-packages (from embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (4.3.1)
+Requirement already satisfied: pysbd<0.4.0,>=0.3.4 in /usr/local/lib/python3.11/site-packages (from embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.3.4)
+Requirement already satisfied: schema<0.8.0,>=0.7.5 in /usr/local/lib/python3.11/site-packages (from embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.7.7)
+Requirement already satisfied: sqlalchemy<3.0.0,>=2.0.27 in /usr/local/lib/python3.11/site-packages (from embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (2.0.43)
+Requirement already satisfied: tiktoken<0.8.0,>=0.7.0 in /usr/local/lib/python3.11/site-packages (from embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.7.0)
+Requirement already satisfied: PyYAML>=5.3 in /usr/local/lib/python3.11/site-packages (from langchain<0.3.0,>=0.2.16->crewai==0.67.1) (6.0.2)
+Requirement already satisfied: langchain-core<0.3.0,>=0.2.43 in /usr/local/lib/python3.11/site-packages (from langchain<0.3.0,>=0.2.16->crewai==0.67.1) (0.2.43)
+Requirement already satisfied: langchain-text-splitters<0.3.0,>=0.2.0 in /usr/local/lib/python3.11/site-packages (from langchain<0.3.0,>=0.2.16->crewai==0.67.1) (0.2.4)
+Requirement already satisfied: langsmith<0.2.0,>=0.1.17 in /usr/local/lib/python3.11/site-packages (from langchain<0.3.0,>=0.2.16->crewai==0.67.1) (0.1.147)
+Requirement already satisfied: numpy<2,>=1 in /usr/local/lib/python3.11/site-packages (from langchain<0.3.0,>=0.2.16->crewai==0.67.1) (1.26.4)
+Requirement already satisfied: fastuuid>=0.12.0 in /usr/local/lib/python3.11/site-packages (from litellm<2.0.0,>=1.44.22->crewai==0.67.1) (0.13.3)
+Requirement already satisfied: httpx>=0.23.0 in /usr/local/lib/python3.11/site-packages (from litellm<2.0.0,>=1.44.22->crewai==0.67.1) (0.28.1)
+Requirement already satisfied: importlib-metadata>=6.8.0 in /usr/local/lib/python3.11/site-packages (from litellm<2.0.0,>=1.44.22->crewai==0.67.1) (8.7.0)
+Requirement already satisfied: jinja2<4.0.0,>=3.1.2 in /usr/local/lib/python3.11/site-packages (from litellm<2.0.0,>=1.44.22->crewai==0.67.1) (3.1.6)
+Requirement already satisfied: jsonschema<5.0.0,>=4.22.0 in /usr/local/lib/python3.11/site-packages (from litellm<2.0.0,>=1.44.22->crewai==0.67.1) (4.25.1)
+Requirement already satisfied: pondpond<2.0.0,>=1.4.1 in /usr/local/lib/python3.11/site-packages (from litellm<2.0.0,>=1.44.22->crewai==0.67.1) (1.4.1)
+Requirement already satisfied: tokenizers in /usr/local/lib/python3.11/site-packages (from litellm<2.0.0,>=1.44.22->crewai==0.67.1) (0.22.1)
+Requirement already satisfied: anyio<5,>=3.5.0 in /usr/local/lib/python3.11/site-packages (from openai<2.0.0,>=1.13.3->crewai==0.67.1) (4.11.0)
+Requirement already satisfied: distro<2,>=1.7.0 in /usr/local/lib/python3.11/site-packages (from openai<2.0.0,>=1.13.3->crewai==0.67.1) (1.9.0)
+Requirement already satisfied: sniffio in /usr/local/lib/python3.11/site-packages (from openai<2.0.0,>=1.13.3->crewai==0.67.1) (1.3.1)
+Requirement already satisfied: tqdm>4 in /usr/local/lib/python3.11/site-packages (from openai<2.0.0,>=1.13.3->crewai==0.67.1) (4.67.1)
+Requirement already satisfied: typing-extensions<5,>=4.11 in /usr/local/lib/python3.11/site-packages (from openai<2.0.0,>=1.13.3->crewai==0.67.1) (4.15.0)
+Requirement already satisfied: googleapis-common-protos~=1.52 in /usr/local/lib/python3.11/site-packages (from opentelemetry-exporter-otlp-proto-http<2.0.0,>=1.22.0->crewai==0.67.1) (1.70.0)
+Requirement already satisfied: opentelemetry-exporter-otlp-proto-common==1.37.0 in /usr/local/lib/python3.11/site-packages (from opentelemetry-exporter-otlp-proto-http<2.0.0,>=1.22.0->crewai==0.67.1) (1.37.0)
+Requirement already satisfied: opentelemetry-proto==1.37.0 in /usr/local/lib/python3.11/site-packages (from opentelemetry-exporter-otlp-proto-http<2.0.0,>=1.22.0->crewai==0.67.1) (1.37.0)
+Requirement already satisfied: protobuf<7.0,>=5.0 in /usr/local/lib/python3.11/site-packages (from opentelemetry-proto==1.37.0->opentelemetry-exporter-otlp-proto-http<2.0.0,>=1.22.0->crewai==0.67.1) (5.29.5)
+Requirement already satisfied: opentelemetry-semantic-conventions==0.58b0 in /usr/local/lib/python3.11/site-packages (from opentelemetry-sdk<2.0.0,>=1.22.0->crewai==0.67.1) (0.58b0)
+Requirement already satisfied: build<2.0.0,>=1.0.3 in /usr/local/lib/python3.11/site-packages (from poetry<2.0.0,>=1.8.3->crewai==0.67.1) (1.3.0)
+Requirement already satisfied: cachecontrol<0.15.0,>=0.14.0 in /usr/local/lib/python3.11/site-packages (from cachecontrol[filecache]<0.15.0,>=0.14.0->poetry<2.0.0,>=1.8.3->crewai==0.67.1) (0.14.3)
+Requirement already satisfied: cleo<3.0.0,>=2.1.0 in /usr/local/lib/python3.11/site-packages (from poetry<2.0.0,>=1.8.3->crewai==0.67.1) (2.1.0)
+Requirement already satisfied: crashtest<0.5.0,>=0.4.1 in /usr/local/lib/python3.11/site-packages (from poetry<2.0.0,>=1.8.3->crewai==0.67.1) (0.4.1)
+Requirement already satisfied: dulwich<0.22.0,>=0.21.2 in /usr/local/lib/python3.11/site-packages (from poetry<2.0.0,>=1.8.3->crewai==0.67.1) (0.21.7)
+Requirement already satisfied: fastjsonschema<3.0.0,>=2.18.0 in /usr/local/lib/python3.11/site-packages (from poetry<2.0.0,>=1.8.3->crewai==0.67.1) (2.21.2)
+Requirement already satisfied: installer<0.8.0,>=0.7.0 in /usr/local/lib/python3.11/site-packages (from poetry<2.0.0,>=1.8.3->crewai==0.67.1) (0.7.0)
+Requirement already satisfied: keyring<25.0.0,>=24.0.0 in /usr/local/lib/python3.11/site-packages (from poetry<2.0.0,>=1.8.3->crewai==0.67.1) (24.3.1)
+Requirement already satisfied: packaging>=23.1 in /usr/local/lib/python3.11/site-packages (from poetry<2.0.0,>=1.8.3->crewai==0.67.1) (24.2)
+Requirement already satisfied: pexpect<5.0.0,>=4.7.0 in /usr/local/lib/python3.11/site-packages (from poetry<2.0.0,>=1.8.3->crewai==0.67.1) (4.9.0)
+Requirement already satisfied: pkginfo<2.0,>=1.12 in /usr/local/lib/python3.11/site-packages (from poetry<2.0.0,>=1.8.3->crewai==0.67.1) (1.12.1.2)
+Requirement already satisfied: platformdirs<5,>=3.0.0 in /usr/local/lib/python3.11/site-packages (from poetry<2.0.0,>=1.8.3->crewai==0.67.1) (4.4.0)
+Requirement already satisfied: poetry-core==1.9.1 in /usr/local/lib/python3.11/site-packages (from poetry<2.0.0,>=1.8.3->crewai==0.67.1) (1.9.1)
+Requirement already satisfied: poetry-plugin-export<2.0.0,>=1.6.0 in /usr/local/lib/python3.11/site-packages (from poetry<2.0.0,>=1.8.3->crewai==0.67.1) (1.8.0)
+Requirement already satisfied: pyproject-hooks<2.0.0,>=1.0.0 in /usr/local/lib/python3.11/site-packages (from poetry<2.0.0,>=1.8.3->crewai==0.67.1) (1.2.0)
+Requirement already satisfied: requests-toolbelt<2.0.0,>=1.0.0 in /usr/local/lib/python3.11/site-packages (from poetry<2.0.0,>=1.8.3->crewai==0.67.1) (1.0.0)
+Requirement already satisfied: shellingham<2.0,>=1.5 in /usr/local/lib/python3.11/site-packages (from poetry<2.0.0,>=1.8.3->crewai==0.67.1) (1.5.4)
+Requirement already satisfied: tomlkit<1.0.0,>=0.11.4 in /usr/local/lib/python3.11/site-packages (from poetry<2.0.0,>=1.8.3->crewai==0.67.1) (0.13.3)
+Requirement already satisfied: trove-classifiers>=2022.5.19 in /usr/local/lib/python3.11/site-packages (from poetry<2.0.0,>=1.8.3->crewai==0.67.1) (2025.9.11.17)
+Requirement already satisfied: virtualenv<21.0.0,>=20.26.6 in /usr/local/lib/python3.11/site-packages (from poetry<2.0.0,>=1.8.3->crewai==0.67.1) (20.34.0)
+Requirement already satisfied: annotated-types>=0.6.0 in /usr/local/lib/python3.11/site-packages (from pydantic<3.0.0,>=2.4.2->crewai==0.67.1) (0.7.0)
+Requirement already satisfied: typing-inspection>=0.4.0 in /usr/local/lib/python3.11/site-packages (from pydantic<3.0.0,>=2.4.2->crewai==0.67.1) (0.4.1)
+Requirement already satisfied: ipython>=5.3.0 in /usr/local/lib/python3.11/site-packages (from pyvis<0.4.0,>=0.3.2->crewai==0.67.1) (9.5.0)
+Requirement already satisfied: jsonpickle>=1.4.1 in /usr/local/lib/python3.11/site-packages (from pyvis<0.4.0,>=0.3.2->crewai==0.67.1) (4.1.1)
+Requirement already satisfied: networkx>=1.11 in /usr/local/lib/python3.11/site-packages (from pyvis<0.4.0,>=0.3.2->crewai==0.67.1) (3.5)
+Requirement already satisfied: aiohappyeyeballs>=2.5.0 in /usr/local/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.9.1->instructor==1.3.3->crewai==0.67.1) (2.6.1)
+Requirement already satisfied: aiosignal>=1.4.0 in /usr/local/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.9.1->instructor==1.3.3->crewai==0.67.1) (1.4.0)
+Requirement already satisfied: attrs>=17.3.0 in /usr/local/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.9.1->instructor==1.3.3->crewai==0.67.1) (25.3.0)
+Requirement already satisfied: frozenlist>=1.1.1 in /usr/local/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.9.1->instructor==1.3.3->crewai==0.67.1) (1.7.0)
+Requirement already satisfied: multidict<7.0,>=4.5 in /usr/local/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.9.1->instructor==1.3.3->crewai==0.67.1) (6.6.4)
+Requirement already satisfied: propcache>=0.2.0 in /usr/local/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.9.1->instructor==1.3.3->crewai==0.67.1) (0.3.2)
+Requirement already satisfied: yarl<2.0,>=1.17.0 in /usr/local/lib/python3.11/site-packages (from aiohttp<4.0.0,>=3.9.1->instructor==1.3.3->crewai==0.67.1) (1.20.1)
+Requirement already satisfied: Mako in /usr/local/lib/python3.11/site-packages (from alembic<2.0.0,>=1.13.1->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (1.3.10)
+Requirement already satisfied: idna>=2.8 in /usr/local/lib/python3.11/site-packages (from anyio<5,>=3.5.0->openai<2.0.0,>=1.13.3->crewai==0.67.1) (3.10)
+Requirement already satisfied: soupsieve>1.2 in /usr/local/lib/python3.11/site-packages (from beautifulsoup4<5.0.0,>=4.12.2->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (2.8)
+Requirement already satisfied: msgpack<2.0.0,>=0.5.2 in /usr/local/lib/python3.11/site-packages (from cachecontrol<0.15.0,>=0.14.0->cachecontrol[filecache]<0.15.0,>=0.14.0->poetry<2.0.0,>=1.8.3->crewai==0.67.1) (1.1.1)
+Requirement already satisfied: filelock>=3.8.0 in /usr/local/lib/python3.11/site-packages (from cachecontrol[filecache]<0.15.0,>=0.14.0->poetry<2.0.0,>=1.8.3->crewai==0.67.1) (3.19.1)
+Requirement already satisfied: chroma-hnswlib==0.7.3 in /usr/local/lib/python3.11/site-packages (from chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.7.3)
+Requirement already satisfied: fastapi>=0.95.2 in /usr/local/lib/python3.11/site-packages (from chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.117.1)
+Requirement already satisfied: uvicorn>=0.18.3 in /usr/local/lib/python3.11/site-packages (from uvicorn[standard]>=0.18.3->chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.37.0)
+Requirement already satisfied: pulsar-client>=3.1.0 in /usr/local/lib/python3.11/site-packages (from chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (3.8.0)
+Requirement already satisfied: onnxruntime>=1.14.1 in /usr/local/lib/python3.11/site-packages (from chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (1.23.0)
+Requirement already satisfied: opentelemetry-exporter-otlp-proto-grpc>=1.2.0 in /usr/local/lib/python3.11/site-packages (from chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (1.37.0)
+Requirement already satisfied: opentelemetry-instrumentation-fastapi>=0.41b0 in /usr/local/lib/python3.11/site-packages (from chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.58b0)
+Requirement already satisfied: pypika>=0.48.9 in /usr/local/lib/python3.11/site-packages (from chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.48.9)
+Requirement already satisfied: overrides>=7.3.1 in /usr/local/lib/python3.11/site-packages (from chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (7.7.0)
+Requirement already satisfied: importlib-resources in /usr/local/lib/python3.11/site-packages (from chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (6.5.2)
+Requirement already satisfied: grpcio>=1.58.0 in /usr/local/lib/python3.11/site-packages (from chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (1.75.0)
+Requirement already satisfied: bcrypt>=4.0.1 in /usr/local/lib/python3.11/site-packages (from chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (5.0.0)
+Requirement already satisfied: kubernetes>=28.1.0 in /usr/local/lib/python3.11/site-packages (from chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (33.1.0)
+Requirement already satisfied: mmh3>=4.0.1 in /usr/local/lib/python3.11/site-packages (from chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (5.2.0)
+Requirement already satisfied: orjson>=3.9.12 in /usr/local/lib/python3.11/site-packages (from chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (3.11.3)
+Requirement already satisfied: rapidfuzz<4.0.0,>=3.0.0 in /usr/local/lib/python3.11/site-packages (from cleo<3.0.0,>=2.1.0->poetry<2.0.0,>=1.8.3->crewai==0.67.1) (3.14.1)
+Requirement already satisfied: fastavro<2.0.0,>=1.9.4 in /usr/local/lib/python3.11/site-packages (from cohere<6.0,>=5.3->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (1.12.0)
+Requirement already satisfied: httpx-sse==0.4.0 in /usr/local/lib/python3.11/site-packages (from cohere<6.0,>=5.3->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.4.0)
+Requirement already satisfied: types-requests<3.0.0,>=2.0.0 in /usr/local/lib/python3.11/site-packages (from cohere<6.0,>=5.3->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (2.32.4.20250913)
+Requirement already satisfied: cffi>=2.0.0 in /usr/local/lib/python3.11/site-packages (from cryptography>=43.0.1->auth0-python<5.0.0,>=4.7.1->crewai==0.67.1) (2.0.0)
+Requirement already satisfied: google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,<3.0.0,>=1.34.1 in /usr/local/lib/python3.11/site-packages (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,<3.0.0,>=1.34.1->google-cloud-aiplatform<2.0.0,>=1.26.1->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (2.25.1)
+Requirement already satisfied: google-auth<3.0.0,>=2.14.1 in /usr/local/lib/python3.11/site-packages (from google-cloud-aiplatform<2.0.0,>=1.26.1->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (2.40.3)
+Requirement already satisfied: proto-plus<2.0.0,>=1.22.3 in /usr/local/lib/python3.11/site-packages (from google-cloud-aiplatform<2.0.0,>=1.26.1->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (1.26.1)
+Requirement already satisfied: google-cloud-storage<3.0.0,>=1.32.0 in /usr/local/lib/python3.11/site-packages (from google-cloud-aiplatform<2.0.0,>=1.26.1->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (2.19.0)
+Requirement already satisfied: google-cloud-bigquery!=3.20.0,<4.0.0,>=1.15.0 in /usr/local/lib/python3.11/site-packages (from google-cloud-aiplatform<2.0.0,>=1.26.1->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (3.38.0)
+Requirement already satisfied: google-cloud-resource-manager<3.0.0,>=1.3.3 in /usr/local/lib/python3.11/site-packages (from google-cloud-aiplatform<2.0.0,>=1.26.1->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (1.14.2)
+Requirement already satisfied: shapely<3.0.0 in /usr/local/lib/python3.11/site-packages (from google-cloud-aiplatform<2.0.0,>=1.26.1->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (2.1.2)
+Requirement already satisfied: google-genai<2.0.0,>=1.37.0 in /usr/local/lib/python3.11/site-packages (from google-cloud-aiplatform<2.0.0,>=1.26.1->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (1.38.0)
+Requirement already satisfied: cachetools in /usr/local/lib/python3.11/site-packages (from gptcache<0.2.0,>=0.1.43->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (5.5.2)
+Requirement already satisfied: certifi in /usr/local/lib/python3.11/site-packages (from httpx>=0.23.0->litellm<2.0.0,>=1.44.22->crewai==0.67.1) (2025.8.3)
+Requirement already satisfied: httpcore==1.* in /usr/local/lib/python3.11/site-packages (from httpx>=0.23.0->litellm<2.0.0,>=1.44.22->crewai==0.67.1) (1.0.9)
+Requirement already satisfied: h11>=0.16 in /usr/local/lib/python3.11/site-packages (from httpcore==1.*->httpx>=0.23.0->litellm<2.0.0,>=1.44.22->crewai==0.67.1) (0.16.0)
+Requirement already satisfied: zipp>=3.20 in /usr/local/lib/python3.11/site-packages (from importlib-metadata>=6.8.0->litellm<2.0.0,>=1.44.22->crewai==0.67.1) (3.23.0)
+Requirement already satisfied: decorator in /usr/local/lib/python3.11/site-packages (from ipython>=5.3.0->pyvis<0.4.0,>=0.3.2->crewai==0.67.1) (5.2.1)
+Requirement already satisfied: ipython-pygments-lexers in /usr/local/lib/python3.11/site-packages (from ipython>=5.3.0->pyvis<0.4.0,>=0.3.2->crewai==0.67.1) (1.1.1)
+Requirement already satisfied: jedi>=0.16 in /usr/local/lib/python3.11/site-packages (from ipython>=5.3.0->pyvis<0.4.0,>=0.3.2->crewai==0.67.1) (0.19.2)
+Requirement already satisfied: matplotlib-inline in /usr/local/lib/python3.11/site-packages (from ipython>=5.3.0->pyvis<0.4.0,>=0.3.2->crewai==0.67.1) (0.1.7)
+Requirement already satisfied: prompt_toolkit<3.1.0,>=3.0.41 in /usr/local/lib/python3.11/site-packages (from ipython>=5.3.0->pyvis<0.4.0,>=0.3.2->crewai==0.67.1) (3.0.52)
+Requirement already satisfied: pygments>=2.4.0 in /usr/local/lib/python3.11/site-packages (from ipython>=5.3.0->pyvis<0.4.0,>=0.3.2->crewai==0.67.1) (2.19.2)
+Requirement already satisfied: stack_data in /usr/local/lib/python3.11/site-packages (from ipython>=5.3.0->pyvis<0.4.0,>=0.3.2->crewai==0.67.1) (0.6.3)
+Requirement already satisfied: traitlets>=5.13.0 in /usr/local/lib/python3.11/site-packages (from ipython>=5.3.0->pyvis<0.4.0,>=0.3.2->crewai==0.67.1) (5.14.3)
+Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/lib/python3.11/site-packages (from jinja2<4.0.0,>=3.1.2->litellm<2.0.0,>=1.44.22->crewai==0.67.1) (3.0.2)
+Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /usr/local/lib/python3.11/site-packages (from jsonschema<5.0.0,>=4.22.0->litellm<2.0.0,>=1.44.22->crewai==0.67.1) (2025.9.1)
+Requirement already satisfied: referencing>=0.28.4 in /usr/local/lib/python3.11/site-packages (from jsonschema<5.0.0,>=4.22.0->litellm<2.0.0,>=1.44.22->crewai==0.67.1) (0.36.2)
+Requirement already satisfied: rpds-py>=0.7.1 in /usr/local/lib/python3.11/site-packages (from jsonschema<5.0.0,>=4.22.0->litellm<2.0.0,>=1.44.22->crewai==0.67.1) (0.27.1)
+Requirement already satisfied: jaraco.classes in /usr/local/lib/python3.11/site-packages (from keyring<25.0.0,>=24.0.0->poetry<2.0.0,>=1.8.3->crewai==0.67.1) (3.4.0)
+Requirement already satisfied: SecretStorage>=3.2 in /usr/local/lib/python3.11/site-packages (from keyring<25.0.0,>=24.0.0->poetry<2.0.0,>=1.8.3->crewai==0.67.1) (3.4.0)
+Requirement already satisfied: jeepney>=0.4.2 in /usr/local/lib/python3.11/site-packages (from keyring<25.0.0,>=24.0.0->poetry<2.0.0,>=1.8.3->crewai==0.67.1) (0.9.0)
+Requirement already satisfied: langchain-experimental>=0.0.6 in /usr/local/lib/python3.11/site-packages (from langchain-cohere<0.2.0,>=0.1.4->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.0.65)
+Requirement already satisfied: pandas>=1.4.3 in /usr/local/lib/python3.11/site-packages (from langchain-cohere<0.2.0,>=0.1.4->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (2.3.2)
+Requirement already satisfied: tabulate<0.10.0,>=0.9.0 in /usr/local/lib/python3.11/site-packages (from langchain-cohere<0.2.0,>=0.1.4->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.9.0)
+Requirement already satisfied: dataclasses-json<0.7,>=0.5.7 in /usr/local/lib/python3.11/site-packages (from langchain-community<0.3.0,>=0.2.6->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.6.7)
+Requirement already satisfied: jsonpatch<2.0,>=1.33 in /usr/local/lib/python3.11/site-packages (from langchain-core<0.3.0,>=0.2.43->langchain<0.3.0,>=0.2.16->crewai==0.67.1) (1.33)
+Requirement already satisfied: pytz>=2024.1 in /usr/local/lib/python3.11/site-packages (from mem0ai<0.2.0,>=0.1.15->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (2025.2)
+Requirement already satisfied: qdrant-client>=1.9.1 in /usr/local/lib/python3.11/site-packages (from mem0ai<0.2.0,>=0.1.15->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (1.15.1)
+Requirement already satisfied: ptyprocess>=0.5 in /usr/local/lib/python3.11/site-packages (from pexpect<5.0.0,>=4.7.0->poetry<2.0.0,>=1.8.3->crewai==0.67.1) (0.7.0)
+Requirement already satisfied: madoka>=0.7.1 in /usr/local/lib/python3.11/site-packages (from pondpond<2.0.0,>=1.4.1->litellm<2.0.0,>=1.44.22->crewai==0.67.1) (0.7.1)
+Requirement already satisfied: six>=1.5 in /usr/local/lib/python3.11/site-packages (from posthog<4.0.0,>=3.0.2->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (1.17.0)
+Requirement already satisfied: monotonic>=1.5 in /usr/local/lib/python3.11/site-packages (from posthog<4.0.0,>=3.0.2->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (1.6)
+Requirement already satisfied: backoff>=1.10.0 in /usr/local/lib/python3.11/site-packages (from posthog<4.0.0,>=3.0.2->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (2.2.1)
+Requirement already satisfied: python-dateutil>2.1 in /usr/local/lib/python3.11/site-packages (from posthog<4.0.0,>=3.0.2->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (2.9.0.post0)
+Requirement already satisfied: charset_normalizer<4,>=2 in /usr/local/lib/python3.11/site-packages (from requests>=2.32.3->auth0-python<5.0.0,>=4.7.1->crewai==0.67.1) (3.4.3)
+Requirement already satisfied: markdown-it-py>=2.2.0 in /usr/local/lib/python3.11/site-packages (from rich<14.0.0,>=13.7.0->instructor==1.3.3->crewai==0.67.1) (4.0.0)
+Requirement already satisfied: greenlet>=1 in /usr/local/lib/python3.11/site-packages (from sqlalchemy<3.0.0,>=2.0.27->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (3.2.4)
+Requirement already satisfied: huggingface-hub<2.0,>=0.16.4 in /usr/local/lib/python3.11/site-packages (from tokenizers->litellm<2.0.0,>=1.44.22->crewai==0.67.1) (0.35.1)
+Requirement already satisfied: distlib<1,>=0.3.7 in /usr/local/lib/python3.11/site-packages (from virtualenv<21.0.0,>=20.26.6->poetry<2.0.0,>=1.8.3->crewai==0.67.1) (0.4.0)
+Requirement already satisfied: pycparser in /usr/local/lib/python3.11/site-packages (from cffi>=2.0.0->cryptography>=43.0.1->auth0-python<5.0.0,>=4.7.1->crewai==0.67.1) (2.23)
+Requirement already satisfied: marshmallow<4.0.0,>=3.18.0 in /usr/local/lib/python3.11/site-packages (from dataclasses-json<0.7,>=0.5.7->langchain-community<0.3.0,>=0.2.6->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (3.26.1)
+Requirement already satisfied: typing-inspect<1,>=0.4.0 in /usr/local/lib/python3.11/site-packages (from dataclasses-json<0.7,>=0.5.7->langchain-community<0.3.0,>=0.2.6->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.9.0)
+Requirement already satisfied: starlette<0.49.0,>=0.40.0 in /usr/local/lib/python3.11/site-packages (from fastapi>=0.95.2->chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.48.0)
+Requirement already satisfied: grpcio-status<2.0.0,>=1.33.2 in /usr/local/lib/python3.11/site-packages (from google-api-core[grpc]!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.*,!=2.4.*,!=2.5.*,!=2.6.*,!=2.7.*,<3.0.0,>=1.34.1->google-cloud-aiplatform<2.0.0,>=1.26.1->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (1.71.2)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /usr/local/lib/python3.11/site-packages (from google-auth<3.0.0,>=2.14.1->google-cloud-aiplatform<2.0.0,>=1.26.1->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.4.2)
+Requirement already satisfied: rsa<5,>=3.1.4 in /usr/local/lib/python3.11/site-packages (from google-auth<3.0.0,>=2.14.1->google-cloud-aiplatform<2.0.0,>=1.26.1->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (4.9.1)
+Requirement already satisfied: google-cloud-core<3.0.0,>=2.4.1 in /usr/local/lib/python3.11/site-packages (from google-cloud-bigquery!=3.20.0,<4.0.0,>=1.15.0->google-cloud-aiplatform<2.0.0,>=1.26.1->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (2.4.3)
+Requirement already satisfied: google-resumable-media<3.0.0,>=2.0.0 in /usr/local/lib/python3.11/site-packages (from google-cloud-bigquery!=3.20.0,<4.0.0,>=1.15.0->google-cloud-aiplatform<2.0.0,>=1.26.1->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (2.7.2)
+Requirement already satisfied: grpc-google-iam-v1<1.0.0,>=0.14.0 in /usr/local/lib/python3.11/site-packages (from google-cloud-resource-manager<3.0.0,>=1.3.3->google-cloud-aiplatform<2.0.0,>=1.26.1->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.14.2)
+Requirement already satisfied: google-crc32c<2.0dev,>=1.0 in /usr/local/lib/python3.11/site-packages (from google-cloud-storage<3.0.0,>=1.32.0->google-cloud-aiplatform<2.0.0,>=1.26.1->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (1.7.1)
+Requirement already satisfied: websockets<15.1.0,>=13.0.0 in /usr/local/lib/python3.11/site-packages (from google-genai<2.0.0,>=1.37.0->google-cloud-aiplatform<2.0.0,>=1.26.1->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (15.0.1)
+Requirement already satisfied: fsspec>=2023.5.0 in /usr/local/lib/python3.11/site-packages (from huggingface-hub<2.0,>=0.16.4->tokenizers->litellm<2.0.0,>=1.44.22->crewai==0.67.1) (2025.9.0)
+Requirement already satisfied: hf-xet<2.0.0,>=1.1.3 in /usr/local/lib/python3.11/site-packages (from huggingface-hub<2.0,>=0.16.4->tokenizers->litellm<2.0.0,>=1.44.22->crewai==0.67.1) (1.1.10)
+Requirement already satisfied: parso<0.9.0,>=0.8.4 in /usr/local/lib/python3.11/site-packages (from jedi>=0.16->ipython>=5.3.0->pyvis<0.4.0,>=0.3.2->crewai==0.67.1) (0.8.5)
+Requirement already satisfied: jsonpointer>=1.9 in /usr/local/lib/python3.11/site-packages (from jsonpatch<2.0,>=1.33->langchain-core<0.3.0,>=0.2.43->langchain<0.3.0,>=0.2.16->crewai==0.67.1) (3.0.0)
+Requirement already satisfied: websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 in /usr/local/lib/python3.11/site-packages (from kubernetes>=28.1.0->chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (1.8.0)
+Requirement already satisfied: requests-oauthlib in /usr/local/lib/python3.11/site-packages (from kubernetes>=28.1.0->chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (2.0.0)
+Requirement already satisfied: oauthlib>=3.2.2 in /usr/local/lib/python3.11/site-packages (from kubernetes>=28.1.0->chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (3.3.1)
+Requirement already satisfied: durationpy>=0.7 in /usr/local/lib/python3.11/site-packages (from kubernetes>=28.1.0->chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.10)
+Requirement already satisfied: mdurl~=0.1 in /usr/local/lib/python3.11/site-packages (from markdown-it-py>=2.2.0->rich<14.0.0,>=13.7.0->instructor==1.3.3->crewai==0.67.1) (0.1.2)
+Requirement already satisfied: coloredlogs in /usr/local/lib/python3.11/site-packages (from onnxruntime>=1.14.1->chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (15.0.1)
+Requirement already satisfied: flatbuffers in /usr/local/lib/python3.11/site-packages (from onnxruntime>=1.14.1->chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (25.9.23)
+Requirement already satisfied: sympy in /usr/local/lib/python3.11/site-packages (from onnxruntime>=1.14.1->chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (1.14.0)
+Requirement already satisfied: opentelemetry-instrumentation-asgi==0.58b0 in /usr/local/lib/python3.11/site-packages (from opentelemetry-instrumentation-fastapi>=0.41b0->chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.58b0)
+Requirement already satisfied: opentelemetry-instrumentation==0.58b0 in /usr/local/lib/python3.11/site-packages (from opentelemetry-instrumentation-fastapi>=0.41b0->chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.58b0)
+Requirement already satisfied: opentelemetry-util-http==0.58b0 in /usr/local/lib/python3.11/site-packages (from opentelemetry-instrumentation-fastapi>=0.41b0->chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.58b0)
+Requirement already satisfied: wrapt<2.0.0,>=1.0.0 in /usr/local/lib/python3.11/site-packages (from opentelemetry-instrumentation==0.58b0->opentelemetry-instrumentation-fastapi>=0.41b0->chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (1.17.3)
+Requirement already satisfied: asgiref~=3.0 in /usr/local/lib/python3.11/site-packages (from opentelemetry-instrumentation-asgi==0.58b0->opentelemetry-instrumentation-fastapi>=0.41b0->chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (3.9.2)
+Requirement already satisfied: tzdata>=2022.7 in /usr/local/lib/python3.11/site-packages (from pandas>=1.4.3->langchain-cohere<0.2.0,>=0.1.4->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (2025.2)
+Requirement already satisfied: wcwidth in /usr/local/lib/python3.11/site-packages (from prompt_toolkit<3.1.0,>=3.0.41->ipython>=5.3.0->pyvis<0.4.0,>=0.3.2->crewai==0.67.1) (0.2.14)
+Requirement already satisfied: portalocker<4.0,>=2.7.0 in /usr/local/lib/python3.11/site-packages (from qdrant-client>=1.9.1->mem0ai<0.2.0,>=0.1.15->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (3.2.0)
+Requirement already satisfied: httptools>=0.6.3 in /usr/local/lib/python3.11/site-packages (from uvicorn[standard]>=0.18.3->chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.6.4)
+Requirement already satisfied: uvloop>=0.15.1 in /usr/local/lib/python3.11/site-packages (from uvicorn[standard]>=0.18.3->chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.21.0)
+Requirement already satisfied: watchfiles>=0.13 in /usr/local/lib/python3.11/site-packages (from uvicorn[standard]>=0.18.3->chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (1.1.0)
+Requirement already satisfied: more-itertools in /usr/local/lib/python3.11/site-packages (from jaraco.classes->keyring<25.0.0,>=24.0.0->poetry<2.0.0,>=1.8.3->crewai==0.67.1) (10.8.0)
+Requirement already satisfied: executing>=1.2.0 in /usr/local/lib/python3.11/site-packages (from stack_data->ipython>=5.3.0->pyvis<0.4.0,>=0.3.2->crewai==0.67.1) (2.2.1)
+Requirement already satisfied: asttokens>=2.1.0 in /usr/local/lib/python3.11/site-packages (from stack_data->ipython>=5.3.0->pyvis<0.4.0,>=0.3.2->crewai==0.67.1) (3.0.0)
+Requirement already satisfied: pure-eval in /usr/local/lib/python3.11/site-packages (from stack_data->ipython>=5.3.0->pyvis<0.4.0,>=0.3.2->crewai==0.67.1) (0.2.3)
+Requirement already satisfied: h2<5,>=3 in /usr/local/lib/python3.11/site-packages (from httpx[http2]>=0.20.0->qdrant-client>=1.9.1->mem0ai<0.2.0,>=0.1.15->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (4.3.0)
+Requirement already satisfied: pyasn1<0.7.0,>=0.6.1 in /usr/local/lib/python3.11/site-packages (from pyasn1-modules>=0.2.1->google-auth<3.0.0,>=2.14.1->google-cloud-aiplatform<2.0.0,>=1.26.1->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (0.6.1)
+Requirement already satisfied: mypy-extensions>=0.3.0 in /usr/local/lib/python3.11/site-packages (from typing-inspect<1,>=0.4.0->dataclasses-json<0.7,>=0.5.7->langchain-community<0.3.0,>=0.2.6->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (1.1.0)
+Requirement already satisfied: humanfriendly>=9.1 in /usr/local/lib/python3.11/site-packages (from coloredlogs->onnxruntime>=1.14.1->chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (10.0)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /usr/local/lib/python3.11/site-packages (from sympy->onnxruntime>=1.14.1->chromadb<0.5.0,>=0.4.24->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (1.3.0)
+Requirement already satisfied: hyperframe<7,>=6.1 in /usr/local/lib/python3.11/site-packages (from h2<5,>=3->httpx[http2]>=0.20.0->qdrant-client>=1.9.1->mem0ai<0.2.0,>=0.1.15->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (6.1.0)
+Requirement already satisfied: hpack<5,>=4.1 in /usr/local/lib/python3.11/site-packages (from h2<5,>=3->httpx[http2]>=0.20.0->qdrant-client>=1.9.1->mem0ai<0.2.0,>=0.1.15->embedchain<0.2.0,>=0.1.114->crewai==0.67.1) (4.1.0)
+Building wheels for collected packages: crewai
+  Building editable for crewai (pyproject.toml): started
+  Building editable for crewai (pyproject.toml): finished with status 'done'
+  Created wheel for crewai: filename=crewai-0.67.1-py3-none-any.whl size=8761 sha256=aaa1a65a18454cf678b4ff575bd5ba01a62d2ad088e1592a97c62fa621d47e5b
+  Stored in directory: /tmp/pip-ephem-wheel-cache-9_t7gs3_/wheels/8f/39/4e/7e78c5c2511cdfe8e1751347c69a952707e0f96fee835f3862
+Successfully built crewai
+Installing collected packages: crewai
+  Attempting uninstall: crewai
+    Found existing installation: crewai 0.67.1
+    Uninstalling crewai-0.67.1:
+      Successfully uninstalled crewai-0.67.1
+Successfully installed crewai-0.67.1
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 24.0 -> 25.2
+[notice] To update, run: pip install --upgrade pip
+Found reproduce.py. Executing with python...
+
+--- Testing CrewAI Issue #1370 - Slow import time ---
+--- Version: FIXED ---
+
+Running import time test...
+Starting crewai import...
+Import completed in 2.82 seconds
+✓ FIX CONFIRMED: Import only took 2.82 seconds (<10 seconds)
+
+Total process runtime: 3.26 seconds
+✅ FIX CONFIRMED: crewAI import is now faster
+
+--- Exit code: 0 ---

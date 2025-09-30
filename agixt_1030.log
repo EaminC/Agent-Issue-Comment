@@ -1,0 +1,96 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:agixt_1030
+agixt_1030: Pulling from alfin06/agentissue-bench
+ce1261c6d567: Already exists
+d02c566428bb: Already exists
+6dc114d5e12c: Already exists
+fceec8b8a90e: Already exists
+363737472a05: Pulling fs layer
+27845ba073aa: Pulling fs layer
+6ec81bf976f4: Pulling fs layer
+799569765e1a: Pulling fs layer
+d171d4dc35d0: Pulling fs layer
+1da20b50a9d9: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+799569765e1a: Waiting
+d171d4dc35d0: Waiting
+1da20b50a9d9: Waiting
+4f4fb700ef54: Waiting
+363737472a05: Verifying Checksum
+363737472a05: Download complete
+363737472a05: Pull complete
+799569765e1a: Download complete
+d171d4dc35d0: Download complete
+1da20b50a9d9: Verifying Checksum
+1da20b50a9d9: Download complete
+4f4fb700ef54: Download complete
+27845ba073aa: Verifying Checksum
+27845ba073aa: Download complete
+6ec81bf976f4: Verifying Checksum
+6ec81bf976f4: Download complete
+27845ba073aa: Pull complete
+6ec81bf976f4: Pull complete
+799569765e1a: Pull complete
+d171d4dc35d0: Pull complete
+1da20b50a9d9: Pull complete
+4f4fb700ef54: Pull complete
+Digest: sha256:67b2ca9aaf267377d8c28876c215a20420b139efe193d2027f91a83a327957a2
+Status: Downloaded newer image for alfin06/agentissue-bench:agixt_1030
+docker.io/alfin06/agentissue-bench:agixt_1030
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:agixt_1030" test_buggy
+=== Testing BUGGY Version (Commit: 428e5e0f657ff93bfc931ff5460dc895a6ca4019) ===
+--- Running Test for buggy version ---
+Found reproduce.py. Executing with python...
+TypeError occurred as expected: '>' not supported between instances of 'str' and 'int'
+
+--- Testing AGiXT Issue #1030 - TypeError: '>' not supported between 'str' and 'int' ---
+--- Version: BUGGY ---
+
+Examining the websearch_agent method in Websearch.py
+
+Found lines with websearch_depth comparison:
+  if websearch_depth > 0:
+  if len(links) > websearch_depth:
+
+Running simulated test for buggy version...
+
+--- Static Code Analysis Results ---
+Found bug pattern: Direct comparison of websearch_depth with integer without type conversion
+Did not find fix pattern
+
+✅ BUG CONFIRMED: Found code that directly compares string and int
+✅ BUG SUCCESSFULLY REPRODUCED: TypeError comparison between 'str' and 'int'
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:agixt_1030" test_fixed
+=== Testing FIXED Version (Commit: 1d0e7708b91cae234f2ae1375c8cd25148a18ab6) ===
+--- Running Test for fixed version ---
+Found reproduce.py. Executing with python...
+Comparison successful
+
+--- Testing AGiXT Issue #1030 - TypeError: '>' not supported between 'str' and 'int' ---
+--- Version: FIXED ---
+
+Examining the websearch_agent method in Websearch.py
+
+Found lines with websearch_depth comparison:
+  if websearch_depth > 0:
+  if len(links) > websearch_depth:
+
+Found type conversion: websearch_depth = int(websearch_depth)
+
+Running simulated test for fixed version...
+
+--- Static Code Analysis Results ---
+Did not find bug pattern
+Found fix pattern: Type conversion of websearch_depth to int
+Fix implementation: websearch_depth = int(websearch_depth)
+
+✅ FIX CONFIRMED: Code now converts websearch_depth to int before comparison
+✅ FIX CONFIRMED: No TypeError occurs in the fixed version
+
+--- Exit code: 0 ---

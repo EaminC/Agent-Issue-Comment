@@ -1,0 +1,105 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:ai_4446
+ai_4446: Pulling from alfin06/agentissue-bench
+7128a879011b: Already exists
+ef8dd4820a78: Already exists
+25a2c9fb3ef1: Already exists
+5670e6facdd7: Already exists
+9e83d7fdf3b4: Already exists
+3b44265dbe15: Pulling fs layer
+47898bdf253f: Pulling fs layer
+38e595512c85: Pulling fs layer
+c23ba6ff7d81: Pulling fs layer
+045df6098ce4: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+312438db2000: Pulling fs layer
+511975951970: Pulling fs layer
+045df6098ce4: Waiting
+c23ba6ff7d81: Waiting
+312438db2000: Waiting
+511975951970: Waiting
+4f4fb700ef54: Waiting
+38e595512c85: Download complete
+c23ba6ff7d81: Verifying Checksum
+c23ba6ff7d81: Download complete
+045df6098ce4: Download complete
+3b44265dbe15: Verifying Checksum
+3b44265dbe15: Download complete
+4f4fb700ef54: Download complete
+312438db2000: Verifying Checksum
+312438db2000: Download complete
+511975951970: Verifying Checksum
+511975951970: Download complete
+47898bdf253f: Verifying Checksum
+47898bdf253f: Download complete
+3b44265dbe15: Pull complete
+47898bdf253f: Pull complete
+38e595512c85: Pull complete
+c23ba6ff7d81: Pull complete
+045df6098ce4: Pull complete
+4f4fb700ef54: Pull complete
+312438db2000: Pull complete
+511975951970: Pull complete
+Digest: sha256:86eb52f60aa8039c7550ab79de6704ceb87fb70eec2fdd348076cbf5887a8136
+Status: Downloaded newer image for alfin06/agentissue-bench:ai_4446
+docker.io/alfin06/agentissue-bench:ai_4446
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:ai_4446" test_buggy
+=== Testing BUGGY Version (Commit: 2c08fe1a8fba0075531ec5ea5a8578556840fa60) ===
+Checking out buggy commit...
+HEAD is now at 2c08fe1a8 docs: update custom provider for stable (#4635)
+--- Running Test ---
+Found repro_script.js. Executing with node...
+--- Calling generateText with a tool call that has invalid arguments. ---
+--- This is expected to throw an AI_InvalidToolArgumentsError. ---
+
+SUCCESS: The script failed with an error as expected.
+Error Type: AI_InvalidToolArgumentsError
+Error Message: Invalid arguments for tool getWeather: Type validation failed: Value: {"city":12345}.
+Error message: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "number",
+    "path": [
+      "city"
+    ],
+    "message": "Expected string, received number"
+  }
+]
+
+Verification successful: The error name matches the expected validation error.
+--- Test script failed (exit code 1) ---
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:ai_4446" test_fixed
+=== Testing FIXED Version (Commit: 11fe0ffb5d6a67443314a7291e30bd891b94d3e7) ===
+Previous HEAD position was 2c08fe1a8 docs: update custom provider for stable (#4635)
+HEAD is now at 11fe0ffb5 feat (docs): re-ask strategy for tool call repair (#4636)
+--- Running Test ---
+Found repro_script.js. Executing with node...
+--- Calling generateText with a tool call that has invalid arguments. ---
+--- This is expected to throw an AI_InvalidToolArgumentsError. ---
+
+SUCCESS: The script failed with an error as expected.
+Error Type: AI_InvalidToolArgumentsError
+Error Message: Invalid arguments for tool getWeather: Type validation failed: Value: {"city":12345}.
+Error message: [
+  {
+    "code": "invalid_type",
+    "expected": "string",
+    "received": "number",
+    "path": [
+      "city"
+    ],
+    "message": "Expected string, received number"
+  }
+]
+
+Verification successful: The error name matches the expected validation error.
+--- Test script failed (exit code 1) ---
+
+--- Exit code: 0 ---

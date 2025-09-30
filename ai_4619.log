@@ -1,0 +1,166 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:ai_4619
+ai_4619: Pulling from alfin06/agentissue-bench
+7128a879011b: Already exists
+ef8dd4820a78: Already exists
+25a2c9fb3ef1: Already exists
+5670e6facdd7: Already exists
+9e83d7fdf3b4: Already exists
+26b8ed3c89e0: Pulling fs layer
+d8cab2d74f0b: Pulling fs layer
+704b13f3d703: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+c39bc0170d0a: Pulling fs layer
+948c8cd0c7e3: Pulling fs layer
+863b9defbcfc: Pulling fs layer
+6da280a7d3c0: Pulling fs layer
+624b9b889eb4: Pulling fs layer
+4f4fb700ef54: Waiting
+c39bc0170d0a: Waiting
+4a6396741d01: Pulling fs layer
+5c9ab8e6a4df: Pulling fs layer
+863b9defbcfc: Waiting
+948c8cd0c7e3: Waiting
+6da280a7d3c0: Waiting
+5c9ab8e6a4df: Waiting
+4a6396741d01: Waiting
+624b9b889eb4: Waiting
+d8cab2d74f0b: Verifying Checksum
+d8cab2d74f0b: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+26b8ed3c89e0: Verifying Checksum
+26b8ed3c89e0: Download complete
+704b13f3d703: Verifying Checksum
+704b13f3d703: Download complete
+863b9defbcfc: Download complete
+6da280a7d3c0: Download complete
+624b9b889eb4: Download complete
+4a6396741d01: Verifying Checksum
+4a6396741d01: Download complete
+5c9ab8e6a4df: Verifying Checksum
+5c9ab8e6a4df: Download complete
+948c8cd0c7e3: Verifying Checksum
+948c8cd0c7e3: Download complete
+26b8ed3c89e0: Pull complete
+d8cab2d74f0b: Pull complete
+704b13f3d703: Pull complete
+4f4fb700ef54: Pull complete
+c39bc0170d0a: Verifying Checksum
+c39bc0170d0a: Download complete
+c39bc0170d0a: Pull complete
+948c8cd0c7e3: Pull complete
+863b9defbcfc: Pull complete
+6da280a7d3c0: Pull complete
+624b9b889eb4: Pull complete
+4a6396741d01: Pull complete
+5c9ab8e6a4df: Pull complete
+Digest: sha256:1b51fecd8c10a90277a96397b64b8993a98599a35d3827ae0e2642d00e0df0f2
+Status: Downloaded newer image for alfin06/agentissue-bench:ai_4619
+docker.io/alfin06/agentissue-bench:ai_4619
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:ai_4619" test_buggy
+=== Testing BUGGY Version (Commit: d99c7fb31a3db198e7c5ec33a9b40b324065a2ea) ===
+Checking out buggy commit...
+HEAD is now at d99c7fb31 Version Packages (#4622)
+--- Running Test ---
+Found repro_script.js. Executing with node...
+--- Calling convertToCoreMessages with a mixed assistant message. ---
+
+--- Analyzing the generated message order ---
+Generated messages: [
+  {
+    "role": "user",
+    "content": "request"
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "response"
+      },
+      {
+        "type": "tool-call",
+        "toolCallId": "tool_123",
+        "toolName": "toolName",
+        "args": {
+          "foo": "bar"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "content": [
+      {
+        "type": "tool-result",
+        "toolCallId": "tool_123",
+        "toolName": "toolName",
+        "result": {
+          "other": "stuff"
+        }
+      }
+    ]
+  }
+]
+
+FAILURE: The bug was NOT reproduced.
+The last message has the correct role: 'tool'.
+--- Test script executed successfully (exit code 0) ---
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:ai_4619" test_fixed
+=== Testing FIXED Version (Commit: ca89615e857646f0b5bfc0350d2c130798df10c9) ===
+Previous HEAD position was d99c7fb31 Version Packages (#4622)
+HEAD is now at ca89615e8 fix (ai/core): only append assistant response at the end when there is a final user message (#4623)
+--- Running Test ---
+Found repro_script.js. Executing with node...
+--- Calling convertToCoreMessages with a mixed assistant message. ---
+
+--- Analyzing the generated message order ---
+Generated messages: [
+  {
+    "role": "user",
+    "content": "request"
+  },
+  {
+    "role": "assistant",
+    "content": [
+      {
+        "type": "text",
+        "text": "response"
+      },
+      {
+        "type": "tool-call",
+        "toolCallId": "tool_123",
+        "toolName": "toolName",
+        "args": {
+          "foo": "bar"
+        }
+      }
+    ]
+  },
+  {
+    "role": "tool",
+    "content": [
+      {
+        "type": "tool-result",
+        "toolCallId": "tool_123",
+        "toolName": "toolName",
+        "result": {
+          "other": "stuff"
+        }
+      }
+    ]
+  }
+]
+
+FAILURE: The bug was NOT reproduced.
+The last message has the correct role: 'tool'.
+--- Test script executed successfully (exit code 0) ---
+
+--- Exit code: 0 ---

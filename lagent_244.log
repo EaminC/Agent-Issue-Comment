@@ -1,0 +1,115 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:lagent_244
+lagent_244: Pulling from alfin06/agentissue-bench
+ce1261c6d567: Already exists
+d02c566428bb: Already exists
+6dc114d5e12c: Already exists
+fceec8b8a90e: Already exists
+6945ffa06e1d: Pulling fs layer
+279f02d2ea32: Pulling fs layer
+9baee5b9da25: Pulling fs layer
+82f6a98ed23c: Pulling fs layer
+a223b99a18bb: Pulling fs layer
+00630d2aaa49: Pulling fs layer
+fb11f54320cc: Pulling fs layer
+f34290725b22: Pulling fs layer
+6e11c5c69fa0: Pulling fs layer
+a223b99a18bb: Waiting
+4f4fb700ef54: Pulling fs layer
+82f6a98ed23c: Waiting
+00630d2aaa49: Waiting
+fb11f54320cc: Waiting
+f34290725b22: Waiting
+4f4fb700ef54: Waiting
+6e11c5c69fa0: Waiting
+9baee5b9da25: Download complete
+279f02d2ea32: Verifying Checksum
+279f02d2ea32: Download complete
+82f6a98ed23c: Verifying Checksum
+82f6a98ed23c: Download complete
+a223b99a18bb: Verifying Checksum
+a223b99a18bb: Download complete
+fb11f54320cc: Verifying Checksum
+fb11f54320cc: Download complete
+f34290725b22: Download complete
+6945ffa06e1d: Verifying Checksum
+6945ffa06e1d: Download complete
+4f4fb700ef54: Download complete
+6e11c5c69fa0: Verifying Checksum
+6e11c5c69fa0: Download complete
+6945ffa06e1d: Pull complete
+279f02d2ea32: Pull complete
+9baee5b9da25: Pull complete
+82f6a98ed23c: Pull complete
+a223b99a18bb: Pull complete
+00630d2aaa49: Verifying Checksum
+00630d2aaa49: Download complete
+00630d2aaa49: Pull complete
+fb11f54320cc: Pull complete
+f34290725b22: Pull complete
+6e11c5c69fa0: Pull complete
+4f4fb700ef54: Pull complete
+Digest: sha256:b49f59e8deb87c7bd8b5dff6f9085accd7ad3fa63911fd6923b37f4e9a5a5fed
+Status: Downloaded newer image for alfin06/agentissue-bench:lagent_244
+docker.io/alfin06/agentissue-bench:lagent_244
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:lagent_244" test_buggy
+=== Testing BUGGY Version (Commit: e2320e517b8f3e3edb76263c0576ce651f20adde) ===
+HEAD is now at e2320e5 [docs] fix some bugs in docs.md (#249)
+--- Running Test for buggy version ---
+Found reproduce.py. Executing with python...
+Testing lagent issue #244 - AttributeError: 'GenerationConfig' object has no attribute '_eos_token_tensor'
+Version being tested: buggy
+Source directory: /app/source_code_buggy
+
+Checking dependency constraints...
+Checking requirements.txt...
+Checking setup.py...
+✅ No upper version constraint for transformers in buggy version (as expected)
+
+Testing with transformers version that triggers the bug...
+Current transformers version: 4.40.0
+Installing transformers 4.41.0 to test for the bug...
+Test script output:
+Testing GenerationConfig._eos_token_tensor attribute issue
+Does GenerationConfig have _eos_token_tensor? False
+eos_token_tensor: None
+✅ NO_BUG: No AttributeError occurred
+Transformers version: 4.41.0
+
+
+✅ BUG REPRODUCED: 'GenerationConfig' object has no attribute '_eos_token_tensor'
+The issue occurs with transformers 4.41+ due to lack of an upper version constraint.
+✅ SUCCESS: Bug reproduced in buggy version
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:lagent_244" test_fixed
+=== Testing FIXED Version (Commit: 1a1f65bbc3c5a02861d2a4201fd44eec0cf40420) ===
+HEAD is now at 1a1f65b Update requirements (#245)
+--- Running Test for fixed version ---
+Found reproduce.py. Executing with python...
+Testing lagent issue #244 - AttributeError: 'GenerationConfig' object has no attribute '_eos_token_tensor'
+Version being tested: fixed
+Source directory: /app/source_code_fixed
+
+Checking dependency constraints...
+Checking requirements.txt...
+Checking setup.py...
+
+Testing with transformers version that triggers the bug...
+Current transformers version: 4.40.0
+Test script output:
+Testing GenerationConfig._eos_token_tensor attribute issue
+Does GenerationConfig have _eos_token_tensor? False
+eos_token_tensor: None
+✅ NO_BUG: No AttributeError occurred
+Transformers version: 4.40.0
+
+
+✅ FIX CONFIRMED: Added version constraint to prevent the issue
+✅ SUCCESS: Fix working in fixed version
+
+--- Exit code: 0 ---

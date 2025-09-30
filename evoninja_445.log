@@ -1,0 +1,104 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:evoninja_445
+evoninja_445: Pulling from alfin06/agentissue-bench
+cd81d20ef38b: Pulling fs layer
+f0388f0d5bf1: Pulling fs layer
+5d473f760e53: Pulling fs layer
+66d32181a1ed: Pulling fs layer
+8bbe44aaef83: Pulling fs layer
+acf19b5b4431: Pulling fs layer
+8a509f11a73e: Pulling fs layer
+c225ad70ad07: Pulling fs layer
+8a85ab205414: Pulling fs layer
+400c155949bc: Pulling fs layer
+8bbe44aaef83: Waiting
+78761588d2d3: Pulling fs layer
+7fae99a54cdf: Pulling fs layer
+acf19b5b4431: Waiting
+5b5fd08bd2cc: Pulling fs layer
+400c155949bc: Waiting
+78761588d2d3: Waiting
+7fae99a54cdf: Waiting
+8a509f11a73e: Waiting
+c225ad70ad07: Waiting
+5b5fd08bd2cc: Waiting
+8a85ab205414: Waiting
+66d32181a1ed: Waiting
+f0388f0d5bf1: Verifying Checksum
+f0388f0d5bf1: Download complete
+cd81d20ef38b: Verifying Checksum
+cd81d20ef38b: Download complete
+5d473f760e53: Verifying Checksum
+5d473f760e53: Download complete
+8bbe44aaef83: Verifying Checksum
+8a509f11a73e: Verifying Checksum
+8a509f11a73e: Download complete
+c225ad70ad07: Verifying Checksum
+c225ad70ad07: Download complete
+acf19b5b4431: Verifying Checksum
+acf19b5b4431: Download complete
+8a85ab205414: Verifying Checksum
+8a85ab205414: Download complete
+400c155949bc: Download complete
+66d32181a1ed: Verifying Checksum
+66d32181a1ed: Download complete
+5b5fd08bd2cc: Verifying Checksum
+5b5fd08bd2cc: Download complete
+cd81d20ef38b: Pull complete
+f0388f0d5bf1: Pull complete
+78761588d2d3: Verifying Checksum
+78761588d2d3: Download complete
+7fae99a54cdf: Verifying Checksum
+7fae99a54cdf: Download complete
+5d473f760e53: Pull complete
+66d32181a1ed: Pull complete
+8bbe44aaef83: Pull complete
+acf19b5b4431: Pull complete
+8a509f11a73e: Pull complete
+c225ad70ad07: Pull complete
+8a85ab205414: Pull complete
+400c155949bc: Pull complete
+78761588d2d3: Pull complete
+7fae99a54cdf: Pull complete
+5b5fd08bd2cc: Pull complete
+Digest: sha256:5c9865c952dd58fbf4c0e7a59e5ad2eef27e0e6749853ad8e81773e2a98f33ce
+Status: Downloaded newer image for alfin06/agentissue-bench:evoninja_445
+docker.io/alfin06/agentissue-bench:evoninja_445
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:evoninja_445" test_buggy
+node:internal/modules/cjs/loader:1143
+  throw err;
+  ^
+
+Error: Cannot find module '/app/test_buggy'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1140:15)
+    at Module._load (node:internal/modules/cjs/loader:981:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12)
+    at node:internal/main/run_main_module:28:49 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v18.20.7
+
+--- Exit code: 1 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:evoninja_445" test_fixed
+node:internal/modules/cjs/loader:1143
+  throw err;
+  ^
+
+Error: Cannot find module '/app/test_fixed'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1140:15)
+    at Module._load (node:internal/modules/cjs/loader:981:27)
+    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:128:12)
+    at node:internal/main/run_main_module:28:49 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v18.20.7
+
+--- Exit code: 1 ---

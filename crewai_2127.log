@@ -1,0 +1,93 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:crewai_2127
+crewai_2127: Pulling from alfin06/agentissue-bench
+59e22667830b: Already exists
+abd846fa1cdb: Already exists
+b7b61708209a: Already exists
+4085babbc570: Already exists
+15490bcd5f14: Pulling fs layer
+7fe0e60cbd81: Pulling fs layer
+7dbb8354ceff: Pulling fs layer
+b425c4c25cc4: Pulling fs layer
+6b4c5d1607dc: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+4e5fecc7d8c7: Pulling fs layer
+21e72cd34d57: Pulling fs layer
+a093e81df25b: Pulling fs layer
+cd02c088dcdd: Pulling fs layer
+21e72cd34d57: Waiting
+a093e81df25b: Waiting
+b425c4c25cc4: Waiting
+6b4c5d1607dc: Waiting
+4f4fb700ef54: Waiting
+4e5fecc7d8c7: Waiting
+cd02c088dcdd: Waiting
+7fe0e60cbd81: Verifying Checksum
+7fe0e60cbd81: Download complete
+7dbb8354ceff: Verifying Checksum
+7dbb8354ceff: Download complete
+b425c4c25cc4: Verifying Checksum
+b425c4c25cc4: Download complete
+4f4fb700ef54: Download complete
+6b4c5d1607dc: Verifying Checksum
+6b4c5d1607dc: Download complete
+21e72cd34d57: Download complete
+a093e81df25b: Verifying Checksum
+a093e81df25b: Download complete
+cd02c088dcdd: Verifying Checksum
+cd02c088dcdd: Download complete
+15490bcd5f14: Verifying Checksum
+15490bcd5f14: Download complete
+4e5fecc7d8c7: Verifying Checksum
+4e5fecc7d8c7: Download complete
+15490bcd5f14: Pull complete
+7fe0e60cbd81: Pull complete
+7dbb8354ceff: Pull complete
+b425c4c25cc4: Pull complete
+6b4c5d1607dc: Pull complete
+4f4fb700ef54: Pull complete
+4e5fecc7d8c7: Pull complete
+21e72cd34d57: Pull complete
+a093e81df25b: Pull complete
+cd02c088dcdd: Pull complete
+Digest: sha256:af48c553f78336435a4933b100f3b06330d338d3075faf2efcbb0ae84e61561b
+Status: Downloaded newer image for alfin06/agentissue-bench:crewai_2127
+docker.io/alfin06/agentissue-bench:crewai_2127
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:crewai_2127" test_buggy
+=== Testing BUGGY Version (Commit: e65b2ffbc9a9ab7fb069ab6b4345273b23ac26fb) ===
+--- Running Test for buggy version ---
+Executing reproduction script: python /opt/reproduce.py buggy
+/usr/local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py:628: UserWarning: <built-in function callable> is not a Python type (it may be an instance of an object), Pydantic will allow any object with no validation since we cannot even enforce that the input is an instance of the given type. To get rid of this error wrap the type with `pydantic.SkipValidation`.
+  warn(
+--- Running test for 'buggy' version ---
+Initializing SeleniumScrapingTool with mocked WebDriver...
+Calling tool's internal _run() method...
+
+✅ BUG REPRODUCED: Caught the expected TypeError.
+   Error Message: 'FakeWebDriver' object is not callable
+✅ BUG SUCCESSFULLY REPRODUCED: The tool failed with the expected TypeError.
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:crewai_2127" test_fixed
+=== Testing FIXED Version (Commit: 64b4711ea1167fc2367d7d3476e90dcf1352a9e6) ===
+--- Running Test for fixed version ---
+Installing fixed version dependencies...
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 24.0 -> 25.2
+[notice] To update, run: pip install --upgrade pip
+Executing reproduction script: python /opt/reproduce.py fixed
+/usr/local/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py:628: UserWarning: <built-in function callable> is not a Python type (it may be an instance of an object), Pydantic will allow any object with no validation since we cannot even enforce that the input is an instance of the given type. To get rid of this error wrap the type with `pydantic.SkipValidation`.
+  warn(
+--- Running test for 'fixed' version ---
+Initializing SeleniumScrapingTool with mocked WebDriver...
+Calling tool's internal _run() method...
+
+✅ FIX CONFIRMED: The tool ran successfully without raising a TypeError.
+✅ FIX CONFIRMED / PATCH SUCCEEDED: The tool ran without the specific TypeError.
+
+--- Exit code: 0 ---

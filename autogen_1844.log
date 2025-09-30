@@ -1,0 +1,29 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:autogen_1844
+autogen_1844: Pulling from alfin06/agentissue-bench
+d2eb42b4a5eb: Already exists
+c2ba682189ed: Already exists
+1fc11db7aa34: Already exists
+1ece5c4a4380: Pulling fs layer
+1ece5c4a4380: Verifying Checksum
+1ece5c4a4380: Download complete
+1ece5c4a4380: Pull complete
+Digest: sha256:d6dfe570ad8c42e69a0546b53573bcdf560097b4e8b93446b1f7eb74c2946d28
+Status: Downloaded newer image for alfin06/agentissue-bench:autogen_1844
+docker.io/alfin06/agentissue-bench:autogen_1844
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:autogen_1844" test_buggy
+docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: exec: "test_buggy": executable file not found in $PATH: unknown
+
+Run 'docker run --help' for more information
+
+--- Exit code: 127 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:autogen_1844" test_fixed
+docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: exec: "test_fixed": executable file not found in $PATH: unknown
+
+Run 'docker run --help' for more information
+
+--- Exit code: 127 ---

@@ -1,0 +1,21 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:evo.ninja_445
+Error response from daemon: manifest for alfin06/agentissue-bench:evo.ninja_445 not found: manifest unknown: manifest unknown
+
+--- Exit code: 1 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:evo.ninja_445" test_buggy
+Unable to find image 'alfin06/agentissue-bench:evo.ninja_445' locally
+docker: Error response from daemon: manifest for alfin06/agentissue-bench:evo.ninja_445 not found: manifest unknown: manifest unknown
+
+Run 'docker run --help' for more information
+
+--- Exit code: 125 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:evo.ninja_445" test_fixed
+Unable to find image 'alfin06/agentissue-bench:evo.ninja_445' locally
+docker: Error response from daemon: manifest for alfin06/agentissue-bench:evo.ninja_445 not found: manifest unknown: manifest unknown
+
+Run 'docker run --help' for more information
+
+--- Exit code: 125 ---

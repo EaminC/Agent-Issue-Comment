@@ -1,0 +1,94 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:haystack_9313
+haystack_9313: Pulling from alfin06/agentissue-bench
+59e22667830b: Already exists
+abd846fa1cdb: Already exists
+b7b61708209a: Already exists
+4085babbc570: Already exists
+8dbd9a481430: Pulling fs layer
+fad9de77b7fb: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+c4c4298f996f: Pulling fs layer
+c0875a2f062e: Pulling fs layer
+64796c8f9320: Pulling fs layer
+f61340d1552e: Pulling fs layer
+c4c4298f996f: Waiting
+01117f03f2f4: Pulling fs layer
+c0875a2f062e: Waiting
+dbf08f92f47c: Pulling fs layer
+982402098df1: Pulling fs layer
+eb937d2d66d7: Pulling fs layer
+f61340d1552e: Waiting
+01117f03f2f4: Waiting
+64796c8f9320: Waiting
+dbf08f92f47c: Waiting
+982402098df1: Waiting
+eb937d2d66d7: Waiting
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+c4c4298f996f: Download complete
+fad9de77b7fb: Verifying Checksum
+fad9de77b7fb: Download complete
+64796c8f9320: Verifying Checksum
+64796c8f9320: Download complete
+8dbd9a481430: Verifying Checksum
+8dbd9a481430: Download complete
+01117f03f2f4: Download complete
+c0875a2f062e: Verifying Checksum
+c0875a2f062e: Download complete
+dbf08f92f47c: Verifying Checksum
+dbf08f92f47c: Download complete
+982402098df1: Verifying Checksum
+982402098df1: Download complete
+eb937d2d66d7: Verifying Checksum
+eb937d2d66d7: Download complete
+f61340d1552e: Verifying Checksum
+f61340d1552e: Download complete
+8dbd9a481430: Pull complete
+fad9de77b7fb: Pull complete
+4f4fb700ef54: Pull complete
+c4c4298f996f: Pull complete
+c0875a2f062e: Pull complete
+64796c8f9320: Pull complete
+f61340d1552e: Pull complete
+01117f03f2f4: Pull complete
+dbf08f92f47c: Pull complete
+982402098df1: Pull complete
+eb937d2d66d7: Pull complete
+Digest: sha256:40aa4fec65904bff9f11d980162eeddb55e23e9b38e64122fbdad6c68ccd3cd7
+Status: Downloaded newer image for alfin06/agentissue-bench:haystack_9313
+docker.io/alfin06/agentissue-bench:haystack_9313
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:haystack_9313" test_buggy
+=== Testing BUGGY Version (Commit: 3e28ec207a93de9bd44640ff5b46b47063c92ae6) ===
+--- Running Test for buggy version ---
+Executing reproduction script: python /opt/reproduce.py buggy
+No tools provided to the Agent. The Agent will behave like a ChatGenerator and only return text responses. To enable tool usage, pass tools directly to the Agent, not to the chat_generator.
+--- Running test for 'buggy' version ---
+--- Setting up agents and tools ---
+--- Directly invoking the math_agent_tool ---
+   Error: Could not invoke tool with any tested signature.
+✅ BUG SUCCESSFULLY REPRODUCED: The script behaved as expected for the buggy version.
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:haystack_9313" test_fixed
+=== Testing FIXED Version (Commit: 707573d967406c1e47da5084b9a3ab02ea1e286a) ===
+--- Running Test for fixed version ---
+Installing fixed version dependencies...
+WARNING: haystack-ai 2.14.0rc0 does not provide the extra 'all'
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 24.0 -> 25.2
+[notice] To update, run: pip install --upgrade pip
+Executing reproduction script: python /opt/reproduce.py fixed
+No tools provided to the Agent. The Agent will behave like a ChatGenerator and only return text responses. To enable tool usage, pass tools directly to the Agent, not to the chat_generator.
+--- Running test for 'fixed' version ---
+--- Setting up agents and tools ---
+--- Directly invoking the math_agent_tool ---
+   Error: Could not invoke tool with any tested signature.
+✅ FIX CONFIRMED / PATCH SUCCEEDED: The script behaved as expected for the fixed version.
+
+--- Exit code: 0 ---

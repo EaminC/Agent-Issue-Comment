@@ -1,0 +1,82 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:ai_5365
+ai_5365: Pulling from alfin06/agentissue-bench
+7128a879011b: Already exists
+ef8dd4820a78: Already exists
+25a2c9fb3ef1: Already exists
+5670e6facdd7: Already exists
+9e83d7fdf3b4: Already exists
+97fa6e498c93: Already exists
+b86439a8c243: Pulling fs layer
+252b344bf8d2: Pulling fs layer
+112eca20daa5: Pulling fs layer
+400533f39548: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+12c6f86de9c8: Pulling fs layer
+6e861c2e1438: Pulling fs layer
+400533f39548: Waiting
+4f4fb700ef54: Waiting
+12c6f86de9c8: Waiting
+6e861c2e1438: Waiting
+112eca20daa5: Verifying Checksum
+112eca20daa5: Download complete
+252b344bf8d2: Verifying Checksum
+252b344bf8d2: Download complete
+400533f39548: Verifying Checksum
+400533f39548: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+12c6f86de9c8: Verifying Checksum
+12c6f86de9c8: Download complete
+6e861c2e1438: Verifying Checksum
+6e861c2e1438: Download complete
+b86439a8c243: Verifying Checksum
+b86439a8c243: Download complete
+b86439a8c243: Pull complete
+252b344bf8d2: Pull complete
+112eca20daa5: Pull complete
+400533f39548: Pull complete
+4f4fb700ef54: Pull complete
+12c6f86de9c8: Pull complete
+6e861c2e1438: Pull complete
+Digest: sha256:4ca36ce9cacb5a702be5d2c6d4b53b194c30463fb5cf0e6927feea76fff453d8
+Status: Downloaded newer image for alfin06/agentissue-bench:ai_5365
+docker.io/alfin06/agentissue-bench:ai_5365
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:ai_5365" test_buggy
+=== Testing BUGGY Version (Commit: c1dd3435fe666837c8a7e917b63592d7256f8709) ===
+Checking out buggy commit...
+HEAD is now at c1dd3435f Version Packages (#5372)
+--- Running Test ---
+Found repro_script.js. Executing with node...
+--- Simulating an API call that uses an MCP client. ---
+--- This is expected to fail with an "Unhandled chunk type" error. ---
+
+SUCCESS: The script failed with an error as expected.
+Error Type: Error
+Error Message: Unhandled chunk type: undefined
+
+Verification successful: The error message matches the stream parsing bug.
+--- Test script failed (exit code 1) ---
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:ai_5365" test_fixed
+=== Testing FIXED Version (Commit: 2f8270192caf0c198b6a0499f78c3971bab1faf8) ===
+Previous HEAD position was c1dd3435f Version Packages (#5372)
+HEAD is now at 2f8270192 chore (docs): update MCP examples (#5373)
+--- Running Test ---
+Found repro_script.js. Executing with node...
+--- Simulating an API call that uses an MCP client. ---
+--- This is expected to fail with an "Unhandled chunk type" error. ---
+
+SUCCESS: The script failed with an error as expected.
+Error Type: Error
+Error Message: Unhandled chunk type: undefined
+
+Verification successful: The error message matches the stream parsing bug.
+--- Test script failed (exit code 1) ---
+
+--- Exit code: 0 ---

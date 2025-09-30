@@ -1,0 +1,97 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:ai_3953
+ai_3953: Pulling from alfin06/agentissue-bench
+89320e7119e2: Already exists
+ef8dd4820a78: Already exists
+25a2c9fb3ef1: Already exists
+5670e6facdd7: Already exists
+9e83d7fdf3b4: Already exists
+226cf991fdc6: Pulling fs layer
+fc22638b7fb0: Pulling fs layer
+5b7e6129421f: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+77d5765cfdca: Pulling fs layer
+23b50d5223d4: Pulling fs layer
+a77580866e34: Pulling fs layer
+52cf354620b5: Pulling fs layer
+bbe0578af3bc: Pulling fs layer
+14eb77f06b95: Pulling fs layer
+1e48368f8617: Pulling fs layer
+52cf354620b5: Waiting
+23b50d5223d4: Waiting
+bbe0578af3bc: Waiting
+a77580866e34: Waiting
+1e48368f8617: Waiting
+14eb77f06b95: Waiting
+77d5765cfdca: Waiting
+4f4fb700ef54: Waiting
+fc22638b7fb0: Verifying Checksum
+fc22638b7fb0: Download complete
+4f4fb700ef54: Download complete
+226cf991fdc6: Verifying Checksum
+226cf991fdc6: Download complete
+5b7e6129421f: Verifying Checksum
+5b7e6129421f: Download complete
+a77580866e34: Download complete
+bbe0578af3bc: Verifying Checksum
+bbe0578af3bc: Download complete
+14eb77f06b95: Verifying Checksum
+14eb77f06b95: Download complete
+1e48368f8617: Verifying Checksum
+1e48368f8617: Download complete
+23b50d5223d4: Verifying Checksum
+23b50d5223d4: Download complete
+226cf991fdc6: Pull complete
+fc22638b7fb0: Pull complete
+5b7e6129421f: Pull complete
+4f4fb700ef54: Pull complete
+77d5765cfdca: Verifying Checksum
+77d5765cfdca: Download complete
+77d5765cfdca: Pull complete
+23b50d5223d4: Pull complete
+a77580866e34: Pull complete
+52cf354620b5: Pull complete
+bbe0578af3bc: Pull complete
+14eb77f06b95: Pull complete
+1e48368f8617: Pull complete
+Digest: sha256:b83bc52d4c270cf0c709a66ff645cfbfd6eb3c22a4c65ba0d7e8ad3c6e9508fb
+Status: Downloaded newer image for alfin06/agentissue-bench:ai_3953
+docker.io/alfin06/agentissue-bench:ai_3953
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:ai_3953" test_buggy
+=== Testing BUGGY Version (Commit: 55ef691e9ab42d00008d30452e715d54a90a36d5) ===
+Checking out buggy commit...
+HEAD is now at 55ef691e9 chore (docs): collapse rsc section in cookbook (#3959)
+--- Running Test ---
+Found repro_script.js. Executing with node...
+--- Calling streamText with a mock Llama 3.1 stream. ---
+--- This is expected to crash with an "Unhandled chunk type" error. ---
+
+SUCCESS: The script failed with an error as expected.
+Error Type: Error
+Error Message: Unhandled chunk type: undefined
+
+Verification successful: The error message matches the expected stream parsing bug.
+--- Test script failed (exit code 1) ---
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:ai_3953" test_fixed
+=== Testing FIXED Version (Commit: a9a19cb97dbfa7f3ee8fab482ddb6f5f8b46cd4a) ===
+Previous HEAD position was 55ef691e9 chore (docs): collapse rsc section in cookbook (#3959)
+HEAD is now at a9a19cb97 fix (provider/openai,groq): prevent sending duplicate tool calls (#3960)
+--- Running Test ---
+Found repro_script.js. Executing with node...
+--- Calling streamText with a mock Llama 3.1 stream. ---
+--- This is expected to crash with an "Unhandled chunk type" error. ---
+
+SUCCESS: The script failed with an error as expected.
+Error Type: Error
+Error Message: Unhandled chunk type: undefined
+
+Verification successful: The error message matches the expected stream parsing bug.
+--- Test script failed (exit code 1) ---
+
+--- Exit code: 0 ---

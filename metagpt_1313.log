@@ -1,0 +1,29 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:metagpt_1313
+metagpt_1313: Pulling from alfin06/agentissue-bench
+d2eb42b4a5eb: Already exists
+c2ba682189ed: Already exists
+1fc11db7aa34: Already exists
+10db67a51e11: Pulling fs layer
+10db67a51e11: Verifying Checksum
+10db67a51e11: Download complete
+10db67a51e11: Pull complete
+Digest: sha256:2b6f24a04a6d14ee276f8df0323133153f0174de468e86080770fbd33e1596e1
+Status: Downloaded newer image for alfin06/agentissue-bench:metagpt_1313
+docker.io/alfin06/agentissue-bench:metagpt_1313
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:metagpt_1313" test_buggy
+docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: exec: "test_buggy": executable file not found in $PATH: unknown
+
+Run 'docker run --help' for more information
+
+--- Exit code: 127 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:metagpt_1313" test_fixed
+docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: exec: "test_fixed": executable file not found in $PATH: unknown
+
+Run 'docker run --help' for more information
+
+--- Exit code: 127 ---

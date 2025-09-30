@@ -1,0 +1,94 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:mle_agent_173
+mle_agent_173: Pulling from alfin06/agentissue-bench
+59e22667830b: Already exists
+abd846fa1cdb: Already exists
+b7b61708209a: Already exists
+4085babbc570: Already exists
+c5a6fcb804bf: Pulling fs layer
+175422abbc91: Pulling fs layer
+4b56e527c9aa: Pulling fs layer
+18bc25c52b5b: Pulling fs layer
+41c4b4a7e084: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+6062399f8489: Pulling fs layer
+db2e662a4388: Pulling fs layer
+875142fccf92: Pulling fs layer
+36f5898ef49f: Pulling fs layer
+18bc25c52b5b: Waiting
+41c4b4a7e084: Waiting
+4f4fb700ef54: Waiting
+2db5e82e2a6e: Pulling fs layer
+db2e662a4388: Waiting
+6062399f8489: Waiting
+2db5e82e2a6e: Waiting
+875142fccf92: Waiting
+36f5898ef49f: Waiting
+175422abbc91: Download complete
+4b56e527c9aa: Verifying Checksum
+4b56e527c9aa: Download complete
+18bc25c52b5b: Download complete
+4f4fb700ef54: Download complete
+41c4b4a7e084: Verifying Checksum
+41c4b4a7e084: Download complete
+db2e662a4388: Verifying Checksum
+db2e662a4388: Download complete
+c5a6fcb804bf: Verifying Checksum
+c5a6fcb804bf: Download complete
+875142fccf92: Verifying Checksum
+875142fccf92: Download complete
+2db5e82e2a6e: Download complete
+36f5898ef49f: Verifying Checksum
+36f5898ef49f: Download complete
+c5a6fcb804bf: Pull complete
+175422abbc91: Pull complete
+4b56e527c9aa: Pull complete
+18bc25c52b5b: Pull complete
+41c4b4a7e084: Pull complete
+4f4fb700ef54: Pull complete
+6062399f8489: Verifying Checksum
+6062399f8489: Download complete
+6062399f8489: Pull complete
+db2e662a4388: Pull complete
+875142fccf92: Pull complete
+36f5898ef49f: Pull complete
+2db5e82e2a6e: Pull complete
+Digest: sha256:b83dbab089b00cba8b16ac875fc25f3264cbc755def2ae5c12e5e7c714033aa0
+Status: Downloaded newer image for alfin06/agentissue-bench:mle_agent_173
+docker.io/alfin06/agentissue-bench:mle_agent_173
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:mle_agent_173" test_buggy
+=== Testing BUGGY Version (Commit: 8109d8b905bb4aac4de6258516a966abaf2147f5) ===
+--- Running Test for buggy version ---
+Executing reproduction script: python /opt/reproduce.py buggy
+--- Running test for 'buggy' version ---
+[SETUP] Created mock model that returns a non-JSON string.
+[SETUP] AdviseAgent created with the mock model.
+
+[EXECUTION] Calling advisor.suggest()...
+
+✅ BUG REPRODUCED: Caught the expected JSONDecodeError, which confirms the bug.
+✅ BUG SUCCESSFULLY REPRODUCED: The script behaved as expected for the buggy version.
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:mle_agent_173" test_fixed
+=== Testing FIXED Version (Commit: 2e5a710247489eb31aad0a8233ec97fc343c6bec) ===
+--- Running Test for fixed version ---
+Installing fixed version dependencies...
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 24.0 -> 25.2
+[notice] To update, run: pip install --upgrade pip
+Executing reproduction script: python /opt/reproduce.py fixed
+--- Running test for 'fixed' version ---
+[SETUP] Created mock model that returns a non-JSON string.
+[SETUP] AdviseAgent created with the mock model.
+
+[EXECUTION] Calling advisor.suggest()...
+
+❌ FIX NOT CONFIRMED: A JSONDecodeError was raised unexpectedly in the fixed version.
+
+--- Exit code: 1 ---

@@ -1,0 +1,147 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:agixt_1253
+agixt_1253: Pulling from alfin06/agentissue-bench
+ce1261c6d567: Already exists
+d02c566428bb: Already exists
+6dc114d5e12c: Already exists
+fceec8b8a90e: Already exists
+ffc0aa284a63: Pulling fs layer
+628724d606fb: Pulling fs layer
+45d3316fc6bb: Pulling fs layer
+a3c8950c4662: Pulling fs layer
+5112caad2b09: Pulling fs layer
+c5726d30735e: Pulling fs layer
+e18c249d4aa0: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+a3c8950c4662: Waiting
+c5726d30735e: Waiting
+e18c249d4aa0: Waiting
+5112caad2b09: Waiting
+4f4fb700ef54: Waiting
+ffc0aa284a63: Verifying Checksum
+ffc0aa284a63: Download complete
+ffc0aa284a63: Pull complete
+a3c8950c4662: Verifying Checksum
+a3c8950c4662: Download complete
+5112caad2b09: Verifying Checksum
+5112caad2b09: Download complete
+c5726d30735e: Download complete
+e18c249d4aa0: Download complete
+628724d606fb: Verifying Checksum
+628724d606fb: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+628724d606fb: Pull complete
+45d3316fc6bb: Verifying Checksum
+45d3316fc6bb: Download complete
+45d3316fc6bb: Pull complete
+a3c8950c4662: Pull complete
+5112caad2b09: Pull complete
+c5726d30735e: Pull complete
+e18c249d4aa0: Pull complete
+4f4fb700ef54: Pull complete
+Digest: sha256:b30c176e5e480f06fe6ad742d29af3b5daa1550c8676bc5c764f4b49dc945211
+Status: Downloaded newer image for alfin06/agentissue-bench:agixt_1253
+docker.io/alfin06/agentissue-bench:agixt_1253
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:agixt_1253" test_buggy
+=== Testing BUGGY Version (Commit: 5baaab92137e2ed6f96be70d259f37f18ad8582d) ===
+--- Running Test for buggy version ---
+Found reproduce.py. Executing with python...
+Traceback (most recent call last):
+  File "/tmp/direct_test.py", line 30, in import_chain
+    chain_id = existing_chain.id  # This will fail if existing_chain is None
+AttributeError: 'NoneType' object has no attribute 'id'
+
+Attempting to import chain...
+MockDB: Returning None for get_chain()
+Error importing chain: 'NoneType' object has no attribute 'id'
+AttributeError: 'NoneType' object has no attribute 'id'
+BUG REPRODUCED: Found expected AttributeError
+
+--- Testing AGiXT Issue #1253 - AttributeError: 'NoneType' object has no attribute 'id' ---
+--- Version: BUGGY ---
+Using source code from: /app/source_code_buggy
+Finding relevant code files...
+Found 2 Chain.py files:
+  - /app/source_code_buggy/agixt/Chain.py
+  - /app/source_code_buggy/agixt/endpoints/Chain.py
+Found DB.py at: /app/source_code_buggy/agixt/DB.py
+
+Searching for import_chain method...
+Found import_chain method in /app/source_code_buggy/agixt/Chain.py
+Method signature: def import_chain(self, chain_name:
+Extract of import_chain method:
+  def import_chain(self, chain_name: str, steps: dict):
+          session = get_session()
+          chain = (
+              session.query(ChainDB)
+              .filter(ChainDB.name == chain_name, ChainDB.user_id == self.user_id)
+              .first()
+          )
+          if chain:
+              session.close()
+              return None
+  ...and more lines
+
+Found potential .id access that might cause AttributeError
+Method contains None checks, which suggests handling of None objects
+
+Creating a standalone test script...
+
+Running simplified test for issue #1253...
+
+✅ BUG REPRODUCED: Found AttributeError: 'NoneType' object has no attribute 'id'
+✅ BUG SUCCESSFULLY REPRODUCED: AttributeError: 'NoneType' object has no attribute 'id'
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:agixt_1253" test_fixed
+=== Testing FIXED Version (Commit: 4da09f76fb44b77e6bf3090b005f2093910bed8f) ===
+--- Running Test for fixed version ---
+Found reproduce.py. Executing with python...
+
+Attempting to import chain...
+MockDB: Returning mock chain object for get_chain()
+Found existing chain with id: mock_id
+Chain import completed without errors
+FIX CONFIRMED: No AttributeError occurred
+
+--- Testing AGiXT Issue #1253 - AttributeError: 'NoneType' object has no attribute 'id' ---
+--- Version: FIXED ---
+Using source code from: /app/source_code_fixed
+Finding relevant code files...
+Found 2 Chain.py files:
+  - /app/source_code_fixed/agixt/Chain.py
+  - /app/source_code_fixed/agixt/endpoints/Chain.py
+Found DB.py at: /app/source_code_fixed/agixt/DB.py
+
+Searching for import_chain method...
+Found import_chain method in /app/source_code_fixed/agixt/Chain.py
+Method signature: def import_chain(self, chain_name:
+Extract of import_chain method:
+  def import_chain(self, chain_name: str, steps: dict):
+          session = get_session()
+          chain = (
+              session.query(ChainDB)
+              .filter(ChainDB.name == chain_name, ChainDB.user_id == self.user_id)
+              .first()
+          )
+          if chain:
+              session.close()
+              return None
+  ...and more lines
+
+Found potential .id access that might cause AttributeError
+Method contains None checks, which suggests handling of None objects
+
+Creating a standalone test script...
+
+Running simplified test for issue #1253...
+
+✅ FIX CONFIRMED: No AttributeError occurred
+✅ FIX CONFIRMED: No AttributeError occurs in the fixed version
+
+--- Exit code: 0 ---

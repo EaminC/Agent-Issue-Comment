@@ -1,0 +1,58 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:crewai_1323
+crewai_1323: Pulling from alfin06/agentissue-bench
+59e22667830b: Already exists
+abd846fa1cdb: Already exists
+b7b61708209a: Already exists
+4085babbc570: Already exists
+aabf8db6ed40: Pulling fs layer
+438e88070765: Pulling fs layer
+048844426184: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+d59b6e1beeef: Pulling fs layer
+1ff42d9df2d0: Pulling fs layer
+7820b94c63ca: Pulling fs layer
+1ff42d9df2d0: Waiting
+7820b94c63ca: Waiting
+4f4fb700ef54: Waiting
+d59b6e1beeef: Waiting
+aabf8db6ed40: Download complete
+aabf8db6ed40: Pull complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+d59b6e1beeef: Download complete
+1ff42d9df2d0: Verifying Checksum
+1ff42d9df2d0: Download complete
+7820b94c63ca: Verifying Checksum
+7820b94c63ca: Download complete
+438e88070765: Verifying Checksum
+438e88070765: Download complete
+048844426184: Verifying Checksum
+048844426184: Download complete
+438e88070765: Pull complete
+048844426184: Pull complete
+4f4fb700ef54: Pull complete
+d59b6e1beeef: Pull complete
+1ff42d9df2d0: Pull complete
+7820b94c63ca: Pull complete
+Digest: sha256:bd78415dbcaba3c25202596f97eedb3ca1ff195bd661de3d704c4ffd7083e465
+Status: Downloaded newer image for alfin06/agentissue-bench:crewai_1323
+docker.io/alfin06/agentissue-bench:crewai_1323
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:crewai_1323" test_buggy
+=== Testing BUGGY Version (Commit: 3cd464497b26ae499d46ddfda0eb92a294051cbe) ===
+--- Running Test for buggy version ---
+ERROR: OPENAI_API_KEY environment variable must be set
+Usage: docker run --rm -it -e OPENAI_API_KEY="sk-your-key" <image_name> test_buggy|test_fixed|test_patched
+
+--- Exit code: 1 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:crewai_1323" test_fixed
+=== Testing FIXED Version (Commit: 4db386d817ce9828b7635049b1d8eb38234e7116) ===
+--- Running Test for fixed version ---
+ERROR: OPENAI_API_KEY environment variable must be set
+Usage: docker run --rm -it -e OPENAI_API_KEY="sk-your-key" <image_name> test_buggy|test_fixed|test_patched
+
+--- Exit code: 1 ---

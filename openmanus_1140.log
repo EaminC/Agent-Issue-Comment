@@ -1,0 +1,60 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:openmanus_1140
+openmanus_1140: Pulling from alfin06/agentissue-bench
+34ef2a75627f: Pulling fs layer
+6939e8b629d3: Pulling fs layer
+168e3ef0fb42: Pulling fs layer
+bfef920e18d4: Pulling fs layer
+a478633f37cb: Pulling fs layer
+986493119c85: Pulling fs layer
+d94e604748e8: Pulling fs layer
+a23eef5cecdc: Pulling fs layer
+bfef920e18d4: Waiting
+a478633f37cb: Waiting
+986493119c85: Waiting
+d94e604748e8: Waiting
+a23eef5cecdc: Waiting
+168e3ef0fb42: Verifying Checksum
+168e3ef0fb42: Download complete
+bfef920e18d4: Download complete
+34ef2a75627f: Verifying Checksum
+34ef2a75627f: Download complete
+a478633f37cb: Verifying Checksum
+a478633f37cb: Download complete
+6939e8b629d3: Verifying Checksum
+6939e8b629d3: Download complete
+d94e604748e8: Verifying Checksum
+d94e604748e8: Download complete
+986493119c85: Verifying Checksum
+986493119c85: Download complete
+34ef2a75627f: Pull complete
+6939e8b629d3: Pull complete
+168e3ef0fb42: Pull complete
+bfef920e18d4: Pull complete
+a478633f37cb: Pull complete
+986493119c85: Pull complete
+d94e604748e8: Pull complete
+a23eef5cecdc: Verifying Checksum
+a23eef5cecdc: Download complete
+a23eef5cecdc: Pull complete
+Digest: sha256:c64b063b313ce36c096c3ca4390e8ebc823e2612f17a69989adaedf4be0100d8
+Status: Downloaded newer image for alfin06/agentissue-bench:openmanus_1140
+docker.io/alfin06/agentissue-bench:openmanus_1140
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:openmanus_1140" test_buggy
+WARNING: The requested image's platform (linux/arm64/v8) does not match the detected host platform (linux/amd64/v4) and no specific platform was requested
+docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: exec: "test_buggy": executable file not found in $PATH: unknown
+
+Run 'docker run --help' for more information
+
+--- Exit code: 127 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:openmanus_1140" test_fixed
+WARNING: The requested image's platform (linux/arm64/v8) does not match the detected host platform (linux/amd64/v4) and no specific platform was requested
+docker: Error response from daemon: failed to create task for container: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: exec: "test_fixed": executable file not found in $PATH: unknown
+
+Run 'docker run --help' for more information
+
+--- Exit code: 127 ---

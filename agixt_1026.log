@@ -1,0 +1,200 @@
+
+>>> Running: sudo docker pull alfin06/agentissue-bench:agixt_1026
+agixt_1026: Pulling from alfin06/agentissue-bench
+ce1261c6d567: Already exists
+d02c566428bb: Already exists
+6dc114d5e12c: Already exists
+fceec8b8a90e: Already exists
+6293b0b89e73: Pulling fs layer
+487f61c31452: Pulling fs layer
+fd9a56267727: Pulling fs layer
+eac4cb24f11c: Pulling fs layer
+d142ef9022a8: Pulling fs layer
+4f4fb700ef54: Pulling fs layer
+d142ef9022a8: Waiting
+eac4cb24f11c: Waiting
+4f4fb700ef54: Waiting
+6293b0b89e73: Verifying Checksum
+6293b0b89e73: Download complete
+fd9a56267727: Verifying Checksum
+fd9a56267727: Download complete
+6293b0b89e73: Pull complete
+eac4cb24f11c: Download complete
+d142ef9022a8: Verifying Checksum
+d142ef9022a8: Download complete
+4f4fb700ef54: Verifying Checksum
+4f4fb700ef54: Download complete
+487f61c31452: Verifying Checksum
+487f61c31452: Download complete
+487f61c31452: Pull complete
+fd9a56267727: Pull complete
+eac4cb24f11c: Pull complete
+d142ef9022a8: Pull complete
+4f4fb700ef54: Pull complete
+Digest: sha256:c208453d7c5915c3e6c826fcc8de89b02d2ad900873c2c7b3d2bd2a2d1d9174e
+Status: Downloaded newer image for alfin06/agentissue-bench:agixt_1026
+docker.io/alfin06/agentissue-bench:agixt_1026
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:agixt_1026" test_buggy
+Testing buggy version from commit: 1c99cc6192dc7210a21ced270a3d79d8e0231350
+Cloning repository for buggy version...
+Cloning into '/app/source_code_buggy'...
+Note: switching to '1c99cc6192dc7210a21ced270a3d79d8e0231350'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 1c99cc61 Update bardapi
+Creating modified requirements to skip llama-cpp-python...
+Installing AGiXT as a package for buggy version (skipping problematic deps)...
+Obtaining file:///app/source_code_buggy
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: agixt
+  Building editable for agixt (pyproject.toml): started
+  Building editable for agixt (pyproject.toml): finished with status 'done'
+  Created wheel for agixt: filename=agixt-1.4.5-0.editable-py3-none-any.whl size=8516 sha256=af5be7cc6ade7630c170dbf81b7213b8cef7545bc8850711fc3890b70e158c12
+  Stored in directory: /tmp/pip-ephem-wheel-cache-2awptlri/wheels/19/d3/38/2f2589f113a56470fd3788deb12f6ab7c7b71006037bb38329
+Successfully built agixt
+Installing collected packages: agixt
+Successfully installed agixt-1.4.5
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 23.0.1 -> 25.2
+[notice] To update, run: pip install --upgrade pip
+Collecting requests
+  Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 64.7/64.7 kB 6.3 MB/s eta 0:00:00
+Collecting certifi>=2017.4.17
+  Downloading certifi-2025.8.3-py3-none-any.whl (161 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 161.2/161.2 kB 15.2 MB/s eta 0:00:00
+Collecting charset_normalizer<4,>=2
+  Downloading charset_normalizer-3.4.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (152 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 152.4/152.4 kB 23.7 MB/s eta 0:00:00
+Collecting urllib3<3,>=1.21.1
+  Downloading urllib3-2.5.0-py3-none-any.whl (129 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 129.8/129.8 kB 30.0 MB/s eta 0:00:00
+Collecting idna<4,>=2.5
+  Downloading idna-3.10-py3-none-any.whl (70 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 70.4/70.4 kB 28.2 MB/s eta 0:00:00
+Installing collected packages: urllib3, idna, charset_normalizer, certifi, requests
+Successfully installed certifi-2025.8.3 charset_normalizer-3.4.3 idna-3.10 requests-2.32.5 urllib3-2.5.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 23.0.1 -> 25.2
+[notice] To update, run: pip install --upgrade pip
+Running reproduction script for buggy version...
+Testing version: buggy
+Using AGiXT source from: /app/source_code_buggy
+Found voice_chat.py at: /app/source_code_buggy/agixt/extensions/voice_chat.py
+Error importing voice_chat module: No module named 'ApiClient'
+Falling back to mock implementation...
+Testing with USE_STREAMLABS_TTS=False (boolean value)
+Initializing mock voice_chat with kwargs: {'USE_STREAMLABS_TTS': False}
+BUG TRIGGERED: 'bool' object has no attribute 'lower'
+BUG TRIGGERED: 'bool' object has no attribute 'lower'
+✅ SUCCESS: Bug reproduced in buggy version
+✅ BUG REPRODUCED: The buggy version has the AttributeError on bool.lower()
+
+--- Exit code: 0 ---
+
+>>> Running: sudo docker run --rm "alfin06/agentissue-bench:agixt_1026" test_fixed
+Testing fixed version from commit: 76aa9ee7165c16c95323ad6c3a017f47597e29bd
+Cloning repository for fixed version...
+Cloning into '/app/source_code_fixed'...
+Note: switching to '76aa9ee7165c16c95323ad6c3a017f47597e29bd'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 76aa9ee7 Fix #1026 (#1027)
+Creating modified requirements to skip llama-cpp-python...
+Installing AGiXT as a package for fixed version (skipping problematic deps)...
+Obtaining file:///app/source_code_fixed
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: agixt
+  Building editable for agixt (pyproject.toml): started
+  Building editable for agixt (pyproject.toml): finished with status 'done'
+  Created wheel for agixt: filename=agixt-1.4.5-0.editable-py3-none-any.whl size=8515 sha256=e3b04db62ff19c22ccc3c9252634e4d478e87be86eb189582b6652d82f0d1647
+  Stored in directory: /tmp/pip-ephem-wheel-cache-8dfy1vfg/wheels/2f/b2/f8/d257362fdf23425fea2c93b7eeac070626228e0cdeee3b2b8e
+Successfully built agixt
+Installing collected packages: agixt
+Successfully installed agixt-1.4.5
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 23.0.1 -> 25.2
+[notice] To update, run: pip install --upgrade pip
+Collecting requests
+  Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 64.7/64.7 kB 5.4 MB/s eta 0:00:00
+Collecting certifi>=2017.4.17
+  Downloading certifi-2025.8.3-py3-none-any.whl (161 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 161.2/161.2 kB 14.9 MB/s eta 0:00:00
+Collecting urllib3<3,>=1.21.1
+  Downloading urllib3-2.5.0-py3-none-any.whl (129 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 129.8/129.8 kB 16.8 MB/s eta 0:00:00
+Collecting idna<4,>=2.5
+  Downloading idna-3.10-py3-none-any.whl (70 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 70.4/70.4 kB 15.5 MB/s eta 0:00:00
+Collecting charset_normalizer<4,>=2
+  Downloading charset_normalizer-3.4.3-cp310-cp310-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (152 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 152.4/152.4 kB 12.9 MB/s eta 0:00:00
+Installing collected packages: urllib3, idna, charset_normalizer, certifi, requests
+Successfully installed certifi-2025.8.3 charset_normalizer-3.4.3 idna-3.10 requests-2.32.5 urllib3-2.5.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 23.0.1 -> 25.2
+[notice] To update, run: pip install --upgrade pip
+Running reproduction script for fixed version...
+Testing version: fixed
+Using AGiXT source from: /app/source_code_fixed
+Found voice_chat.py at: /app/source_code_fixed/agixt/extensions/voice_chat.py
+Error importing voice_chat module: No module named 'ApiClient'
+Falling back to mock implementation...
+Testing with USE_STREAMLABS_TTS=False (boolean value)
+Initializing mock voice_chat with kwargs: {'USE_STREAMLABS_TTS': False}
+Initialization completed
+No AttributeError occurred
+✅ SUCCESS: Fix working in fixed/patched version
+✅ FIX CONFIRMED: The fixed version properly handles boolean values
+
+--- Exit code: 0 ---
